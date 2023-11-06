@@ -1,3 +1,5 @@
+import React from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import AudioPlayer from "./components/audioPlayer";
 import AudioPlayerSkeleton from "./components/audioPlayerSkeleton";
@@ -6,19 +8,25 @@ import Sidebar from "./components/sidebar";
 import SidebarSkeleton from "./components/sidebarSkeleton";
 import TrackList from "./components/trackList";
 import TrackListSkeleton from "./components/trackListSkeleton";
-
-let loading = true;
+import loadingDelay from "./components/loading";
 
 function App() {
+  
+  // Псевдозагрузка
+  const [load, setLoad] = useState(true);
+  useEffect(() => {
+    loadingDelay(load, setLoad, 2000)
+  }, []);
+  
   return (
     <div className="wrapper">
       <div className="container">
         <main className="main">
           <NavMenu />
-          {loading ? <TrackListSkeleton/> : <TrackList/>}
-          {loading ? <SidebarSkeleton/> : <Sidebar/>}
+          {load ? <TrackListSkeleton /> : <TrackList />}
+          {load ? <SidebarSkeleton /> : <Sidebar />}
         </main>
-          {loading ? <AudioPlayerSkeleton/> : <AudioPlayer/>}
+        {load ? <AudioPlayerSkeleton /> : <AudioPlayer />}
         <footer className="footer"></footer>
       </div>
     </div>
