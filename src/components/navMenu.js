@@ -2,11 +2,9 @@ import NavMenuList from "./navMenuList";
 import React from "react";
 const { useState } = React;
 
-
-
 export default function NavMenu() {
   const [visible, setVisible] = useState(true);
-  const activeBurger = () => setVisible(!visible)
+  const activeBurger = () => setVisible(!visible);
   return (
     <nav className="main__nav nav">
       <div className="nav__logo logo">
@@ -17,7 +15,7 @@ export default function NavMenu() {
         <span className="burger__line"></span>
         <span className="burger__line"></span>
       </div>
-      {visible ? <NavMenuList /> : ''}
+      {visible ? <NavMenuList /> : ""}
     </nav>
   );
 }

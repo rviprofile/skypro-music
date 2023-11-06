@@ -1,3 +1,5 @@
+import React from "react";
+
 export default function NavMenuList() {
   return (
     <div className="nav__menu menu">
