@@ -924,3 +924,8 @@ body {
   text-decoration: underline;
 }
 
+._btn-text__hover {
+  border-color: #d9b6ff;
+  color: #d9b6ff;
+  cursor: pointer;
+}
