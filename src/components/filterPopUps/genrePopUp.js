@@ -1,5 +1,6 @@
 export default function GenrePopUp() {
   return (
+    <div className="wrapper_pop-up">
     <div className="filter__pop-up">
       <ul className="filter__pop-up_list">
         <li className="filter__pop-up_item">Blues</li>
@@ -15,6 +16,7 @@ export default function GenrePopUp() {
         <li className="filter__pop-up_item">Metal</li>
         <li className="filter__pop-up_item">Punk</li>
       </ul>
+    </div>
     </div>
   );
 }

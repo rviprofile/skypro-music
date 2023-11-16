@@ -370,7 +370,7 @@ body {
 
 .col04 {
   width: 60px;
-  text-align: end;
+  text-align: start;
 }
 
 .playlist__item {
@@ -882,26 +882,36 @@ body {
   position: relative;
   margin-right: 10px;
 }
-.filter__pop-up {
+.wrapper_pop-up{
   margin-top: 10px;
-  position: absolute;
-  padding: 34px;
   border-radius: 12px;
   width: 248px;
   height: 305px;
+  position: absolute;
+  padding: 34px;
+  background-color: #313131;
+}
+.filter__pop-up {
+  position: absolute;
+  width: 180px;
+  height: 237px;
+  font-size: 20px;
+  line-height: 24px;
+  overflow-y: auto;
   background-color: #313131;
   color: #fff;
   font-variant-numeric: lining-nums proportional-nums;
   font-style: normal;
   font-family: StratosSkyeng;
-  font-size: 20px;
-  line-height: 24px;
-  overflow-y: auto;
   font-family: "StratosSkyeng", sans-serif;
 }
+
 .small__pop-up {
+  margin-top: 10px;
+  border-radius: 12px;
   width: 221px;
   height: 196px;
+  padding: 34px;
 }
 .filter__pop-up::-webkit-scrollbar {
   width: 4px;
