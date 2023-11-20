@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import "./App.css";
-import AudioPlayer from "./components/audioPlayer";
+import AudioPlayer from "./components/audioPlayer/audioPlayer";
 import AudioPlayerSkeleton from "./components/audioPlayerSkeleton";
 import NavMenu from "./navMenu/navMenu";
 import Sidebar from "./components/sidebar";

@@ -1,4 +1,4 @@
-import * as S from "./style.js";
+import * as S from "./styles.js";
 import React from "react";
 
 export default function NavMenuList() {

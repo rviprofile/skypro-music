@@ -1,4 +1,4 @@
-import * as S from "./style.js";
+import * as S from "./styles.js";
 import NavMenuList from "./navMenuList";
 import React from "react";
 const { useState } = React;
