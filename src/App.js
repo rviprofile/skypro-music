@@ -2,12 +2,12 @@ import React from "react";
 import { useEffect, useState } from "react";
 import "./App.css";
 import AudioPlayer from "./components/audioPlayer/audioPlayer";
-import AudioPlayerSkeleton from "./components/audioPlayerSkeleton";
-import NavMenu from "./navMenu/navMenu";
+import AudioPlayerSkeleton from "./components/skeletons/audioPlayerSkeleton";
+import NavMenu from "./components/navMenu/navMenu.js"
 import Sidebar from "./components/sidebar";
-import SidebarSkeleton from "./components/sidebarSkeleton";
+import SidebarSkeleton from "./components/skeletons/sidebarSkeleton";
 import TrackList from "./components/trackList";
-import TrackListSkeleton from "./components/trackListSkeleton";
+import TrackListSkeleton from "./components/skeletons/trackListSkeleton";
 import loadingDelay from "./components/loading";
 
 function App() {

@@ -1,3 +1,4 @@
+import * as S from "./styles.js"
 import { useEffect, useState } from "react";
 import FilterGenre from "./filterGenre";
 import FilterSinger from "./filterSinger";
@@ -6,8 +7,8 @@ import FilterYear from "./filterYear";
 export default function Filter() {
   const [activeIndex, setActiveIndex] = useState(0);
   return (
-    <div className="centerblock__filter filter">
-      <div className="filter__title">Искать по:</div>
+    <S.CenterBlockFilter>
+      <S.FilterTitle>Искать по:</S.FilterTitle>
       <FilterSinger
         isActive={activeIndex === 1}
         onShow={() => setActiveIndex(1)}
@@ -23,6 +24,6 @@ export default function Filter() {
         onShow={() => setActiveIndex(3)}
         onHide={() => setActiveIndex(0)}
       />
-    </div>
+    </S.CenterBlockFilter>
   );
 }

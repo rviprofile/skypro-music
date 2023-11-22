@@ -142,20 +142,6 @@ body {
   margin-bottom: 45px;
 }
 
-.centerblock__filter {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  margin-bottom: 51px;
-}
-
 .centerblock__content {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -222,14 +208,6 @@ body {
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
-}
-
-.filter__title {
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
-  margin-right: 15px;
 }
 
 .filter__button {
@@ -523,62 +501,6 @@ body {
   -ms-flex-direction: row;
   flex-direction: row;
   padding: 0 27px 0 31px;
-}
-
-.filter__button_container {
-  position: relative;
-  margin-right: 10px;
-}
-.wrapper_pop-up{
-  margin-top: 10px;
-  border-radius: 12px;
-  width: 248px;
-  height: 305px;
-  position: absolute;
-  padding: 34px;
-  background-color: #313131;
-}
-.filter__pop-up {
-  position: absolute;
-  width: 180px;
-  height: 237px;
-  font-size: 20px;
-  line-height: 24px;
-  overflow-y: auto;
-  background-color: #313131;
-  color: #fff;
-  font-variant-numeric: lining-nums proportional-nums;
-  font-style: normal;
-  font-family: StratosSkyeng;
-  font-family: "StratosSkyeng", sans-serif;
-}
-
-.small__pop-up {
-  margin-top: 10px;
-  border-radius: 12px;
-  width: 221px;
-  height: 196px;
-  padding: 34px;
-}
-.filter__pop-up::-webkit-scrollbar {
-  width: 4px;
-  border-radius: 2px;
-  background: #4b4949;
-}
-.filter__pop-up::-webkit-scrollbar-thumb {
-  background-color: #ffffff;
-  border-radius: 2px;
-}
-.filter__pop-up_list {
-  display: flex;
-  flex-direction: column;
-  gap: 28px;
-}
-
-.filter__pop-up_item:hover {
-  color: #b672ff;
-  cursor: pointer;
-  text-decoration: underline;
 }
 
 ._btn-text__hover {

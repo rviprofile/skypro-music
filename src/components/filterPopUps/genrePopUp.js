@@ -1,22 +1,24 @@
+import * as S from "./styles";
+
 export default function GenrePopUp() {
   return (
-    <div className="wrapper_pop-up">
-    <div className="filter__pop-up">
-      <ul className="filter__pop-up_list">
-        <li className="filter__pop-up_item">Blues</li>
-        <li className="filter__pop-up_item">Country</li>
-        <li className="filter__pop-up_item">Easy listening</li>
-        <li className="filter__pop-up_item">Electronic</li>
-        <li className="filter__pop-up_item">Folk</li>
-        <li className="filter__pop-up_item">Hip Hop</li>
-        <li className="filter__pop-up_item">Jazz</li>
-        <li className="filter__pop-up_item">Pop</li>
-        <li className="filter__pop-up_item">R&B</li>
-        <li className="filter__pop-up_item">Rock</li>
-        <li className="filter__pop-up_item">Metal</li>
-        <li className="filter__pop-up_item">Punk</li>
-      </ul>
-    </div>
-    </div>
+    <S.WrapperPopUp>
+      <S.FilterPopUp>
+        <S.FilterPopUpList>
+          <S.FilterPopUpItem>Blues</S.FilterPopUpItem>
+          <S.FilterPopUpItem>Country</S.FilterPopUpItem>
+          <S.FilterPopUpItem>Easy listening</S.FilterPopUpItem>
+          <S.FilterPopUpItem>Electronic</S.FilterPopUpItem>
+          <S.FilterPopUpItem>Folk</S.FilterPopUpItem>
+          <S.FilterPopUpItem>Hip Hop</S.FilterPopUpItem>
+          <S.FilterPopUpItem>Jazz</S.FilterPopUpItem>
+          <S.FilterPopUpItem>Pop</S.FilterPopUpItem>
+          <S.FilterPopUpItem>R&B</S.FilterPopUpItem>
+          <S.FilterPopUpItem>Rock</S.FilterPopUpItem>
+          <S.FilterPopUpItem>Metal</S.FilterPopUpItem>
+          <S.FilterPopUpItem>Punk</S.FilterPopUpItem>
+        </S.FilterPopUpList>
+      </S.FilterPopUp>
+    </S.WrapperPopUp>
   );
 }

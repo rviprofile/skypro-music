@@ -1,4 +1,4 @@
-import Filter from "./filter";
+import Filter from "./filter/filter";
 import PlaylistContent from "./playlistContent";
 import PlaylistTitle from "./playlistTitle";
 import Search from "./search";
