@@ -1,7 +1,7 @@
 import Filter from "./filter/filter";
 import PlaylistContent from "./playlistContent";
 import PlaylistTitle from "./playlistTitle";
-import Search from "./search";
+import Search from "./search/search";
 
 export default function TrackList() {
   return (
