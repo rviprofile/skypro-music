@@ -4,7 +4,7 @@ import "./App.css";
 import AudioPlayer from "./components/audioPlayer/audioPlayer";
 import AudioPlayerSkeleton from "./components/skeletons/audioPlayerSkeleton";
 import NavMenu from "./components/navMenu/navMenu.js"
-import Sidebar from "./components/sidebar";
+import Sidebar from "./components/sidebar/sidebar.js";
 import SidebarSkeleton from "./components/skeletons/sidebarSkeleton";
 import TrackList from "./components/trackList";
 import TrackListSkeleton from "./components/skeletons/trackListSkeleton";

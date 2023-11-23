@@ -77,7 +77,6 @@ export default function AudioPlayer() {
               </S.VolumeImage>
               <S.VolumeProgress>
                 <S.VolumeProgressLine
-                  className="volume__progress-line _btn"
                   type="range"
                   name="range"
                 />

@@ -1,62 +1,63 @@
+import * as S from "../audioPlayer/styles.js";
+
 export default function AudioPlayerSkeleton() {
   return (
-    <div className="bar">
-      <div className="bar__content">
-        <div className="bar__player-progress"></div>
-        <div className="bar__player-block">
-          <div className="bar__player player">
-            <div className="player__controls">
-              <div className="player__btn-prev">
-                <svg className="player__btn-prev-svg" alt="prev">
+    <S.Bar>
+      <S.BarContent>
+        <S.BarPlayerProgress/>
+        <S.BarPlayerBlock>
+          <S.BarPlayer>
+          <S.PlayerControls>
+              <S.PlayerBtnPrev>
+                <S.PlayerBtnPrevSvg>
                   <use xlinkHref="img/icon/sprite.svg#icon-prev"></use>
-                </svg>
-              </div>
-              <div className="player__btn-play _btn">
-                <svg className="player__btn-play-svg" alt="play">
+                </S.PlayerBtnPrevSvg>
+              </S.PlayerBtnPrev>
+              <S.PlayerBtnPlay>
+                <S.PlayerBtnPlaySvg>
                   <use xlinkHref="img/icon/sprite.svg#icon-play"></use>
-                </svg>
-              </div>
-              <div className="player__btn-next">
-                <svg className="player__btn-next-svg" alt="next">
+                </S.PlayerBtnPlaySvg>
+              </S.PlayerBtnPlay>
+              <S.PlayerBtnNext>
+                <S.PlayerBtnNextSvg>
                   <use xlinkHref="img/icon/sprite.svg#icon-next"></use>
-                </svg>
-              </div>
-              <div className="player__btn-repeat _btn-icon">
-                <svg className="player__btn-repeat-svg" alt="repeat">
+                </S.PlayerBtnNextSvg>
+              </S.PlayerBtnNext>
+              <S.PlayerBtnRepeat>
+                <S.PlayerBtnRepeatSvg>
                   <use xlinkHref="img/icon/sprite.svg#icon-repeat"></use>
-                </svg>
-              </div>
-              <div className="player__btn-shuffle _btn-icon">
-                <svg className="player__btn-shuffle-svg" alt="shuffle">
+                </S.PlayerBtnRepeatSvg>
+              </S.PlayerBtnRepeat>
+              <S.PlayerBtnShuffle>
+                <S.PlayerBtnShuffleSvg>
                   <use xlinkHref="img/icon/sprite.svg#icon-shuffle"></use>
-                </svg>
-              </div>
-            </div>
+                </S.PlayerBtnShuffleSvg>
+              </S.PlayerBtnShuffle>
+            </S.PlayerControls>
 
-            <div className="player__track-play track-play">
-              <div className="track-play__contain">
+            <S.PlayerTrackPlay>
+              <S.TrackPlaycontain>
                 <img src="/img/skeleton/122x51.svg"></img>
-              </div>
-            </div>
-          </div>
-          <div className="bar__volume-block volume">
-            <div className="volume__content">
-              <div className="volume__image">
-                <svg className="volume__svg" alt="volume">
+              </S.TrackPlaycontain>
+            </S.PlayerTrackPlay>
+          </S.BarPlayer>
+          <S.BarVolumeBlock>
+            <S.VolumeContent>
+              <S.VolumeImage>
+                <S.VolumeSvg alt="volume">
                   <use xlinkHref="img/icon/sprite.svg#icon-volume"></use>
-                </svg>
-              </div>
-              <div className="volume__progress _btn">
-                <input
-                  className="volume__progress-line _btn"
+                </S.VolumeSvg>
+              </S.VolumeImage>
+              <S.VolumeProgress>
+                <S.VolumeProgressLine
                   type="range"
                   name="range"
                 />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+              </S.VolumeProgress>
+            </S.VolumeContent>
+          </S.BarVolumeBlock>
+        </S.BarPlayerBlock>
+      </S.BarContent>
+    </S.Bar>
   );
 }

@@ -1,5 +1,5 @@
 import Filter from "../filter/filter";
-import PlaylistTitle from "../playlistTitle";
+import PlaylistTitle from "../playlist/playlistTitle";
 import Search from "../search/search";
 
 export default function TrackListSkeleton() {
