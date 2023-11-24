@@ -1,5 +1,46 @@
 import styled, { createGlobalStyle } from "styled-components";
 
+export const Btn = () => {
+  return (`
+    &:hover {
+      border-color: #d9b6ff;
+      color: #d9b6ff;
+      cursor: pointer;
+    }
+    
+    &:hover svg {
+      fill: transparent;
+      stroke: #acacac;
+      cursor: pointer;
+    }
+    
+    &:active {
+      border-color: #ad61ff;
+      color: #ad61ff;
+      cursor: pointer;
+    }
+    
+    &:active svg {
+      fill: transparent;
+      stroke: #ffffff;
+      cursor: pointer;
+    }
+    
+    &:active .track-play__like-svg,
+    &:active .track-play__dislike-svg {
+      fill: #696969;
+      stroke: #ffffff;
+      cursor: pointer;
+    }
+
+    &__hover {
+      border-color: #d9b6ff;
+      color: #d9b6ff;
+      cursor: pointer;
+    }
+    `
+  );
+}
 
 export const GlobalStyle = createGlobalStyle`
 * {

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Btn } from "../../styles";
 
 export const ContentTitle = styled.div`
   display: -webkit-box;
@@ -45,14 +46,15 @@ export const PlaylistTittleCol04 = styled(PlaylistTittleCol)`
 `;
 
 export const ContentPlaylist = styled.div`
-display: -webkit-box;
-display: -ms-flexbox;
-display: flex;
--webkit-box-orient: vertical;
--webkit-box-direction: normal;
--ms-flex-direction: column;
-flex-direction: column;
-overflow-y: auto;`
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  overflow-y: auto;
+`;
 
 export const PlaylistTitleSvg = styled.svg`
   width: 12px;
@@ -119,6 +121,7 @@ export const TrackTitleSvg = styled.svg`
   height: 17px;
   fill: transparent;
   stroke: #4e4e4e;
+  ${Btn}
 `;
 
 export const TrackTitleLink = styled.a`
@@ -174,6 +177,7 @@ export const TrackTimeSvg = styled.svg`
   margin-right: 17px;
   fill: transparent;
   stroke: #696969;
+  ${Btn}
 `;
 
 export const TrackTimeText = styled.span`

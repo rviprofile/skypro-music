@@ -1,7 +1,6 @@
 import React from "react";
 import * as S from "./styles.js"
 import { useEffect, useState } from "react";
-import "./App.css";
 import AudioPlayer from "./components/audioPlayer/audioPlayer";
 import AudioPlayerSkeleton from "./components/skeletons/audioPlayerSkeleton";
 import NavMenu from "./components/navMenu/navMenu.js";
@@ -12,7 +11,7 @@ import TrackListSkeleton from "./components/skeletons/trackListSkeleton";
 import loadingDelay from "./components/loading";
 
 function App() {
-  
+
   // Псевдозагрузка
   const [load, setLoad] = useState(true);
   useEffect(() => {

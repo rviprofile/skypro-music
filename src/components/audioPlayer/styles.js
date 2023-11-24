@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Btn } from "../../styles";
 
 export const Bar = styled.div`
   position: absolute;
@@ -73,23 +74,28 @@ export const PlayerBtn = styled.div`
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  ${Btn}
 `;
 
 export const PlayerBtnPrev = styled(PlayerBtn)`
   margin-right: 23px;
+  ${Btn}
 `;
 
 export const PlayerBtnPlay = styled(PlayerBtn)`
   margin-right: 23px;
+  ${Btn}
 `;
 
 export const PlayerBtnNext = styled(PlayerBtn)`
   margin-right: 28px;
   fill: #a53939;
+  ${Btn}
 `;
 
 export const PlayerBtnRepeat = styled(PlayerBtn)`
   margin-right: 24px;
+  ${Btn}
 `;
 
 export const PlayerBtnShuffle = styled(PlayerBtn)`
@@ -99,17 +105,20 @@ export const PlayerBtnShuffle = styled(PlayerBtn)`
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  ${Btn}
 `;
 
 export const PlayerBtnPrevSvg = styled.svg`
   width: 15px;
   height: 14px;
+  ${Btn}
 `;
 
 export const PlayerBtnPlaySvg = styled.svg`
   width: 22px;
   height: 20px;
   fill: #d9d9d9;
+  ${Btn}
 `;
 
 export const PlayerBtnNextSvg = styled.svg`
@@ -117,6 +126,7 @@ export const PlayerBtnNextSvg = styled.svg`
   height: 14px;
   fill: inherit;
   stroke: #d9d9d9;
+  ${Btn}
 `;
 
 export const PlayerBtnRepeatSvg = styled.svg`
@@ -124,6 +134,7 @@ export const PlayerBtnRepeatSvg = styled.svg`
   height: 12px;
   fill: transparent;
   stroke: #696969;
+  ${Btn}
 `;
 
 export const PlayerBtnShuffleSvg = styled.svg`
@@ -131,6 +142,7 @@ export const PlayerBtnShuffleSvg = styled.svg`
   height: 12px;
   fill: transparent;
   stroke: #696969;
+  ${Btn}
 `;
 
 export const PlayerTrackPlay = styled.div`
@@ -141,6 +153,7 @@ export const PlayerTrackPlay = styled.div`
   -webkit-box-direction: normal;
   -ms-flex-direction: row;
   flex-direction: row;
+  ${Btn}
 `;
 
 export const TrackPlaycontain = styled.div`
@@ -153,6 +166,7 @@ export const TrackPlaycontain = styled.div`
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  ${Btn}
 `;
 
 export const TrackPlayimage = styled.div`
@@ -173,6 +187,7 @@ export const TrackPlayimage = styled.div`
   -ms-grid-row-span: 2;
   -ms-grid-column: 1;
   grid-area: image;
+  ${Btn}
 `;
 
 export const TrackPlaysvg = styled.svg`

@@ -26,3 +26,20 @@ export const FilterButtonContainer = styled.div`
   position: relative;
   margin-right: 10px;
 `;
+
+export const FilterButton = styled.div`
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  border: 1px solid #ffffff;
+  border-radius: 60px;
+  padding: 6px 20px;
+  cursor: pointer;
+`;
+
+export const FilterButtonHover = styled(FilterButton)`
+  border-color: #d9b6ff;
+  color: #d9b6ff;
+  cursor: pointer;
+`;
