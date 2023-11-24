@@ -1,16 +1,17 @@
+import * as S from "../tracklist/styles.js"
 import Filter from "../filter/filter";
 import PlaylistTitle from "../playlist/playlistTitle";
 import Search from "../search/search";
 
 export default function TrackListSkeleton() {
   return (
-    <div className="main__centerblock centerblock">
+    <S.MainCenterblock>
       <Search />
-      <h2 className="centerblock__h2">Треки</h2>
+      <S.CenterblockH2>Треки</S.CenterblockH2>
       <Filter />
-      <div className="centerblock__content">
+      <S.CenterblockContent>
         <PlaylistTitle />
-        <div className="content__playlist playlist">
+        <div>
           <div className="playlist__item">
             <img src="/img/skeleton/1107x51.svg"></img>
             <img src="/img/skeleton/1107x51.svg"></img>
@@ -25,7 +26,7 @@ export default function TrackListSkeleton() {
             <img src="/img/skeleton/1107x51.svg"></img>
           </div>
         </div>
-      </div>
-    </div>
+      </S.CenterblockContent>
+    </S.MainCenterblock>
   );
 }
