@@ -5,9 +5,9 @@ export default function FilterYear({ isActive, onShow, onHide }) {
   return (
     <S.FilterButtonContainer>
       {isActive ? (
-        <S.FilterButtonHover onClick={isActive ? onHide : onShow}>
+        <S.FilterButtonActive onClick={isActive ? onHide : onShow}>
           году выпуска
-        </S.FilterButtonHover>
+        </S.FilterButtonActive>
       ) : (
         <S.FilterButton onClick={isActive ? onHide : onShow}>
           году выпуска

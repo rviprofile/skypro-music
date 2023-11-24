@@ -4,7 +4,7 @@ import React from "react";
 const { useState } = React;
 
 export default function NavMenu() {
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(false);
   const activeBurger = () => setVisible(!visible);
   return (
     <S.NavMenu>

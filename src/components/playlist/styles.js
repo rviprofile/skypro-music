@@ -178,6 +178,11 @@ export const TrackTimeSvg = styled.svg`
   fill: transparent;
   stroke: #696969;
   ${Btn}
+
+  &:hover {
+    stroke-width: 1px;
+    stroke: #acacac;
+  }
 `;
 
 export const TrackTimeText = styled.span`

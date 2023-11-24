@@ -36,10 +36,15 @@ export const FilterButton = styled.div`
   border-radius: 60px;
   padding: 6px 20px;
   cursor: pointer;
+
+  &:hover {
+    border-color: #d9b6ff;
+    color: #d9b6ff;
+    cursor: pointer;
+  }
 `;
 
-export const FilterButtonHover = styled(FilterButton)`
-  border-color: #d9b6ff;
-  color: #d9b6ff;
-  cursor: pointer;
+export const FilterButtonActive = styled(FilterButton)`
+  border-color: #ad61ff;
+  color: #ad61ff;
 `;
