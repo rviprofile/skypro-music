@@ -9,6 +9,7 @@ import SidebarSkeleton from "./components/skeletons/sidebarSkeleton";
 import TrackList from "./components/tracklist/trackList.js";
 import TrackListSkeleton from "./components/skeletons/trackListSkeleton";
 import loadingDelay from "./components/loading";
+import { AppRoutes } from "./routes.jsx";
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
     <>
     <S.GlobalStyle />
     <S.Wrapper>
+    <AppRoutes/>
       <S.Container>
         <S.Main>
           <NavMenu />

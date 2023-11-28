@@ -42,7 +42,6 @@ export const ArrForRender = [
     key: 5,
     tittle: "Eyes on Fire",
     comment: "(Zeds Dead Remix)",
-
     author: "Blue Foundation, Zeds Dead",
     album: "Eyes on Fire",
     trackTime: "5:20",
