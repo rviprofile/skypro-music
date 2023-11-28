@@ -1,7 +1,10 @@
+import LoginWindow from "../../components/login/loginWindow";
+import { EasyBackground } from "../../styles";
+
 export const LoginPage = () => {
     return (
-      <div>
-        <h1>Login page</h1>
-      </div>
+        <EasyBackground>
+        <LoginWindow/>
+        </EasyBackground>
     );
   };

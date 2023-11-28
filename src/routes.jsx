@@ -3,18 +3,29 @@ import { NotFound } from "./pages/not-found";
 import { MainPage } from "./pages/main";
 import { LoginPage } from "./pages/login";
 import { FavoritesPage } from "./pages/favorites";
-import { RegisterPage } from "./pages/refister";
 import { CategoryPage } from "./pages/category";
+import { SignUpPage } from "./pages/signup";
 
 export const AppRoutes = () => {
   return (
     <Routes>
-      <Route path="*" element={<NotFound/>} />
-      <Route path="/login" element={<LoginPage/>} />
-      <Route path="/register" element={<RegisterPage/>} />
-      <Route path="/favorites" element={<FavoritesPage/>} />
-      <Route path="/category" element={<CategoryPage/>} />
-      <Route path="/" element={<MainPage/>} />
+      {/* Главная страница */}
+      <Route path="/" element={<MainPage />} />
+
+      {/* Вход в приложение */}
+      <Route path="/login" element={<LoginPage />} />
+
+      {/* Регистрация */}
+      <Route path="/signup" element={<SignUpPage />} />
+
+      {/* ??? */}
+      <Route path="/favorites" element={<FavoritesPage />} />
+
+      {/* ??? */}
+      <Route path="/category/:id" element={<CategoryPage />} />
+
+      {/* Страница не найдена */}
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 };
