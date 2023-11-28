@@ -1,4 +1,4 @@
-import * as S from "../login/styles";
+import * as S from "./styles";
 import logo from "./logo_modal-copy.png";
 import { Link } from "react-router-dom";
 

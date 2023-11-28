@@ -1,7 +1,18 @@
+import NotFoundError from "../../components/notFound/notFound.js";
+import * as S from "../../styles.js";
+import NavMenu from "../../components/navMenu/navMenu.js";
+import AudioPlayerSkeleton from "../../components/skeletons/audioPlayerSkeleton";
+
 export const NotFound = () => {
   return (
-    <div>
-      <h1>Page was not found :C</h1>
-    </div>
+    <S.Wrapper>
+      <S.Container>
+        <S.Main>
+          <NavMenu />
+          <NotFoundError />
+        </S.Main>
+        <AudioPlayerSkeleton />
+      </S.Container>
+    </S.Wrapper>
   );
 };
