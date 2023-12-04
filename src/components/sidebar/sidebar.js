@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import * as S from "./styles";
 import React from "react";
 
@@ -15,31 +16,37 @@ export default function Sidebar() {
       <S.SidebarBlock>
         <S.SidebarList>
           <S.SidebarItem>
-            <S.SidebarLink href="#">
-              <S.SidebarImg
-                className="sidebar__img"
-                src="img/playlist01.png"
-                alt="day's playlist"
-              />
-            </S.SidebarLink>
+            <Link to="/category/1">
+              <S.SidebarLink>
+                <S.SidebarImg
+                  className="sidebar__img"
+                  src="img/playlist01.png"
+                  alt="day's playlist"
+                />
+              </S.SidebarLink>
+            </Link>
           </S.SidebarItem>
           <S.SidebarItem>
-            <S.SidebarLink href="#">
-              <S.SidebarImg
-                className="sidebar__img"
-                src="img/playlist02.png"
-                alt="day's playlist"
-              />
-            </S.SidebarLink>
+            <Link to="/category/2">
+              <S.SidebarLink>
+                <S.SidebarImg
+                  className="sidebar__img"
+                  src="img/playlist02.png"
+                  alt="day's playlist"
+                />
+              </S.SidebarLink>
+            </Link>
           </S.SidebarItem>
           <S.SidebarItem>
-            <S.SidebarLink href="#">
-              <S.SidebarImg
-                className="sidebar__img"
-                src="img/playlist03.png"
-                alt="day's playlist"
-              />
-            </S.SidebarLink>
+            <Link to="/category/3">
+              <S.SidebarLink>
+                <S.SidebarImg
+                  className="sidebar__img"
+                  src="img/playlist03.png"
+                  alt="day's playlist"
+                />
+              </S.SidebarLink>
+            </Link>
           </S.SidebarItem>
         </S.SidebarList>
       </S.SidebarBlock>

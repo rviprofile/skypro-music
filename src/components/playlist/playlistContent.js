@@ -1,8 +1,7 @@
 import * as S from "./styles.js";
-import { ArrForRender } from "./arrForRender.js";
 
-export default function PlaylistContent() {
-  const PlayListItems = ArrForRender.map((item) => (
+export default function PlaylistContent({arr}) {
+  const PlayListItems = arr.map((item) => (
     <S.PlaylistItem>
       <S.PlaylistTrack>
         <S.TrackTitleOnList>

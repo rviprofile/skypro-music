@@ -1,9 +1,9 @@
 import * as S from "./styles.js"
-
 import Filter from "../filter/filter";
 import PlaylistContent from "../playlist/playlistContent";
 import PlaylistTitle from "../playlist/playlistTitle";
 import Search from "../search/search";
+import { ArrForRender } from "../playlist/arrForRender.js";
 
 export default function TrackList() {
   return (
@@ -13,7 +13,7 @@ export default function TrackList() {
       <Filter />
       <S.CenterblockContent>
         <PlaylistTitle />
-        <PlaylistContent />
+        <PlaylistContent arr={ArrForRender}/>
       </S.CenterblockContent>
     </S.MainCenterblock>
   );

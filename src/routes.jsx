@@ -2,7 +2,6 @@ import { Routes, Route } from "react-router-dom";
 import { NotFound } from "./pages/not-found";
 import { MainPage } from "./pages/main";
 import { LoginPage } from "./pages/login";
-import { FavoritesPage } from "./pages/favorites";
 import { CategoryPage } from "./pages/category";
 import { SignUpPage } from "./pages/signup";
 
@@ -18,10 +17,12 @@ export const AppRoutes = () => {
       {/* Регистрация */}
       <Route path="/signup" element={<SignUpPage />} />
 
-      {/* Мой плейлист */}
-      <Route path="/favorites" element={<FavoritesPage />} />
-
-      {/* ??? */}
+      {/* 
+      :1 - Плейлист дня
+      :2 - 100 Танцевальных хитов
+      :3 - Инди заряд
+      :4 - Мои треки
+       */}
       <Route path="/category/:id" element={<CategoryPage />} />
 
       {/* Страница не найдена */}

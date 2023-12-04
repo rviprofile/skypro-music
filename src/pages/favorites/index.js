@@ -3,14 +3,9 @@ import { useEffect, useState } from "react";
 import AudioPlayer from "../../components/audioPlayer/audioPlayer.js";
 import AudioPlayerSkeleton from "../../components/skeletons/audioPlayerSkeleton";
 import NavMenu from "../../components/navMenu/navMenu.js";
-import Sidebar from "../../components/sidebar/sidebar.js";
-import SidebarSkeleton from "../../components/skeletons/sidebarSkeleton";
-import TrackList from "../../components/tracklist/trackList.js";
-import TrackListSkeleton from "../../components/skeletons/trackListSkeleton";
 import loadingDelay from "../../components/loading";
 
 export const FavoritesPage = () => {
-  
   // Псевдозагрузка
   const [load, setLoad] = useState(true);
   useEffect(() => {
@@ -22,8 +17,6 @@ export const FavoritesPage = () => {
       <S.Container>
         <S.Main>
           <NavMenu />
-          {load ? <TrackListSkeleton /> : <TrackList />}
-          {load ? <SidebarSkeleton /> : <Sidebar />}
         </S.Main>
         {load ? <AudioPlayerSkeleton /> : <AudioPlayer />}
         <footer className="footer"></footer>
