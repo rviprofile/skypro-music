@@ -18,7 +18,7 @@ export const AppRoutes = () => {
       {/* Регистрация */}
       <Route path="/signup" element={<SignUpPage />} />
 
-      {/* ??? */}
+      {/* Мой плейлист */}
       <Route path="/favorites" element={<FavoritesPage />} />
 
       {/* ??? */}

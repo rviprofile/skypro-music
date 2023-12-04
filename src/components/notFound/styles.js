@@ -7,7 +7,6 @@ export const BackGround = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-family: StratosSkyeng;
 `;
 
 export const Tittle = styled.h1`
@@ -16,6 +15,7 @@ font-style: normal;
 font-weight: 400;
 line-height: 168px;
 margin-bottom: 3px;
+font-family: "StratosSkyeng", sans-serif;
 `
 
 export const Description = styled.p`
@@ -26,6 +26,7 @@ font-weight: 400;
 line-height: 40px;
 display: flex;
 margin-bottom: 19px;
+font-family: "StratosSkyeng", sans-serif;
 `
 
 export const Smile = styled.img`
@@ -36,6 +37,7 @@ flex-shrink: 0;
 
 export const SmallDescription = styled(Description)`
 font-family: StratosSkyeng;
+font-family: "StratosSkyeng", sans-serif;
 font-size: 18px;
 font-style: normal;
 font-weight: 400;
@@ -49,6 +51,7 @@ export const BackButton = styled.button`
 color: #FFF;
 font-variant-numeric: lining-nums proportional-nums;
 font-family: StratosSkyeng;
+font-family: "StratosSkyeng", sans-serif;
 font-size: 18px;
 font-style: normal;
 font-weight: 400;

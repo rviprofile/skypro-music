@@ -1,13 +1,17 @@
-import * as S from "./styles.js"
+import * as S from "./styles.js";
 import { useEffect, useState } from "react";
+import { useClickAway } from "@uidotdev/usehooks";
 import FilterGenre from "./filterGenre";
 import FilterSinger from "./filterSinger";
 import FilterYear from "./filterYear";
 
 export default function Filter() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const ref = useClickAway(() => {
+    setActiveIndex(0);
+  });
   return (
-    <S.CenterBlockFilter>
+    <S.CenterBlockFilter ref={ref}>
       <S.FilterTitle>Искать по:</S.FilterTitle>
       <FilterSinger
         isActive={activeIndex === 1}
