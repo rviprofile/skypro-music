@@ -11,8 +11,8 @@ export default function TrackListSkeleton() {
       <Filter />
       <S.CenterblockContent>
         <PlaylistTitle />
-        <div>
-          <div className="playlist__item">
+        <S.ContentPlaylist>
+          <S.PlaylistItem>
             <img src="/img/skeleton/1107x51.svg"></img>
             <img src="/img/skeleton/1107x51.svg"></img>
             <img src="/img/skeleton/1107x51.svg"></img>
@@ -22,10 +22,9 @@ export default function TrackListSkeleton() {
             <img src="/img/skeleton/1107x51.svg"></img>
             <img src="/img/skeleton/1107x51.svg"></img>
             <img src="/img/skeleton/1107x51.svg"></img>
-            <img src="/img/skeleton/1107x51.svg"></img>
-            <img src="/img/skeleton/1107x51.svg"></img>
-          </div>
-        </div>
+          </S.PlaylistItem>
+        </S.ContentPlaylist>
+
       </S.CenterblockContent>
     </S.MainCenterblock>
   );

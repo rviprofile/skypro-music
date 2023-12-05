@@ -4,6 +4,7 @@ import { MainPage } from "./pages/main";
 import { LoginPage } from "./pages/login";
 import { CategoryPage } from "./pages/category";
 import { SignUpPage } from "./pages/signup";
+import { FavoritesPage } from "./pages/favorites";
 
 export const AppRoutes = () => {
   return (
@@ -17,11 +18,13 @@ export const AppRoutes = () => {
       {/* Регистрация */}
       <Route path="/signup" element={<SignUpPage />} />
 
+      {/* Мои треки */}
+      <Route path="/favorites" element={<FavoritesPage />} />
+
       {/* 
       :1 - Плейлист дня
       :2 - 100 Танцевальных хитов
       :3 - Инди заряд
-      :4 - Мои треки
        */}
       <Route path="/category/:id" element={<CategoryPage />} />
 

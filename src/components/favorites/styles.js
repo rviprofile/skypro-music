@@ -27,35 +27,37 @@ export const CenterblockContent = styled.div`
   flex-direction: column;
 `;
 
-export const ContentPlaylist = styled.div`
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  overflow-y: auto;
-`;
-
-export const PlaylistItem = styled.div`
+export const Wrapper = styled.div`
   width: 100%;
-  display: block;
-  margin-bottom: 12px;
+  min-height: 100%;
+  overflow: hidden;
+  background-color: #383838;
 `;
-
-export const PlaylistTrack = styled.div`
+export const Container = styled.div`
+  max-width: 1920px;
+  height: 100vh;
+  margin: 0 auto;
+  position: relative;
+  background-color: #181818;
+`;
+export const Main = styled.main`
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: row;
-  flex-direction: row;
+  /* -ms-flex-wrap: wrap; */
+  /* flex-wrap: wrap; */
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
 `;
+
+export const EasyBackground = styled.div`
+width: 100vw;
+height: 100vh;
+display: flex;
+background: rgba(0, 0, 0, 0.85);
+align-items: center;
+justify-content: center;`

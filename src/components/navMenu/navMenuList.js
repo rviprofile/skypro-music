@@ -11,7 +11,7 @@ export default function NavMenuList() {
           <Link className="MenuLink" to="/">Главное</Link>
         </S.MenuItem>
         <S.MenuItem>
-          <Link className="MenuLink" to="/category/4">Мой плейлист</Link>
+          <Link className="MenuLink" to="/favorites">Мой плейлист</Link>
         </S.MenuItem>
         <S.MenuItem>
           <Link className="MenuLink" to="/login">Войти</Link>

@@ -258,39 +258,36 @@ export const ArrayCategory = [
       },
     ],
   },
+];
+
+export const FavoritesArray = [
   {
-    id: 4,
-    title: "Мои треки",
-    tracks: [
-      {
-        key: 13,
-        tittle: "Knives n Cherries",
-        author: "minthaze",
-        album: "Captivating",
-        trackTime: "1:48",
-      },
-      {
-        key: 6,
-        tittle: "Mucho Bien",
-        comment: "(Hi Profile Remix)",
-        author: "HYBIT, Mr. Black, Offer Nissim, Hi Profile",
-        album: "Mucho Bien",
-        trackTime: "3:41",
-      },
-      {
-        key: 7,
-        tittle: "Knives n Cherries",
-        author: "minthaze",
-        album: "Captivating",
-        trackTime: "1:48",
-      },
-      {
-        key: 8,
-        tittle: "Knives n Cherries",
-        author: "minthaze",
-        album: "Captivating",
-        trackTime: "1:48",
-      },
-    ],
+    key: 13,
+    tittle: "Knives n Cherries",
+    author: "minthaze",
+    album: "Captivating",
+    trackTime: "1:48",
+  },
+  {
+    key: 6,
+    tittle: "Mucho Bien",
+    comment: "(Hi Profile Remix)",
+    author: "HYBIT, Mr. Black, Offer Nissim, Hi Profile",
+    album: "Mucho Bien",
+    trackTime: "3:41",
+  },
+  {
+    key: 7,
+    tittle: "Knives n Cherries",
+    author: "minthaze",
+    album: "Captivating",
+    trackTime: "1:48",
+  },
+  {
+    key: 8,
+    tittle: "Knives n Cherries",
+    author: "minthaze",
+    album: "Captivating",
+    trackTime: "1:48",
   },
 ];

@@ -1,4 +1,4 @@
-import logo from './../../../public/img/logo.png';
+
 import * as S from "./styles.js";
 import { Link } from "react-router-dom";
 import NavMenuList from "./navMenuList";
@@ -13,7 +13,7 @@ export default function NavMenu() {
     <S.NavMenu>
       <S.NavLogo>
         <Link to="/">
-          <S.LogoImage src={logo} alt="logo" />
+          <S.LogoImage src="img/logo.png" alt="logo" />
         </Link>
       </S.NavLogo>
       <S.NavBurger onClick={activeBurger}>

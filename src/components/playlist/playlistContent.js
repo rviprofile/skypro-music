@@ -2,7 +2,7 @@ import * as S from "./styles.js";
 
 export default function PlaylistContent({arr}) {
   const PlayListItems = arr.map((item) => (
-    <S.PlaylistItem>
+    <S.PlaylistItem key={item.key}>
       <S.PlaylistTrack>
         <S.TrackTitleOnList>
           <S.TrackTitleImage>
@@ -23,12 +23,12 @@ export default function PlaylistContent({arr}) {
         <S.TrackAlbumOnList>
           <S.TrackAlbumLink href="http://">{item.album}</S.TrackAlbumLink>
         </S.TrackAlbumOnList>
-        <div>
+        <S.LikeTimeBox>
           <S.TrackTimeSvg alt="time">
             <use xlinkHref="img/icon/sprite.svg#icon-like"></use>
           </S.TrackTimeSvg>
           <S.TrackTimeText>{item.trackTime}</S.TrackTimeText>
-        </div>
+        </S.LikeTimeBox>
       </S.PlaylistTrack>
     </S.PlaylistItem>
   ));
