@@ -8,7 +8,7 @@ export default function Sidebar() {
         <S.SidebarPersonalName>Sergey.Ivanov</S.SidebarPersonalName>
         <S.SidebarIcon>
           <svg alt="logout">
-            <use xlinkHref="img/icon/sprite.svg#logout"></use>
+            <use xlinkHref="/img/icon/sprite.svg#logout"></use>
           </svg>
         </S.SidebarIcon>
       </S.SidebarPersonal>
@@ -19,7 +19,7 @@ export default function Sidebar() {
               <S.SidebarLink>
                 <S.SidebarImg
                   className="sidebar__img"
-                  src="img/playlist01.png"
+                  src="/img/playlist01.png"
                   alt="day's playlist"
                 />
               </S.SidebarLink>
@@ -30,7 +30,7 @@ export default function Sidebar() {
               <S.SidebarLink>
                 <S.SidebarImg
                   className="sidebar__img"
-                  src="img/playlist02.png"
+                  src="/img/playlist02.png"
                   alt="day's playlist"
                 />
               </S.SidebarLink>
@@ -41,7 +41,7 @@ export default function Sidebar() {
               <S.SidebarLink>
                 <S.SidebarImg
                   className="sidebar__img"
-                  src="img/playlist03.png"
+                  src="/img/playlist03.png"
                   alt="day's playlist"
                 />
               </S.SidebarLink>

@@ -7,7 +7,7 @@ export default function PlaylistContent({arr}) {
         <S.TrackTitleOnList>
           <S.TrackTitleImage>
             <S.PlaylistTitleSvg alt="music">
-              <use xlinkHref="img/icon/sprite.svg#icon-note"></use>
+              <use xlinkHref="/img/icon/sprite.svg#icon-note"></use>
             </S.PlaylistTitleSvg>
           </S.TrackTitleImage>
           <div>
@@ -25,7 +25,7 @@ export default function PlaylistContent({arr}) {
         </S.TrackAlbumOnList>
         <S.LikeTimeBox>
           <S.TrackTimeSvg alt="time">
-            <use xlinkHref="img/icon/sprite.svg#icon-like"></use>
+            <use xlinkHref="/img/icon/sprite.svg#icon-like"></use>
           </S.TrackTimeSvg>
           <S.TrackTimeText>{item.trackTime}</S.TrackTimeText>
         </S.LikeTimeBox>
