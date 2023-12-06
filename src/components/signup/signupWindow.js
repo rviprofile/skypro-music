@@ -1,6 +1,7 @@
 import * as S from "./styles";
 import logo from "./logo_modal-copy.png";
 import { Link } from "react-router-dom";
+import { CookieSave } from "../coockieSave";
 
 export default function SignUpWindow() {
   return (
@@ -9,7 +10,11 @@ export default function SignUpWindow() {
       <S.LoginInput placeholder="Почта" type="mail" />
       <S.LoginInput placeholder="Пароль" type="password" />
       <S.LoginInput placeholder="Подтвердите пароль" type="password" />
-      <S.SignButton>Зарегистрироваться</S.SignButton>
+      <Link to="/">
+        <S.SignButton type="submit" onClick={CookieSave}>
+          Зарегистрироваться
+        </S.SignButton>
+      </Link>
     </S.LoginContainer>
   );
 }

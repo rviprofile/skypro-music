@@ -5,12 +5,15 @@ import { LoginPage } from "./pages/login";
 import { CategoryPage } from "./pages/category";
 import { SignUpPage } from "./pages/signup";
 import { FavoritesPage } from "./pages/favorites";
+import {ProtectedRoute} from "./components/protected-route/index.js"
 
-export const AppRoutes = () => {
+export const AppRoutes = ({user}) => {
   return (
     <Routes>
+      
+
       {/* Главная страница */}
-      <Route path="/" element={<MainPage />} />
+      <Route path="/" element={<ProtectedRoute isAllowed={Boolean(user)}><MainPage/></ProtectedRoute>} />
 
       {/* Вход в приложение */}
       <Route path="/login" element={<LoginPage />} />
@@ -19,14 +22,14 @@ export const AppRoutes = () => {
       <Route path="/signup" element={<SignUpPage />} />
 
       {/* Мои треки */}
-      <Route path="/favorites" element={<FavoritesPage />} />
+      <Route path="/favorites" element={<ProtectedRoute isAllowed={Boolean(user)}><FavoritesPage /></ProtectedRoute>} />
 
       {/* 
       :1 - Плейлист дня
       :2 - 100 Танцевальных хитов
       :3 - Инди заряд
        */}
-      <Route path="/category/:id" element={<CategoryPage />} />
+      <Route path="/category/:id" element={<ProtectedRoute isAllowed={Boolean(user)}><CategoryPage /></ProtectedRoute>} />
 
       {/* Страница не найдена */}
       <Route path="*" element={<NotFound />} />

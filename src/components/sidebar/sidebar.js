@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import * as S from "./styles";
 import React from "react";
-
 export default function Sidebar() {
   return (
     <S.MainSidebar>
