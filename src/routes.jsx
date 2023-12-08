@@ -13,7 +13,7 @@ export const AppRoutes = ({user}) => {
       
 
       {/* Главная страница */}
-      <Route path="/" element={<ProtectedRoute isAllowed={Boolean(user)}><MainPage/></ProtectedRoute>} />
+      <Route path="/" element={<ProtectedRoute><MainPage/></ProtectedRoute>} />
 
       {/* Вход в приложение */}
       <Route path="/login" element={<LoginPage />} />
@@ -22,14 +22,14 @@ export const AppRoutes = ({user}) => {
       <Route path="/signup" element={<SignUpPage />} />
 
       {/* Мои треки */}
-      <Route path="/favorites" element={<ProtectedRoute isAllowed={Boolean(user)}><FavoritesPage /></ProtectedRoute>} />
+      <Route path="/favorites" element={<ProtectedRoute><FavoritesPage /></ProtectedRoute>} />
 
       {/* 
       :1 - Плейлист дня
       :2 - 100 Танцевальных хитов
       :3 - Инди заряд
        */}
-      <Route path="/category/:id" element={<ProtectedRoute isAllowed={Boolean(user)}><CategoryPage /></ProtectedRoute>} />
+      <Route path="/category/:id" element={<ProtectedRoute><CategoryPage /></ProtectedRoute>} />
 
       {/* Страница не найдена */}
       <Route path="*" element={<NotFound />} />
