@@ -1,5 +1,5 @@
 import * as S from "./styles.js";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useClickAway } from "@uidotdev/usehooks";
 import FilterGenre from "./filterGenre";
 import FilterSinger from "./filterSinger";

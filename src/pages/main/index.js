@@ -11,6 +11,7 @@ import TrackListSkeleton from "../../components/skeletons/trackListSkeleton";
 import loadingDelay from "../../components/loading";
 
 export const MainPage = () => {
+  
   // Псевдозагрузка
   const [load, setLoad] = useState(true);
   useEffect(() => {

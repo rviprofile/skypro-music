@@ -1,16 +1,14 @@
 import * as S from "./styles";
 import logo from "./logo_modal-copy.png";
 import { Link } from "react-router-dom";
-import { CookieSave } from "../coockieSave";
+import { setCookie } from "../setCookie";
 import { useNavigate } from "react-router-dom";
-
-
 
 export default function LoginWindow() {
   const navigate = useNavigate();
   const onSubmit = (e) => {
     e.preventDefault()
-    CookieSave();
+    setCookie("token", "value");
     navigate("/")
   };
   return (

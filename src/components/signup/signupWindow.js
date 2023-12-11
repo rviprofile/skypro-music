@@ -1,20 +1,23 @@
 import * as S from "./styles";
 import logo from "./logo_modal-copy.png";
-import { Link } from "react-router-dom";
-import { CookieSave } from "../coockieSave";
+import { setCookie } from "../setCookie";
+import { useNavigate } from "react-router-dom";
 
 export default function SignUpWindow() {
+  const navigate = useNavigate();
+  const onSubmit = (e) => {
+    console.log("on submit запущен");
+    e.preventDefault();
+    setCookie("token", "value");
+    navigate("/");
+  };
   return (
-    <S.LoginContainer>
+    <S.LoginContainer onSubmit={onSubmit}>
       <S.LoginLogoImg alt="logo" src={logo}></S.LoginLogoImg>
       <S.LoginInput placeholder="Почта" type="mail" />
       <S.LoginInput placeholder="Пароль" type="password" />
       <S.LoginInput placeholder="Подтвердите пароль" type="password" />
-      <Link to="/">
-        <S.SignButton type="submit" onClick={CookieSave}>
-          Зарегистрироваться
-        </S.SignButton>
-      </Link>
+      <S.SignButton type="submit">Зарегистрироваться</S.SignButton>
     </S.LoginContainer>
   );
 }

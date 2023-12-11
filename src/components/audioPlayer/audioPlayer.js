@@ -76,10 +76,7 @@ export default function AudioPlayer() {
                 </S.VolumeSvg>
               </S.VolumeImage>
               <S.VolumeProgress>
-                <S.VolumeProgressLine
-                  type="range"
-                  name="range"
-                />
+                <S.VolumeProgressLine type="range" name="range" />
               </S.VolumeProgress>
             </S.VolumeContent>
           </S.BarVolumeBlock>

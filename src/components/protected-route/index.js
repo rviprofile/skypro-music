@@ -1,9 +1,6 @@
 import { Navigate } from "react-router-dom";
 
-export const ProtectedRoute = ({
-  children,
-  redirectPath = "/login",
-}) => {
+export const ProtectedRoute = ({ children, redirectPath = "/login" }) => {
   // возвращает куки с указанным name,
   // или undefined, если ничего не найдено
   function getCookie(name) {
