@@ -1,8 +1,8 @@
 import * as S from "./styles.js";
-import Search from "../search/search.js";
-import PlaylistTitle from "../playlist/playlistTitle.js";
-import PlaylistContent from "../playlist/playlistContent.js";
-import { FavoritesArray } from "../playlist/arrForRender.js";
+import Search from "../search/search.jsx";
+import PlaylistTitle from "../playlist/playlistTitle.jsx";
+import PlaylistContent from "../playlist/playlistContent.jsx";
+import { FavoritesArray } from "../playlist/arrForRender.jsx";
 
 export default function FavoritesTrackList() {
     return (

@@ -1,21 +1,25 @@
 import React from "react";
 import * as S from "../../styles.js";
 import { useEffect, useState } from "react";
-import AudioPlayer from "../../components/audioPlayer/audioPlayer.js";
-import AudioPlayerSkeleton from "../../components/skeletons/audioPlayerSkeleton";
-import NavMenu from "../../components/navMenu/navMenu.js";
-import Sidebar from "../../components/sidebar/sidebar.js";
-import SidebarSkeleton from "../../components/skeletons/sidebarSkeleton";
-import TrackList from "../../components/tracklist/trackList.js";
-import TrackListSkeleton from "../../components/skeletons/trackListSkeleton";
-import loadingDelay from "../../components/loading";
+import AudioPlayer from "../../components/audioPlayer/audioPlayer.jsx";
+import AudioPlayerSkeleton from "../../components/skeletons/audioPlayerSkeleton.jsx";
+import NavMenu from "../../components/navMenu/navMenu.jsx";
+import Sidebar from "../../components/sidebar/sidebar.jsx";
+import SidebarSkeleton from "../../components/skeletons/sidebarSkeleton.jsx";
+import TrackList from "../../components/tracklist/trackList.jsx";
+import TrackListSkeleton from "../../components/skeletons/trackListSkeleton.jsx";
+import getAllTracks from "../../components/API/api.js";
 
 export const MainPage = () => {
   
-  // Псевдозагрузка
+  // Загрузка всех треков из API
   const [load, setLoad] = useState(true);
+  const [tracks, setTracks] = useState([]);
   useEffect(() => {
-    loadingDelay(load, setLoad, 2000);
+    getAllTracks().then((data) => {
+      setTracks(data);
+      setLoad(false);
+    });
   }, []);
 
   return (
@@ -23,7 +27,7 @@ export const MainPage = () => {
       <S.Container>
         <S.Main>
           <NavMenu />
-          {load ? <TrackListSkeleton /> : <TrackList />}
+          {load ? <TrackListSkeleton /> : <TrackList tracks={tracks} />}
           {load ? <SidebarSkeleton /> : <Sidebar />}
         </S.Main>
         {load ? <AudioPlayerSkeleton /> : <AudioPlayer />}

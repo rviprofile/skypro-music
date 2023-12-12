@@ -2,7 +2,7 @@ import * as S from "./styles.js";
 import duration from "../duration.js";
 
 export default function PlaylistContent({arr}) {
-  const PlayListItems = arr.map((item) => (
+  const PlayListItems = arr.tracks.map((item) => (
     <S.PlaylistItem key={item.id}>
       <S.PlaylistTrack>
         <S.TrackTitleOnList>

@@ -1,7 +1,7 @@
-import NotFoundError from "../../components/notFound/notFound.js";
+import NotFoundError from "../../components/notFound/notFound.jsx";
 import * as S from "../../styles.js";
-import NavMenu from "../../components/navMenu/navMenu.js";
-import AudioPlayerSkeleton from "../../components/skeletons/audioPlayerSkeleton";
+import NavMenu from "../../components/navMenu/navMenu.jsx";
+import AudioPlayerSkeleton from "../../components/skeletons/audioPlayerSkeleton.jsx";
 
 export const NotFound = () => {
   return (

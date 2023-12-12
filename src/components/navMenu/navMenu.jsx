@@ -1,7 +1,7 @@
 
 import * as S from "./styles.js";
 import { Link } from "react-router-dom";
-import NavMenuList from "./navMenuList";
+import NavMenuList from "./navMenuList.jsx";
 import React from "react";
 const { useState } = React;
 

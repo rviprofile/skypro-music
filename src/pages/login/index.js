@@ -1,4 +1,4 @@
-import LoginWindow from "../../components/login/loginWindow";
+import LoginWindow from "../../components/login/loginWindow.jsx";
 import { EasyBackground } from "../../styles";
 
 export const LoginPage = () => {

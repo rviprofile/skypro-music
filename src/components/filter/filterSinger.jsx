@@ -1,5 +1,5 @@
 import * as S from "./styles.js";
-import SingerPopUp from "../filterPopUps/singerPopUp";
+import SingerPopUp from "../filterPopUps/singerPopUp.jsx";
 
 export default function FilterSinger({ isActive, onShow, onHide }) {
   return (

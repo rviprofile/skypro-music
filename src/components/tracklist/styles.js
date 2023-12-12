@@ -59,3 +59,7 @@ export const PlaylistTrack = styled.div`
   -ms-flex-align: center;
   align-items: center;
 `;
+
+export const SkeletonTrack = styled.img`
+  -webkit-box-sizing: border-box;
+`;

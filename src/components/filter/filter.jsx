@@ -1,9 +1,9 @@
 import * as S from "./styles.js";
 import { useState } from "react";
 import { useClickAway } from "@uidotdev/usehooks";
-import FilterGenre from "./filterGenre";
-import FilterSinger from "./filterSinger";
-import FilterYear from "./filterYear";
+import FilterGenre from "./filterGenre.jsx";
+import FilterSinger from "./filterSinger.jsx";
+import FilterYear from "./filterYear.jsx";
 
 export default function Filter() {
   const [activeIndex, setActiveIndex] = useState(0);

@@ -1,9 +1,9 @@
 import React from "react";
 import * as S from "../../styles.js";
-import AudioPlayer from "../../components/audioPlayer/audioPlayer.js";
-import NavMenu from "../../components/navMenu/navMenu.js";
-import Sidebar from "../../components/sidebar/sidebar.js";
-import FavoritesTrackList from "../../components/favorites/favoritesTrackList.js";
+import AudioPlayer from "../../components/audioPlayer/audioPlayer.jsx";
+import NavMenu from "../../components/navMenu/navMenu.jsx";
+import Sidebar from "../../components/sidebar/sidebar.jsx";
+import FavoritesTrackList from "../../components/favorites/favoritesTrackList.jsx";
 
 export const FavoritesPage = () => {
 

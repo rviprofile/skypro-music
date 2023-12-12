@@ -1,5 +1,5 @@
 import * as S from "./styles.js"
-import YearPopUp from "../filterPopUps/yearPopUp";
+import YearPopUp from "../filterPopUps/yearPopUp.jsx";
 
 export default function FilterYear({ isActive, onShow, onHide }) {
   return (

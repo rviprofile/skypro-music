@@ -1,9 +1,9 @@
 import * as S from "./styles.js";
-import Search from "../search/search.js";
-import { ArrayCategory } from "../playlist/arrForRender.js";
+import Search from "../search/search.jsx";
+import { ArrayCategory } from "../playlist/arrForRender.jsx";
 import { useParams } from "react-router-dom";
-import PlaylistTitle from "../playlist/playlistTitle.js";
-import PlaylistContent from "../playlist/playlistContent.js";
+import PlaylistTitle from "../playlist/playlistTitle.jsx";
+import PlaylistContent from "../playlist/playlistContent.jsx";
 import React from "react";
 
 export default function CategoryTrackList() {
