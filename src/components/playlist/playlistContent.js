@@ -1,8 +1,9 @@
 import * as S from "./styles.js";
+import duration from "../duration.js";
 
 export default function PlaylistContent({arr}) {
   const PlayListItems = arr.map((item) => (
-    <S.PlaylistItem key={item.key}>
+    <S.PlaylistItem key={item.id}>
       <S.PlaylistTrack>
         <S.TrackTitleOnList>
           <S.TrackTitleImage>
@@ -12,7 +13,7 @@ export default function PlaylistContent({arr}) {
           </S.TrackTitleImage>
           <div>
             <S.TrackTitleLink href="http://">
-              {item.tittle}
+              {item.name}
               <S.TrackTitleSpan> {item.comment}</S.TrackTitleSpan>
             </S.TrackTitleLink>
           </div>
@@ -27,7 +28,7 @@ export default function PlaylistContent({arr}) {
           <S.TrackTimeSvg alt="time">
             <use xlinkHref="/img/icon/sprite.svg#icon-like"></use>
           </S.TrackTimeSvg>
-          <S.TrackTimeText>{item.trackTime}</S.TrackTimeText>
+          <S.TrackTimeText>{duration(item.duration_in_seconds)}</S.TrackTimeText>
         </S.LikeTimeBox>
       </S.PlaylistTrack>
     </S.PlaylistItem>

@@ -1,11 +1,19 @@
-import * as S from "./styles.js"
+import * as S from "./styles.js";
 import Filter from "../filter/filter";
 import PlaylistContent from "../playlist/playlistContent";
 import PlaylistTitle from "../playlist/playlistTitle";
 import Search from "../search/search";
-import { ArrForRender } from "../playlist/arrForRender.js";
+import { useEffect, useState } from "react";
+import getAllTracks from "../API/api.js";
 
 export default function TrackList() {
+  const [tracks, setTracks] = useState([])
+  useEffect(() => {
+    getAllTracks().then((data) => {
+      console.log(data);
+      setTracks(data)
+    });
+  }, []);
   return (
     <S.MainCenterblock>
       <Search />
@@ -13,7 +21,7 @@ export default function TrackList() {
       <Filter />
       <S.CenterblockContent>
         <PlaylistTitle />
-        <PlaylistContent arr={ArrForRender}/>
+        <PlaylistContent arr={tracks} />
       </S.CenterblockContent>
     </S.MainCenterblock>
   );
