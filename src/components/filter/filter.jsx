@@ -13,7 +13,7 @@ export default function Filter(arr) {
   return (
     <S.CenterBlockFilter ref={ref}>
       <S.FilterTitle>Искать по:</S.FilterTitle>
-      <FilterSinger
+      <FilterSinger arr={arr}
         isActive={activeIndex === 1}
         onShow={() => setActiveIndex(1)}
         onHide={() => setActiveIndex(0)}

@@ -1,5 +1,4 @@
 import * as S from "./styles.js";
-
 import GenrePopUp from "../filterPopUps/genrePopUp.jsx";
 
 export default function FilterGenre({ isActive, onShow, onHide, arr }) {
