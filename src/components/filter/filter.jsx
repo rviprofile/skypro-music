@@ -5,7 +5,7 @@ import FilterGenre from "./filterGenre.jsx";
 import FilterSinger from "./filterSinger.jsx";
 import FilterYear from "./filterYear.jsx";
 
-export default function Filter() {
+export default function Filter(arr) {
   const [activeIndex, setActiveIndex] = useState(0);
   const ref = useClickAway(() => {
     setActiveIndex(0);
@@ -23,7 +23,7 @@ export default function Filter() {
         onShow={() => setActiveIndex(2)}
         onHide={() => setActiveIndex(0)}
       />
-      <FilterGenre
+      <FilterGenre arr={arr}
         isActive={activeIndex === 3}
         onShow={() => setActiveIndex(3)}
         onHide={() => setActiveIndex(0)}

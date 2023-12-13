@@ -9,7 +9,7 @@ export default function TrackList(tracks) {
     <S.MainCenterblock>
       <Search />
       <S.CenterblockH2>Треки</S.CenterblockH2>
-      <Filter />
+      <Filter arr={tracks}/>
       <S.CenterblockContent>
         <PlaylistTitle />
         <PlaylistContent arr={tracks} />

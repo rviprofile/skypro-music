@@ -1,23 +1,15 @@
 import * as S from "./styles";
+import getUnicItems from "../getUnicItems"; // Принимает массив повторяющихся значений, возвращает массив уникальных значений
 
-export default function GenrePopUp() {
+export default function GenrePopUp(arr) {
+  const allGenres = [arr.arr.arr.tracks.map((item) => item.genre)]; // Все "жанры" из API
+  const Items = getUnicItems(allGenres[0]).map((item) => (
+    <S.FilterPopUpItem>{item}</S.FilterPopUpItem>
+  ))
   return (
     <S.WrapperPopUp>
       <S.FilterPopUp>
-        <S.FilterPopUpList>
-          <S.FilterPopUpItem>Blues</S.FilterPopUpItem>
-          <S.FilterPopUpItem>Country</S.FilterPopUpItem>
-          <S.FilterPopUpItem>Easy listening</S.FilterPopUpItem>
-          <S.FilterPopUpItem>Electronic</S.FilterPopUpItem>
-          <S.FilterPopUpItem>Folk</S.FilterPopUpItem>
-          <S.FilterPopUpItem>Hip Hop</S.FilterPopUpItem>
-          <S.FilterPopUpItem>Jazz</S.FilterPopUpItem>
-          <S.FilterPopUpItem>Pop</S.FilterPopUpItem>
-          <S.FilterPopUpItem>R&B</S.FilterPopUpItem>
-          <S.FilterPopUpItem>Rock</S.FilterPopUpItem>
-          <S.FilterPopUpItem>Metal</S.FilterPopUpItem>
-          <S.FilterPopUpItem>Punk</S.FilterPopUpItem>
-        </S.FilterPopUpList>
+        <S.FilterPopUpList>{Items}</S.FilterPopUpList>
       </S.FilterPopUp>
     </S.WrapperPopUp>
   );
