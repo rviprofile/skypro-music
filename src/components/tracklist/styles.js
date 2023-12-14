@@ -63,3 +63,7 @@ export const PlaylistTrack = styled.div`
 export const SkeletonTrack = styled.img`
   -webkit-box-sizing: border-box;
 `;
+
+export const ErrorH2 = styled(CenterblockH2)`
+color: rgb(121, 10, 32);
+`;

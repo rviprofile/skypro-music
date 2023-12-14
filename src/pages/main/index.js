@@ -15,6 +15,7 @@ export const MainPage = ({ activePlayer, setActivePlayer }) => {
   // Загрузка всех треков из API
   const [load, setLoad] = useState(true);
   const [tracks, setTracks] = useState([]);
+  const [error, setError] = useState(null)
 
   useEffect(() => {
     getAllTracks()
@@ -25,6 +26,7 @@ export const MainPage = ({ activePlayer, setActivePlayer }) => {
       .catch((err) => {
         alert(err)
         setLoad(false);
+        setError(err)
       });
   }, []);
 
@@ -36,7 +38,7 @@ export const MainPage = ({ activePlayer, setActivePlayer }) => {
           {load ? (
             <TrackListSkeleton />
           ) : (
-            <TrackList tracks={tracks} setActivePlayer={setActivePlayer} />
+            <TrackList tracks={tracks} setActivePlayer={setActivePlayer} error={error}/>
           )}
           {load ? <SidebarSkeleton /> : <Sidebar />}
         </S.Main>

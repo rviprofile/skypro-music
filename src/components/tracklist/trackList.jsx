@@ -4,11 +4,11 @@ import PlaylistContent from "../playlist/playlistContent.jsx";
 import PlaylistTitle from "../playlist/playlistTitle.jsx";
 import Search from "../search/search.jsx";
 
-export default function TrackList({tracks, setActivePlayer}) {
+export default function TrackList({tracks, setActivePlayer, error}) {
   return (
     <S.MainCenterblock>
       <Search />
-      <S.CenterblockH2>Треки</S.CenterblockH2>
+      {error ? <S.ErrorH2>Не удалось загрузить плейлист, попробуйте позже</S.ErrorH2> : <S.CenterblockH2>Треки</S.CenterblockH2>}
       <Filter arr={tracks}/>
       <S.CenterblockContent>
         <PlaylistTitle />
