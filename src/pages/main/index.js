@@ -10,27 +10,41 @@ import TrackList from "../../components/tracklist/trackList.jsx";
 import TrackListSkeleton from "../../components/skeletons/trackListSkeleton.jsx";
 import getAllTracks from "../../components/API/api.js";
 
-export const MainPage = ({activePlayer, setActivePlayer}) => {
-  
+export const MainPage = ({ activePlayer, setActivePlayer }) => {
+
   // Загрузка всех треков из API
   const [load, setLoad] = useState(true);
   const [tracks, setTracks] = useState([]);
+
   useEffect(() => {
-    getAllTracks().then((data) => {
-      setTracks(data);
-      setLoad(false);
-    });
+    getAllTracks()
+      .then((data) => {
+        setTracks(data);
+        setLoad(false);
+      })
+      .catch((err) => {
+        alert(err)
+        setLoad(false);
+      });
   }, []);
-  
+
   return (
     <S.Wrapper>
       <S.Container>
         <S.Main>
           <NavMenu />
-          {load ? <TrackListSkeleton /> : <TrackList tracks={tracks} setActivePlayer={setActivePlayer}/>}
+          {load ? (
+            <TrackListSkeleton />
+          ) : (
+            <TrackList tracks={tracks} setActivePlayer={setActivePlayer} />
+          )}
           {load ? <SidebarSkeleton /> : <Sidebar />}
         </S.Main>
-        {load ? <AudioPlayerSkeleton /> : <AudioPlayer activePlayer={activePlayer}/>}
+        {load ? (
+          <AudioPlayerSkeleton />
+        ) : (
+          <AudioPlayer activePlayer={activePlayer} />
+        )}
         <footer className="footer"></footer>
       </S.Container>
     </S.Wrapper>
