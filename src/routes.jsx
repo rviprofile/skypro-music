@@ -7,13 +7,13 @@ import { SignUpPage } from "./pages/signup";
 import { FavoritesPage } from "./pages/favorites";
 import {ProtectedRoute} from "./components/protected-route/index.js"
 
-export const AppRoutes = ({user}) => {
+export const AppRoutes = ({activePlayer, setActivePlayer}) => {
   return (
     <Routes>
       
 
       {/* Главная страница */}
-      <Route path="/" element={<ProtectedRoute><MainPage/></ProtectedRoute>} />
+      <Route path="/" element={<ProtectedRoute><MainPage activePlayer={activePlayer} setActivePlayer={setActivePlayer}/></ProtectedRoute>} />
 
       {/* Вход в приложение */}
       <Route path="/login" element={<LoginPage />} />
@@ -22,14 +22,14 @@ export const AppRoutes = ({user}) => {
       <Route path="/signup" element={<SignUpPage />} />
 
       {/* Мои треки */}
-      <Route path="/favorites" element={<ProtectedRoute><FavoritesPage /></ProtectedRoute>} />
+      <Route path="/favorites" element={<ProtectedRoute><FavoritesPage activePlayer={activePlayer} setActivePlayer={setActivePlayer} /></ProtectedRoute>} />
 
       {/* 
       :1 - Плейлист дня
       :2 - 100 Танцевальных хитов
       :3 - Инди заряд
        */}
-      <Route path="/category/:id" element={<ProtectedRoute><CategoryPage /></ProtectedRoute>} />
+      <Route path="/category/:id" element={<ProtectedRoute><CategoryPage activePlayer={activePlayer} setActivePlayer={setActivePlayer} /></ProtectedRoute>} />
 
       {/* Страница не найдена */}
       <Route path="*" element={<NotFound />} />

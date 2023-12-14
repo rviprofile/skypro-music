@@ -10,7 +10,7 @@ import TrackList from "../../components/tracklist/trackList.jsx";
 import TrackListSkeleton from "../../components/skeletons/trackListSkeleton.jsx";
 import getAllTracks from "../../components/API/api.js";
 
-export const MainPage = () => {
+export const MainPage = ({activePlayer, setActivePlayer}) => {
   
   // Загрузка всех треков из API
   const [load, setLoad] = useState(true);
@@ -21,16 +21,16 @@ export const MainPage = () => {
       setLoad(false);
     });
   }, []);
-
+  
   return (
     <S.Wrapper>
       <S.Container>
         <S.Main>
           <NavMenu />
-          {load ? <TrackListSkeleton /> : <TrackList tracks={tracks} />}
+          {load ? <TrackListSkeleton /> : <TrackList tracks={tracks} setActivePlayer={setActivePlayer}/>}
           {load ? <SidebarSkeleton /> : <Sidebar />}
         </S.Main>
-        {load ? <AudioPlayerSkeleton /> : <AudioPlayer />}
+        {load ? <AudioPlayerSkeleton /> : <AudioPlayer activePlayer={activePlayer}/>}
         <footer className="footer"></footer>
       </S.Container>
     </S.Wrapper>

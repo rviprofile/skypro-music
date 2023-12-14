@@ -4,7 +4,7 @@ import PlaylistContent from "../playlist/playlistContent.jsx";
 import PlaylistTitle from "../playlist/playlistTitle.jsx";
 import Search from "../search/search.jsx";
 
-export default function TrackList(tracks) {
+export default function TrackList({tracks, setActivePlayer}) {
   return (
     <S.MainCenterblock>
       <Search />
@@ -12,7 +12,7 @@ export default function TrackList(tracks) {
       <Filter arr={tracks}/>
       <S.CenterblockContent>
         <PlaylistTitle />
-        <PlaylistContent arr={tracks} />
+        <PlaylistContent arr={tracks} setActivePlayer={setActivePlayer}/>
       </S.CenterblockContent>
     </S.MainCenterblock>
   );

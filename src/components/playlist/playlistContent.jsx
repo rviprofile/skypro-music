@@ -1,10 +1,14 @@
 import * as S from "./styles.js";
 import duration from "../duration.js";
 
-export default function PlaylistContent({arr}) {
-  const PlayListItems = arr.tracks.map((item) => (
-    <S.PlaylistItem key={item.id}>
-      <S.PlaylistTrack>
+export default function PlaylistContent({arr , setActivePlayer}) {
+
+  // Обновление состоаяния activePlayer в MainPage
+  const clickItem = (item) => { setActivePlayer(item);}
+
+  const PlayListItems = arr.map((item) => (
+    <S.PlaylistItem key={item.id} onClick={() => clickItem(item)}>
+      <S.PlaylistTrack >
         <S.TrackTitleOnList>
           <S.TrackTitleImage>
             <S.PlaylistTitleSvg alt="music">
