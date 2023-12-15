@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const MainSidebar = styled.div`
   max-width: 418px;
@@ -76,7 +77,7 @@ export const SidebarItem = styled.div`
   }
 `;
 
-export const SidebarLink = styled.a`
+export const SidebarLink = styled.div`
   width: 100%;
   height: 100%;
 `;

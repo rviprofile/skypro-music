@@ -193,3 +193,8 @@ export const TrackTimeText = styled.span`
   text-align: right;
   color: #696969;
 `;
+
+export const LikeTimeBox = styled.div`
+  display: flex;
+  align-items: center;
+`;

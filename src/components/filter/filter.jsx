@@ -1,15 +1,19 @@
-import * as S from "./styles.js"
-import { useEffect, useState } from "react";
-import FilterGenre from "./filterGenre";
-import FilterSinger from "./filterSinger";
-import FilterYear from "./filterYear";
+import * as S from "./styles.js";
+import { useState } from "react";
+import { useClickAway } from "@uidotdev/usehooks";
+import FilterGenre from "./filterGenre.jsx";
+import FilterSinger from "./filterSinger.jsx";
+import FilterYear from "./filterYear.jsx";
 
-export default function Filter() {
+export default function Filter(arr) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const ref = useClickAway(() => {
+    setActiveIndex(0);
+  });
   return (
-    <S.CenterBlockFilter>
+    <S.CenterBlockFilter ref={ref}>
       <S.FilterTitle>Искать по:</S.FilterTitle>
-      <FilterSinger
+      <FilterSinger arr={arr}
         isActive={activeIndex === 1}
         onShow={() => setActiveIndex(1)}
         onHide={() => setActiveIndex(0)}
@@ -19,7 +23,7 @@ export default function Filter() {
         onShow={() => setActiveIndex(2)}
         onHide={() => setActiveIndex(0)}
       />
-      <FilterGenre
+      <FilterGenre arr={arr}
         isActive={activeIndex === 3}
         onShow={() => setActiveIndex(3)}
         onHide={() => setActiveIndex(0)}

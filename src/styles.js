@@ -108,3 +108,11 @@ export const Main = styled.main`
   -ms-flex-pack: justify;
   justify-content: space-between;
 `;
+
+export const EasyBackground = styled.div`
+width: 100vw;
+height: 100vh;
+display: flex;
+background: rgba(0, 0, 0, 0.85);
+align-items: center;
+justify-content: center;`

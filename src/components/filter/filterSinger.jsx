@@ -1,7 +1,7 @@
 import * as S from "./styles.js";
-import SingerPopUp from "../filterPopUps/singerPopUp";
+import SingerPopUp from "../filterPopUps/singerPopUp.jsx";
 
-export default function FilterSinger({ isActive, onShow, onHide }) {
+export default function FilterSinger({ isActive, onShow, onHide, arr }) {
   return (
     <S.FilterButtonContainer>
       {isActive ? (
@@ -13,7 +13,7 @@ export default function FilterSinger({ isActive, onShow, onHide }) {
           исполнителю
         </S.FilterButton>
       )}
-      {isActive ? <SingerPopUp /> : ""}
+      {isActive ? <SingerPopUp arr={arr} /> : ""}
     </S.FilterButtonContainer>
   );
 }

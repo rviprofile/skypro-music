@@ -315,4 +315,20 @@ export const VolumeProgress= styled.div`
 export const VolumeProgressLine= styled.input`
   width: 109px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  height: 2px;
+
+  &::-webkit-slider-runnable-track{
+    height: 2px;
+    background-color: #fff;
+  }
+
+  &::-webkit-slider-thumb{
+    margin-top: -6px;
+    -webkit-appearance: none;
+    fill: #1A1A1A;
+    border: white;
+    border-radius: 2px;
+  }
 `

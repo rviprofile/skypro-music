@@ -1,19 +1,19 @@
-import * as S from "./styles.js";
-import GenrePopUp from "../filterPopUps/genrePopUp";
+import * as S from "./styles.js"
+import YearPopUp from "../filterPopUps/yearPopUp.jsx";
 
-export default function FilterGenre({ isActive, onShow, onHide }) {
+export default function FilterYear({ isActive, onShow, onHide }) {
   return (
     <S.FilterButtonContainer>
       {isActive ? (
         <S.FilterButtonActive onClick={isActive ? onHide : onShow}>
-          жанру
+          году выпуска
         </S.FilterButtonActive>
       ) : (
         <S.FilterButton onClick={isActive ? onHide : onShow}>
-          жанру
+          году выпуска
         </S.FilterButton>
       )}
-      {isActive ? <GenrePopUp /> : ""}
+      {isActive ? <YearPopUp /> : ""}
     </S.FilterButtonContainer>
   );
 }
