@@ -1,9 +1,13 @@
 import * as S from "./styles.js";
 
-export default function AudioPlayer({activePlayer}) {
-  return (
-    activePlayer ? (
+export default function AudioPlayer({ activePlayer }) {
+  return activePlayer ? (
     <S.Bar>
+      <audio
+        src={activePlayer.track_file}
+        controls
+        autoPlay
+      ></audio>
       <S.BarContent>
         <S.BarPlayerProgress />
         <S.BarPlayerBlock>
@@ -83,6 +87,8 @@ export default function AudioPlayer({activePlayer}) {
           </S.BarVolumeBlock>
         </S.BarPlayerBlock>
       </S.BarContent>
-    </S.Bar> ) : ''
+    </S.Bar>
+  ) : (
+    ""
   );
 }

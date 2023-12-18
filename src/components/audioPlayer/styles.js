@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Btn } from "../../styles";
 
 export const Bar = styled.div`
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
@@ -217,7 +217,7 @@ export const TrackPlayAlbum = styled.div`
   -ms-grid-row: 2;
   -ms-grid-column: 2;
   grid-area: album;
-  min-width: 49px;
+  min-width: max-content;
 `;
 
 export const TrackPlayAlbumLink = styled.a`
