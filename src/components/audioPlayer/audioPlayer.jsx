@@ -1,13 +1,18 @@
 import * as S from "./styles.js";
 import { useEffect, useRef, useState } from "react";
-import BarPlayerProgress from "../barPlayerProgress/barPlayerProgress.jsx";
 
 export default function AudioPlayer({ activePlayer }) {
   // Ссылка на тег audio
   const audioRef = useRef();
 
+  // Ссылка на элемент S.VolumeProgressLine
+  const volumeElemRef = useRef();
+
   // Состояние - играет ли трек
   const [isPlaying, setIsPlaying] = useState(false);
+
+  // Состояние громкости
+  const [volume, setVolume] = useState(0.3);
 
   // Функция включает трек и меняет состояние
   const handleStart = () => {
@@ -15,10 +20,17 @@ export default function AudioPlayer({ activePlayer }) {
     setIsPlaying(true);
   };
 
+  // Состояние времени воспроизведения трека
+  const [timeOnBar, setTimeOnBar] = useState(0);
+
   // При обновлении activePlayer запускает handleStart
+  // и меняет время воспроизведения трека
   useEffect(() => {
     if (activePlayer) {
       handleStart();
+      audioRef.current.ontimeupdate = (event) => {
+        setTimeOnBar(audioRef.current.currentTime);
+      };
     }
   }, [activePlayer]);
 
@@ -26,24 +38,34 @@ export default function AudioPlayer({ activePlayer }) {
   const handleStop = () => {
     audioRef.current.pause();
     setIsPlaying(false);
+    console.log(audioRef.current.currentTime);
   };
 
   // Переключатель функций от isPlaying
   const togglePlay = isPlaying ? handleStop : handleStart;
 
   // Управление репитом
-  const [isLoop, setIsLoop] = useState(false)
+  const [isLoop, setIsLoop] = useState(false);
   const toggleLoop = () => {
     isLoop ? setIsLoop(false) : setIsLoop(true);
-  }
+  };
 
   return activePlayer ? (
     <S.Bar>
-      <audio src={activePlayer.track_file} controls ref={audioRef} loop={isLoop}></audio>
+      <audio
+        src={activePlayer.track_file}
+        controls
+        ref={audioRef}
+        loop={isLoop}
+      ></audio>
       <S.BarContent>
-        <BarPlayerProgress
-          duration_time={activePlayer.duration_in_seconds}
-        />
+        <S.BarPlayerProgress
+          type="range"
+          min={0}
+          max={activePlayer.duration_in_seconds}
+          step={0.01}
+          value={timeOnBar}
+        ></S.BarPlayerProgress>
         <S.BarPlayerBlock>
           <S.BarPlayer>
             <S.PlayerControls>
@@ -122,7 +144,13 @@ export default function AudioPlayer({ activePlayer }) {
                 </S.VolumeSvg>
               </S.VolumeImage>
               <S.VolumeProgress>
-                <S.VolumeProgressLine type="range" name="range" />
+                <S.VolumeProgressLine
+                  type="range"
+                  name="range"
+                  min={0}
+                  max={1}
+                  ref={volumeElemRef}
+                />
               </S.VolumeProgress>
             </S.VolumeContent>
           </S.BarVolumeBlock>
