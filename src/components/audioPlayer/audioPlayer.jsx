@@ -1,12 +1,49 @@
 import * as S from "./styles.js";
+import { useEffect, useRef, useState } from "react";
 
 export default function AudioPlayer({ activePlayer }) {
+  // Ссылка на тег audio
+  const audioRef = useRef();
+
+  // Состояние - играет ли трек
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  // Функция включает трек и меняет состояние
+  const handleStart = () => {
+    audioRef.current.play();
+    setIsPlaying(true);
+  };
+
+  // При обновлении компонента запускает handleStart
+  useEffect(() => {
+    if (activePlayer) {
+      handleStart();
+    }
+  }, [activePlayer]);
+
+  // Функция выключает трек и меняет состояние
+  const handleStop = () => {
+    audioRef.current.pause();
+    setIsPlaying(false);
+  };
+
+  // Переключатель функций от isPlaying
+  const togglePlay = isPlaying ? handleStop : handleStart;
+
+  // Функция включает повторение трека
+  const [isLoop, setIsLoop] = useState(false);
+  const handleLoop = () => {
+    isLoop ? setIsLoop(false) : setIsLoop(true);
+    console.log("isLoop = " + isLoop);
+  };
+
+
   return activePlayer ? (
     <S.Bar>
       <audio
         src={activePlayer.track_file}
         controls
-        autoPlay
+        ref={audioRef}
       ></audio>
       <S.BarContent>
         <S.BarPlayerProgress />
@@ -18,9 +55,9 @@ export default function AudioPlayer({ activePlayer }) {
                   <use xlinkHref="/img/icon/sprite.svg#icon-prev"></use>
                 </S.PlayerBtnPrevSvg>
               </S.PlayerBtnPrev>
-              <S.PlayerBtnPlay>
+              <S.PlayerBtnPlay onClick={togglePlay}>
                 <S.PlayerBtnPlaySvg>
-                  <use xlinkHref="/img/icon/sprite.svg#icon-play"></use>
+                  {isPlaying ? <use xlinkHref="/img/icon/sprite.svg#icon-pause"></use> : <use xlinkHref="/img/icon/sprite.svg#icon-play"></use>}
                 </S.PlayerBtnPlaySvg>
               </S.PlayerBtnPlay>
               <S.PlayerBtnNext>
@@ -28,7 +65,7 @@ export default function AudioPlayer({ activePlayer }) {
                   <use xlinkHref="/img/icon/sprite.svg#icon-next"></use>
                 </S.PlayerBtnNextSvg>
               </S.PlayerBtnNext>
-              <S.PlayerBtnRepeat>
+              <S.PlayerBtnRepeat onClick={handleLoop}>
                 <S.PlayerBtnRepeatSvg>
                   <use xlinkHref="/img/icon/sprite.svg#icon-repeat"></use>
                 </S.PlayerBtnRepeatSvg>
@@ -47,16 +84,18 @@ export default function AudioPlayer({ activePlayer }) {
                     <use xlinkHref="/img/icon/sprite.svg#icon-note"></use>
                   </S.TrackPlaysvg>
                 </S.TrackPlayimage>
+
+                <S.TrackPlayName>
+                  <S.TrackPlayNameLink href="http://">
+                    {activePlayer.name}
+                  </S.TrackPlayNameLink>
+                </S.TrackPlayName>
+
                 <S.TrackPlayAuthor>
                   <S.TrackPlayAuthorLink href="http://">
-                    {activePlayer.name}
+                    {activePlayer.author}
                   </S.TrackPlayAuthorLink>
                 </S.TrackPlayAuthor>
-                <S.TrackPlayAlbum>
-                  <S.TrackPlayAlbumLink href="http://">
-                    {activePlayer.author}
-                  </S.TrackPlayAlbumLink>
-                </S.TrackPlayAlbum>
               </S.TrackPlaycontain>
 
               <S.TrackPlayLikeDis>
@@ -73,6 +112,7 @@ export default function AudioPlayer({ activePlayer }) {
               </S.TrackPlayLikeDis>
             </S.PlayerTrackPlay>
           </S.BarPlayer>
+
           <S.BarVolumeBlock>
             <S.VolumeContent>
               <S.VolumeImage>

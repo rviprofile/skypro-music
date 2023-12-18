@@ -117,7 +117,8 @@ export const PlayerBtnPrevSvg = styled.svg`
 export const PlayerBtnPlaySvg = styled.svg`
   width: 22px;
   height: 20px;
-  fill: #d9d9d9;
+  fill: blue;
+  // fill: #d9d9d9;
   ${Btn}
 `;
 
@@ -194,17 +195,17 @@ export const TrackPlaysvg = styled.svg`
   width: 18px;
   height: 17px;
   fill: transparent;
-  stroke: #4e4e4e;
+  stroke: #D9D9D9;
 `;
 
-export const TrackPlayAuthor = styled.div`
+export const TrackPlayName = styled.div`
   -ms-grid-row: 1;
   -ms-grid-column: 2;
   grid-area: author;
   min-width: 49px;
 `;
 
-export const TrackPlayAuthorLink = styled.a`
+export const TrackPlayNameLink = styled.a`
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -213,14 +214,14 @@ export const TrackPlayAuthorLink = styled.a`
   white-space: nowrap;
 `;
 
-export const TrackPlayAlbum = styled.div`
+export const TrackPlayAuthor = styled.div`
   -ms-grid-row: 2;
   -ms-grid-column: 2;
   grid-area: album;
   min-width: max-content;
 `;
 
-export const TrackPlayAlbumLink = styled.a`
+export const TrackPlayAuthorLink = styled.a`
   font-style: normal;
   font-weight: 400;
   font-size: 13px;
