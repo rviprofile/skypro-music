@@ -11,8 +11,10 @@ export default function AudioPlayer({ activePlayer }) {
   // Состояние - играет ли трек
   const [isPlaying, setIsPlaying] = useState(false);
 
-  // Состояние громкости
-  const [volume, setVolume] = useState(0.3);
+  // Управление громкостью
+  const handleVolme = () => {
+    audioRef.current.volume = volumeElemRef.current.value;
+  }
 
   // Функция включает трек и меняет состояние
   const handleStart = () => {
@@ -146,10 +148,12 @@ export default function AudioPlayer({ activePlayer }) {
               <S.VolumeProgress>
                 <S.VolumeProgressLine
                   type="range"
-                  name="range"
+                  name="volume"
                   min={0}
                   max={1}
+                  step={0.01}
                   ref={volumeElemRef}
+                  onChange={handleVolme}
                 />
               </S.VolumeProgress>
             </S.VolumeContent>
