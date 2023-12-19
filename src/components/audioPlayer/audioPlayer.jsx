@@ -11,19 +11,26 @@ export default function AudioPlayer({ activePlayer }) {
   // Состояние - играет ли трек
   const [isPlaying, setIsPlaying] = useState(false);
 
+  // Состояние времени воспроизведения трека
+  const [timeOnBar, setTimeOnBar] = useState(0);
+
   // Управление громкостью
   const handleVolme = () => {
     audioRef.current.volume = volumeElemRef.current.value;
-  }
+  };
+
+  // Управление перемоткой
+  const BarProgressRef = useRef();
+  const handleRewind = () => {
+    setTimeOnBar(BarProgressRef.current.value);
+    audioRef.current.currentTime = BarProgressRef.current.value;
+  };
 
   // Функция включает трек и меняет состояние
   const handleStart = () => {
     audioRef.current.play();
     setIsPlaying(true);
   };
-
-  // Состояние времени воспроизведения трека
-  const [timeOnBar, setTimeOnBar] = useState(0);
 
   // При обновлении activePlayer запускает handleStart
   // и меняет время воспроизведения трека
@@ -40,7 +47,6 @@ export default function AudioPlayer({ activePlayer }) {
   const handleStop = () => {
     audioRef.current.pause();
     setIsPlaying(false);
-    console.log(audioRef.current.currentTime);
   };
 
   // Переключатель функций от isPlaying
@@ -56,17 +62,19 @@ export default function AudioPlayer({ activePlayer }) {
     <S.Bar>
       <audio
         src={activePlayer.track_file}
-        controls
         ref={audioRef}
         loop={isLoop}
+        controls
       ></audio>
       <S.BarContent>
         <S.BarPlayerProgress
           type="range"
           min={0}
-          max={activePlayer.duration_in_seconds}
+          // max={audioRef.current.duration}
           step={0.01}
           value={timeOnBar}
+          onChange={handleRewind}
+          ref={BarProgressRef}
         ></S.BarPlayerProgress>
         <S.BarPlayerBlock>
           <S.BarPlayer>
@@ -92,7 +100,7 @@ export default function AudioPlayer({ activePlayer }) {
               </S.PlayerBtnNext>
               <S.PlayerBtnRepeat onClick={toggleLoop}>
                 <S.PlayerBtnRepeatSvg>
-                  <use xlinkHref="/img/icon/sprite.svg#icon-repeat"></use>
+                  {isLoop ? <use xlinkHref="/img/icon/sprite.svg#icon-repeatactive"></use> : <use xlinkHref="/img/icon/sprite.svg#icon-repeat"></use>}
                 </S.PlayerBtnRepeatSvg>
               </S.PlayerBtnRepeat>
               <S.PlayerBtnShuffle>

@@ -314,22 +314,32 @@ export const VolumeProgress= styled.div`
 `
 
 export const VolumeProgressLine= styled.input`
-  width: 109px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  height: 2px;
+-webkit-appearance: none;
+width: 100%;
+display: flex;
+align-items: center;
 
+&::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: 2px solid #FFF;
+  height: 12px;
+  width: 12px;
+  border-radius: 12px;
+  background: #1A1A1A;
+  cursor: pointer;
+  margin-top: -5px;
+}
+
+&::ms-track {
+  width: 100%;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+  
   &::-webkit-slider-runnable-track{
     height: 2px;
-    background-color: #fff;
-  }
-
-  &::-webkit-slider-thumb{
-    margin-top: -6px;
-    -webkit-appearance: none;
-    fill: #1A1A1A;
-    border: white;
-    border-radius: 2px;
+    background-color: #797979;
   }
 `

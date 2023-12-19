@@ -2,7 +2,6 @@ import * as S from "./styles.js";
 import SingerPopUp from "../filterPopUps/singerPopUp.jsx";
 
 export default function FilterSinger({ isActive, onShow, onHide, arr }) {
-  console.log(arr);
   return (
     <S.FilterButtonContainer>
       {isActive ? (
