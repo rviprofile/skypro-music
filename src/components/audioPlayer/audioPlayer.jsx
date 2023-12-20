@@ -29,7 +29,6 @@ export default function AudioPlayer({ activePlayer }) {
 
   const [durationonBar, setDurationOnBar] = useState(100);
 
-
   // Функция включает трек и меняет состояние
   const handleStart = () => {
     audioRef.current.play();
@@ -81,7 +80,6 @@ export default function AudioPlayer({ activePlayer }) {
         src={activePlayer.track_file}
         ref={audioRef}
         loop={isLoop}
-        onChange={(e)=> {setDurationOnBar(audioRef.current.duration)}}
         controls
       ></audio>
       <S.ActualTimer>{TimersString()}</S.ActualTimer>

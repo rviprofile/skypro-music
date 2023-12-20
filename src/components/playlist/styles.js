@@ -124,12 +124,13 @@ export const TrackTitleSvg = styled.svg`
   ${Btn}
 `;
 
-export const TrackTitleLink = styled.a`
+export const TrackTitle = styled.div`
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
   color: #ffffff;
+  cursor: pointer;
 `;
 
 export const TrackTitleSpan = styled.span`

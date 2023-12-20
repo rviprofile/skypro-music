@@ -16,10 +16,10 @@ export default function PlaylistContent({arr , setActivePlayer}) {
             </S.PlaylistTitleSvg>
           </S.TrackTitleImage>
           <div>
-            <S.TrackTitleLink href="http://">
+            <S.TrackTitle>
               {item.name}
               <S.TrackTitleSpan> {item.comment}</S.TrackTitleSpan>
-            </S.TrackTitleLink>
+            </S.TrackTitle>
           </div>
         </S.TrackTitleOnList>
         <S.TrackAuthorOnList>

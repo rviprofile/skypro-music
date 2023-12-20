@@ -20,9 +20,60 @@ export const BarContent = styled.div`
 `;
 
 export const BarPlayerProgress = styled.input`
+  overflow: hidden;
   width: 100%;
-  height: 5px;
-  background: #2e2e2e;
+  -webkit-appearance: none;
+  background-color: #2e2e2e;
+  display: flex;
+  align-items: center;
+
+  &::-webkit-slider-runnable-track {
+    height: 5px;
+    -webkit-appearance: none;
+    color: #13bba4;
+  }
+
+  &::-webkit-slider-thumb {
+    width: 0px;
+    -webkit-appearance: none;
+    height: 5px;
+    cursor: pointer;
+    background: #2e2e2e;
+    box-shadow: -8000px 0 0 8000px #b672ff;
+  }
+
+  // -webkit-appearance: none;
+  // width: 100%;
+  // display: flex;
+  // align-items: center;
+  // cursor: pointer;
+
+  // &::-webkit-slider-thumb {
+  //   -webkit-appearance: none;
+  //   border: 2px solid #B672FF;
+  //   height: 12px;
+  //   width: 12px;
+  //   background: #B672FF;
+  //   cursor: pointer;
+  //   margin-top: -5px;
+  // }
+
+  // &::ms-track {
+  //   width: 100%;
+  //   cursor: pointer;
+  //   background: transparent;
+  //   border-color: transparent;
+  //   color: transparent;
+  // }
+
+  // &::-webkit-slider-runnable-track {
+  //   height: 5px;
+  //   background-color: #2E2E2E;
+  // }
+
+  &::-webkit-slider-runnable-track:hover {
+    height: 8px;
+  }
 `;
 
 export const BarPlayerBlock = styled.div`
