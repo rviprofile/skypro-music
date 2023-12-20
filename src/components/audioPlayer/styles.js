@@ -195,7 +195,7 @@ export const TrackPlaysvg = styled.svg`
   width: 18px;
   height: 17px;
   fill: transparent;
-  stroke: #D9D9D9;
+  stroke: #d9d9d9;
 `;
 
 export const TrackPlayName = styled.div`
@@ -295,51 +295,57 @@ export const VolumeContent = styled.div`
   justify-content: end;
 `;
 
-
-export const VolumeImage= styled.div`
+export const VolumeImage = styled.div`
   width: 13px;
   height: 18px;
   margin-right: 17px;
-`
+`;
 
-export const VolumeSvg= styled.svg`
+export const VolumeSvg = styled.svg`
   width: 13px;
   height: 18px;
   fill: transparent;
-`
+`;
 
-export const VolumeProgress= styled.div`
+export const VolumeProgress = styled.div`
   width: 109px;
   cursor: pointer;
-`
+`;
 
-export const VolumeProgressLine= styled.input`
--webkit-appearance: none;
-width: 100%;
-display: flex;
-align-items: center;
-
-&::-webkit-slider-thumb {
+export const VolumeProgressLine = styled.input`
   -webkit-appearance: none;
-  border: 2px solid #FFF;
-  height: 12px;
-  width: 12px;
-  border-radius: 12px;
-  background: #1A1A1A;
-  cursor: pointer;
-  margin-top: -5px;
-}
-
-&::ms-track {
   width: 100%;
-  cursor: pointer;
-  background: transparent;
-  border-color: transparent;
-  color: transparent;
-}
-  
-  &::-webkit-slider-runnable-track{
+  display: flex;
+  align-items: center;
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: 2px solid #fff;
+    height: 12px;
+    width: 12px;
+    border-radius: 12px;
+    background: #1a1a1a;
+    cursor: pointer;
+    margin-top: -5px;
+  }
+
+  &::ms-track {
+    width: 100%;
+    cursor: pointer;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+  }
+
+  &::-webkit-slider-runnable-track {
     height: 2px;
     background-color: #797979;
   }
-`
+`;
+
+export const ActualTimer = styled.span`
+  color: #696969;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 10px;
+`;

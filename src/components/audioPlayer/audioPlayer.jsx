@@ -1,5 +1,6 @@
 import * as S from "./styles.js";
 import { useEffect, useRef, useState } from "react";
+import FormatDuration from "../duration.js";
 
 export default function AudioPlayer({ activePlayer }) {
   // Ссылка на тег audio
@@ -25,6 +26,9 @@ export default function AudioPlayer({ activePlayer }) {
     setTimeOnBar(BarProgressRef.current.value);
     audioRef.current.currentTime = BarProgressRef.current.value;
   };
+
+  const [durationonBar, setDurationOnBar] = useState(100);
+
 
   // Функция включает трек и меняет состояние
   const handleStart = () => {
@@ -58,28 +62,43 @@ export default function AudioPlayer({ activePlayer }) {
     isLoop ? setIsLoop(false) : setIsLoop(true);
   };
 
+  // Ошибка при нажатии на рандом и следущий трек 
+  const alertError = () => {
+    alert("Эта функция ещё не реализована")
+  }
+
+  // Функция форматирует и возвращает строку "Время воспроизведения : Длительность трека"
+  const TimersString = () => {
+    if (activePlayer) {
+      return `${FormatDuration(timeOnBar)} / ${FormatDuration(durationonBar)}`
+    }
+
+  }
+
   return activePlayer ? (
     <S.Bar>
       <audio
         src={activePlayer.track_file}
         ref={audioRef}
         loop={isLoop}
+        onChange={(e)=> {setDurationOnBar(audioRef.current.duration)}}
         controls
       ></audio>
+      <S.ActualTimer>{TimersString()}</S.ActualTimer>
       <S.BarContent>
         <S.BarPlayerProgress
           type="range"
           min={0}
-          // max={audioRef.current.duration}
+          max={durationonBar}
           step={0.01}
           value={timeOnBar}
-          onChange={handleRewind}
+          onChange={(handleRewind)}
           ref={BarProgressRef}
         ></S.BarPlayerProgress>
         <S.BarPlayerBlock>
           <S.BarPlayer>
             <S.PlayerControls>
-              <S.PlayerBtnPrev>
+              <S.PlayerBtnPrev onClick={alertError}>
                 <S.PlayerBtnPrevSvg>
                   <use xlinkHref="/img/icon/sprite.svg#icon-prev"></use>
                 </S.PlayerBtnPrevSvg>
@@ -93,7 +112,7 @@ export default function AudioPlayer({ activePlayer }) {
                   )}
                 </S.PlayerBtnPlaySvg>
               </S.PlayerBtnPlay>
-              <S.PlayerBtnNext>
+              <S.PlayerBtnNext onClick={alertError}>
                 <S.PlayerBtnNextSvg>
                   <use xlinkHref="/img/icon/sprite.svg#icon-next"></use>
                 </S.PlayerBtnNextSvg>
@@ -103,7 +122,7 @@ export default function AudioPlayer({ activePlayer }) {
                   {isLoop ? <use xlinkHref="/img/icon/sprite.svg#icon-repeatactive"></use> : <use xlinkHref="/img/icon/sprite.svg#icon-repeat"></use>}
                 </S.PlayerBtnRepeatSvg>
               </S.PlayerBtnRepeat>
-              <S.PlayerBtnShuffle>
+              <S.PlayerBtnShuffle onClick={alertError}>
                 <S.PlayerBtnShuffleSvg>
                   <use xlinkHref="/img/icon/sprite.svg#icon-shuffle"></use>
                 </S.PlayerBtnShuffleSvg>
