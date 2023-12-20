@@ -42,6 +42,7 @@ export default function AudioPlayer({ activePlayer }) {
       handleStart();
       audioRef.current.ontimeupdate = (event) => {
         setTimeOnBar(audioRef.current.currentTime);
+        setDurationOnBar(audioRef.current.duration)
       };
     }
   }, [activePlayer]);
@@ -80,7 +81,6 @@ export default function AudioPlayer({ activePlayer }) {
         src={activePlayer.track_file}
         ref={audioRef}
         loop={isLoop}
-        controls
       ></audio>
       <S.ActualTimer>{TimersString()}</S.ActualTimer>
       <S.BarContent>
