@@ -5,7 +5,7 @@ import FilterGenre from "./filterGenre.jsx";
 import FilterSinger from "./filterSinger.jsx";
 import FilterYear from "./filterYear.jsx";
 
-export default function Filter(arr) {
+export default function Filter({arr}) {
   const [activeIndex, setActiveIndex] = useState(0);
   const ref = useClickAway(() => {
     setActiveIndex(0);
