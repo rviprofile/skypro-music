@@ -5,7 +5,7 @@ import { EasyBackground } from "../../styles";
 export const LoginPage = () => {
   return (
     <EasyBackground>
-    {/* Страница с репозитория  */}
+    {/* Страница из репозитория  */}
       <AuthPage />
 
     {/* Самодельная страница */}

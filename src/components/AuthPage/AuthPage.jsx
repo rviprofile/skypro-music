@@ -1,22 +1,62 @@
 import { Link } from "react-router-dom";
 import * as S from "./styles.js";
 import { useEffect, useState } from "react";
+import signUp_fetch from "./../API/signUp-fetch.js";
+import login_fetch from "./../API/login-fetch.js"
 
-export default function AuthPage({ isLoginMode = false }) {
+export default function AuthPage({ isLoginMode = true }) {
   const [error, setError] = useState(null);
 
   const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
 
-  const handleLogin = async ({ email, password }) => {
-    alert(`Выполняется вход: ${email} ${password}`);
-    setError("Неизвестная ошибка входа");
+  const handleLogin = async () => {
+    // Проверка на правильность заполнения формы
+    if (email === "") {
+      setError("Введите почту");
+      return;
+    }
+    if (password === "") {
+      setError("Введите пароль");
+      return;
+    }
+    // Запрос в API
+    login_fetch(email, password).then((response)=> {
+      // В случае ошибки запроса уведомляем пользователя
+      if (typeof response === "string") {
+        setError(response);
+      }
+    })
   };
 
   const handleRegister = async () => {
-    alert(`Выполняется регистрация: ${email} ${password}`);
-    setError("Неизвестная ошибка регистрации");
+    // Проверка на правильность заполнения формы
+    if (email === "") {
+      setError("Введите почту");
+      return;
+    }
+    if (username === "") {
+      setError("Введите имя пользователя");
+      return;
+    }
+    if (password === "") {
+      setError("Введите пароль");
+      return;
+    }
+    if (password != repeatPassword) {
+      setError("Пароли не совпадают");
+      return;
+    }
+    // Запрос в API
+    signUp_fetch(email, password, username).then((response) => {
+      // В случае ошибки запроса уведомляем пользователя
+      if (typeof response === "string") {
+        setError(response);
+      }
+    });
+    
   };
 
   // Сбрасываем ошибку если пользователь меняет данные на форме или меняется режим формы
@@ -74,6 +114,15 @@ export default function AuthPage({ isLoginMode = false }) {
                 value={email}
                 onChange={(event) => {
                   setEmail(event.target.value);
+                }}
+              />
+              <S.ModalInput
+                type="text"
+                name="login"
+                placeholder="Имя пользователя"
+                value={username}
+                onChange={(event) => {
+                  setUsername(event.target.value);
                 }}
               />
               <S.ModalInput
