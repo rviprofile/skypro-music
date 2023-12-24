@@ -1,10 +1,15 @@
+import AuthPage from "../../components/AuthPage/AuthPage.jsx";
 import LoginWindow from "../../components/login/loginWindow.jsx";
 import { EasyBackground } from "../../styles";
 
 export const LoginPage = () => {
-    return (
-        <EasyBackground>
-        <LoginWindow/>
-        </EasyBackground>
-    );
-  };
+  return (
+    <EasyBackground>
+    {/* Страница с репозитория  */}
+      <AuthPage />
+
+    {/* Самодельная страница */}
+    {/* <LoginWindow/> */}
+    </EasyBackground>
+  );
+};
