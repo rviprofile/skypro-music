@@ -1,11 +1,11 @@
 import { Link, useNavigate } from "react-router-dom";
 import * as S from "./styles.js";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import signUp_fetch from "./../API/signUp-fetch.js";
-import login_fetch from "./../API/login-fetch.js"
-import setCookie from "./../setCookie.js"
+import login_fetch from "./../API/login-fetch.js";
+import setCookie from "./../setCookie.js";
 
-export default function AuthPage({ isLoginMode = true}) {
+export default function AuthPage({ isLoginMode = true }) {
   const [error, setError] = useState(null);
 
   const [email, setEmail] = useState("");
@@ -13,7 +13,7 @@ export default function AuthPage({ isLoginMode = true}) {
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleLogin = async () => {
     // Проверка на правильность заполнения формы
@@ -25,17 +25,20 @@ export default function AuthPage({ isLoginMode = true}) {
       setError("Введите пароль");
       return;
     }
+    
     // Запрос в API
-    login_fetch(email, password).then((response)=> {
+    login_fetch(email, password).then((response) => {
       // В случае ошибки запроса уведомляем пользователя
       if (typeof response === "string") {
         setError(response);
-        return
+        return;
       }
+      // Сохраняем данные в Куки
       setCookie("id", response.id);
       setCookie("name", response.username);
+      // Переходим на главную
       navigate("/");
-    })
+    });
   };
 
   const handleRegister = async () => {
@@ -61,13 +64,14 @@ export default function AuthPage({ isLoginMode = true}) {
       // В случае ошибки запроса уведомляем пользователя
       if (typeof response === "string") {
         setError(response);
-        return
+        return;
       }
+      // Сохраняем данные в Куки
       setCookie("id", response.id);
       setCookie("name", response.username);
+      // Переходим на главную
       navigate("/");
     });
-    
   };
 
   // Сбрасываем ошибку если пользователь меняет данные на форме или меняется режим формы

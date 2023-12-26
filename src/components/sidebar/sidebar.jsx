@@ -1,13 +1,23 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import * as S from "./styles";
 import React from "react";
+import { deleteCookie } from "../setCookie.js";
+
 export default function Sidebar() {
+  const navigate = useNavigate();
+  const Escape = (e) => {
+    e.preventDefault();
+    deleteCookie("token");
+    deleteCookie("name");
+    deleteCookie("id");
+    navigate("/login");
+  };
   return (
     <S.MainSidebar>
       <S.SidebarPersonal>
         <S.SidebarPersonalName>Sergey.Ivanov</S.SidebarPersonalName>
         <S.SidebarIcon>
-          <svg alt="logout">
+          <svg alt="logout" onClick={Escape}>
             <use xlinkHref="/img/icon/sprite.svg#logout"></use>
           </svg>
         </S.SidebarIcon>
