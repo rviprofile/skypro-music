@@ -6,7 +6,7 @@ export const LoginPage = () => {
   return (
     <EasyBackground>
     {/* Страница из репозитория  */}
-      <AuthPage />
+      <AuthPage isLoginMode={true}/>
 
     {/* Самодельная страница */}
     {/* <LoginWindow/> */}

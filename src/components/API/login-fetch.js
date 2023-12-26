@@ -20,4 +20,5 @@ export default async function login_fetch(email, password) {
   if (response.status === 500) {
     return "Сервер не отвечает";
   }
+  return data
 }

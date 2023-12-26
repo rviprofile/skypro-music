@@ -1,16 +1,19 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import * as S from "./styles.js";
 import { useEffect, useState } from "react";
 import signUp_fetch from "./../API/signUp-fetch.js";
 import login_fetch from "./../API/login-fetch.js"
+import setCookie from "./../setCookie.js"
 
-export default function AuthPage({ isLoginMode = true }) {
+export default function AuthPage({ isLoginMode = true}) {
   const [error, setError] = useState(null);
 
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
+
+  const navigate = useNavigate()
 
   const handleLogin = async () => {
     // Проверка на правильность заполнения формы
@@ -27,7 +30,11 @@ export default function AuthPage({ isLoginMode = true }) {
       // В случае ошибки запроса уведомляем пользователя
       if (typeof response === "string") {
         setError(response);
+        return
       }
+      setCookie("id", response.id);
+      setCookie("name", response.username);
+      navigate("/");
     })
   };
 
@@ -54,7 +61,11 @@ export default function AuthPage({ isLoginMode = true }) {
       // В случае ошибки запроса уведомляем пользователя
       if (typeof response === "string") {
         setError(response);
+        return
       }
+      setCookie("id", response.id);
+      setCookie("name", response.username);
+      navigate("/");
     });
     
   };
