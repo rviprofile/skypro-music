@@ -10,30 +10,37 @@ export default function AuthPage({ isLoginMode = true }) {
   const userContext = useUserContext();
 
   const [error, setError] = useState(null);
-
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
 
   const navigate = useNavigate();
 
   const handleLogin = async () => {
+    // Блокируем кпонку
+    setIsButtonDisabled(true);
     // Проверка на правильность заполнения формы
     if (email === "") {
       setError("Введите почту");
+      // Возвращаем активность кнопки
+      setIsButtonDisabled(false);
       return;
     }
     if (password === "") {
       setError("Введите пароль");
+      // Возвращаем активность кнопки
+      setIsButtonDisabled(false);
       return;
     }
-
     // Запрос в API
     login_fetch(email, password).then((response) => {
       // В случае ошибки запроса уведомляем пользователя
       if (typeof response === "string") {
         setError(response);
+        // Возвращаем активность кнопки
+        setIsButtonDisabled(false);
         return;
       }
       // Сохраняем данные в Куки
@@ -47,21 +54,31 @@ export default function AuthPage({ isLoginMode = true }) {
   };
 
   const handleRegister = async () => {
+    // Блокируем кпонку
+    setIsButtonDisabled(true);
     // Проверка на правильность заполнения формы
     if (email === "") {
       setError("Введите почту");
+      // Возвращаем активность кнопки
+      setIsButtonDisabled(false);
       return;
     }
     if (username === "") {
       setError("Введите имя пользователя");
+      // Возвращаем активность кнопки
+      setIsButtonDisabled(false);
       return;
     }
     if (password === "") {
       setError("Введите пароль");
+      // Возвращаем активность кнопки
+      setIsButtonDisabled(false);
       return;
     }
     if (password != repeatPassword) {
       setError("Пароли не совпадают");
+      // Возвращаем активность кнопки
+      setIsButtonDisabled(false);
       return;
     }
     // Запрос в API
@@ -69,6 +86,8 @@ export default function AuthPage({ isLoginMode = true }) {
       // В случае ошибки запроса уведомляем пользователя
       if (typeof response === "string") {
         setError(response);
+        // Возвращаем активность кнопки
+        setIsButtonDisabled(false);
         return;
       }
       // Сохраняем данные в Куки
@@ -118,7 +137,10 @@ export default function AuthPage({ isLoginMode = true }) {
             </S.Inputs>
             {error && <S.Error>{error}</S.Error>}
             <S.Buttons>
-              <S.PrimaryButton onClick={() => handleLogin({ email, password })}>
+              <S.PrimaryButton
+                disabled={isButtonDisabled}
+                onClick={() => handleLogin({ email, password })}
+              >
                 Войти
               </S.PrimaryButton>
               <Link to="/register">
@@ -168,7 +190,10 @@ export default function AuthPage({ isLoginMode = true }) {
             </S.Inputs>
             {error && <S.Error>{error}</S.Error>}
             <S.Buttons>
-              <S.PrimaryButton onClick={handleRegister}>
+              <S.PrimaryButton
+                disabled={isButtonDisabled}
+                onClick={handleRegister}
+              >
                 Зарегистрироваться
               </S.PrimaryButton>
             </S.Buttons>
