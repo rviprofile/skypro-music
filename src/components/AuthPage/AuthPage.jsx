@@ -1,11 +1,14 @@
 import { Link, useNavigate } from "react-router-dom";
 import * as S from "./styles.js";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import signUp_fetch from "./../API/signUp-fetch.js";
 import login_fetch from "./../API/login-fetch.js";
 import setCookie from "./../setCookie.js";
+import { useUserContext } from "../context/userContext.js";
 
 export default function AuthPage({ isLoginMode = true }) {
+  const userContext = useUserContext();
+
   const [error, setError] = useState(null);
 
   const [email, setEmail] = useState("");
@@ -25,7 +28,7 @@ export default function AuthPage({ isLoginMode = true }) {
       setError("Введите пароль");
       return;
     }
-    
+
     // Запрос в API
     login_fetch(email, password).then((response) => {
       // В случае ошибки запроса уведомляем пользователя
@@ -36,6 +39,8 @@ export default function AuthPage({ isLoginMode = true }) {
       // Сохраняем данные в Куки
       setCookie("id", response.id);
       setCookie("name", response.username);
+      // Сохраняем данные в контекст
+      userContext.toggleUser(response);
       // Переходим на главную
       navigate("/");
     });
@@ -69,6 +74,8 @@ export default function AuthPage({ isLoginMode = true }) {
       // Сохраняем данные в Куки
       setCookie("id", response.id);
       setCookie("name", response.username);
+      // Сохраняем данные в контекст
+      userContext.toggleUser(response);
       // Переходим на главную
       navigate("/");
     });

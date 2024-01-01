@@ -2,20 +2,25 @@ import { Link, useNavigate } from "react-router-dom";
 import * as S from "./styles";
 import React from "react";
 import { deleteCookie } from "../setCookie.js";
+import { useUserContext } from "../context/userContext.js";
 
 export default function Sidebar() {
+
+  const userContext = useUserContext();
+
   const navigate = useNavigate();
   const Escape = (e) => {
     e.preventDefault();
     deleteCookie("token");
     deleteCookie("name");
     deleteCookie("id");
+    userContext.toggleUser(null)
     navigate("/login");
   };
   return (
     <S.MainSidebar>
       <S.SidebarPersonal>
-        <S.SidebarPersonalName>Sergey.Ivanov</S.SidebarPersonalName>
+        <S.SidebarPersonalName>{userContext.user.username}</S.SidebarPersonalName>
         <S.SidebarIcon>
           <svg alt="logout" onClick={Escape}>
             <use xlinkHref="/img/icon/sprite.svg#logout"></use>

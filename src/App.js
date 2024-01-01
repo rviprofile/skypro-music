@@ -7,8 +7,9 @@ import { UserContext } from "./components/context/userContext.js";
 function App() {
   // Активация аудиоплеера и трека внутри
   const [activePlayer, setActivePlayer] = useState(null);
-
+  // Данные вошедшего пользователя
   const [currentUser, setCurrentUser] = useState(undefined);
+  // Функция для передачи данных
   const toggleUser = (user) => {
     setCurrentUser(user);
   };

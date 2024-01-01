@@ -8,7 +8,10 @@ export const UserContext = React.createContext({
 export const useUserContext = () => {
     const user = useContext(UserContext);
 
-    if(!user) return undefined;
+    if(!user) {
+        console.log("No user was found")
+        return
+    };
 
     return user;
 }
