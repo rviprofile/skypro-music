@@ -10,11 +10,12 @@ function App() {
     id: getCookie("id"),
     username: getCookie("name")
   }
-  console.log(userFromCookie);
   // Активация аудиоплеера и трека внутри
   const [activePlayer, setActivePlayer] = useState(null);
+  
   // Данные вошедшего пользователя
   const [currentUser, setCurrentUser] = useState(userFromCookie);
+  
   // Функция для передачи данных
   const toggleUser = (user) => {
     setCurrentUser(user);
