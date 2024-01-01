@@ -47,6 +47,7 @@ export default function AuthPage({ isLoginMode = true }) {
       setCookie("id", response.id);
       setCookie("name", response.username);
       // Сохраняем данные в контекст
+      console.log(response);
       userContext.toggleUser(response);
       // Переходим на главную
       navigate("/");
