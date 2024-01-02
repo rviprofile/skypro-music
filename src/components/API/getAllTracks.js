@@ -3,9 +3,6 @@ export default async function getAllTracks() {
     "https://skypro-music-api.skyeng.tech/catalog/track/all/",
     {
       method: "GET",
-      //   headers: {
-      //     Autorization: `Bearer ${token}`,
-      //   },
     }
   );
   if (!response.ok) {

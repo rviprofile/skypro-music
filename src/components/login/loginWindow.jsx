@@ -1,7 +1,7 @@
 import * as S from "./styles";
 import logo from "./logo_modal-copy.png";
 import { Link } from "react-router-dom";
-import { setCookie } from "../setCookie";
+import setCookie from "../setCookie.js";
 import { useNavigate } from "react-router-dom";
 
 export default function LoginWindow() {

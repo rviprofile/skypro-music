@@ -27,6 +27,7 @@ export default function AudioPlayer({ activePlayer }) {
     audioRef.current.currentTime = BarProgressRef.current.value;
   };
 
+  // Состояние общей длительности трека
   const [durationonBar, setDurationOnBar] = useState(100);
 
   // Функция включает трек и меняет состояние

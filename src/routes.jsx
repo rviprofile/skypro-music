@@ -3,9 +3,9 @@ import { NotFound } from "./pages/not-found";
 import { MainPage } from "./pages/main";
 import { LoginPage } from "./pages/login";
 import { CategoryPage } from "./pages/category";
-import { SignUpPage } from "./pages/signup";
 import { FavoritesPage } from "./pages/favorites";
 import {ProtectedRoute} from "./components/protected-route/index.js"
+import { RegisterPage } from "./pages/register/index.js";
 
 export const AppRoutes = ({activePlayer, setActivePlayer}) => {
   return (
@@ -19,7 +19,7 @@ export const AppRoutes = ({activePlayer, setActivePlayer}) => {
       <Route path="/login" element={<LoginPage />} />
 
       {/* Регистрация */}
-      <Route path="/signup" element={<SignUpPage />} />
+      <Route path="/register" element={<RegisterPage />} />
 
       {/* Мои треки */}
       <Route path="/favorites" element={<ProtectedRoute><FavoritesPage activePlayer={activePlayer} setActivePlayer={setActivePlayer} /></ProtectedRoute>} />
