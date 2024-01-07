@@ -1,8 +1,11 @@
 import * as S from "./styles.js";
 import { useEffect, useRef, useState } from "react";
 import FormatDuration from "../duration.js";
+import { useSelector } from "react-redux";
+import { playerSelector } from "../../store/selectors/activePlayer.js";
 
 export default function AudioPlayer({ activePlayer }) {
+
   // Ссылка на тег audio
   const audioRef = useRef();
 
