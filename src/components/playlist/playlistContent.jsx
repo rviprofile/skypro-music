@@ -2,21 +2,20 @@ import * as S from "./styles.js";
 import duration from "../duration.js";
 import { activeTrackRedux } from "../../store/actions/creators/activeTrack.js";
 import { store } from "../../store/store.js";
-import { useSelector } from "react-redux";
-import { playerSelector } from "../../store/selectors/activePlayer.js";
+import { useState } from "react";
 
-export default function PlaylistContent({ arr, setActivePlayer }) {
+export default function PlaylistContent({ arr }) {
+
+  const [actualId, setActualId] = useState(0);
+
   store.subscribe(() => {
-    const actualState = store.getState()
-    console.log(actualState);
-  })
+    const actualState = store.getState();
+    setActualId(actualState.trackStore.trackReducer.id);
+  });
+
   // Обновление состояния в store
   const clickItemDispatch = (item) => {
-    store.dispatch(activeTrackRedux(item))
-  }
-  // Обновление состоаяния activePlayer в MainPage
-  const clickItem = (item) => {
-    setActivePlayer(item);
+    store.dispatch(activeTrackRedux(item));
   };
 
   const PlayListItems = arr.map((item) => (
@@ -24,9 +23,13 @@ export default function PlaylistContent({ arr, setActivePlayer }) {
       <S.PlaylistTrack>
         <S.TrackTitleOnList>
           <S.TrackTitleImage>
-            <S.PlaylistTitleSvg alt="music">
-              <use xlinkHref="/img/icon/sprite.svg#icon-note"></use>
-            </S.PlaylistTitleSvg>
+            {actualId === item.id ? (
+              <S.Pulser></S.Pulser>
+            ) : (
+              <S.PlaylistTitleSvg alt="music">
+                <use xlinkHref="/img/icon/sprite.svg#icon-note"></use>
+              </S.PlaylistTitleSvg>
+            )}
           </S.TrackTitleImage>
           <div>
             <S.TrackTitle>

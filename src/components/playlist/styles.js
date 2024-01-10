@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { Btn } from "../../styles";
 
 export const ContentTitle = styled.div`
@@ -102,7 +102,7 @@ export const TrackTitleOnList = styled.div`
 export const TrackTitleImage = styled.div`
   width: 51px;
   height: 51px;
-  padding: 16px;
+  // padding: 16px;
   background: #313131;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -198,4 +198,36 @@ export const TrackTimeText = styled.span`
 export const LikeTimeBox = styled.div`
   display: flex;
   align-items: center;
+`;
+
+export const pulse = keyframes`
+0% {
+  opacity: 1;
+}
+50% {
+  transform: scale(1.4);
+  opacity: 1;
+}
+`
+
+export const Pulser = styled.div`
+  width: 15px;
+  height: 15px;
+  background: #B672FF;
+  border-radius: 50%;
+  position: relative;
+  animation: ${pulse} 1500ms cubic-bezier(0.9, 0.7, 0.5, 0.9) infinite;
+
+
+  &::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: #B672FF;
+    border-radius: 50%;
+    z-index: -1;
+  }
 `;
