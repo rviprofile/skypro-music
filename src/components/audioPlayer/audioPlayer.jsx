@@ -2,6 +2,7 @@ import * as S from "./styles.js";
 import { useEffect, useRef, useState } from "react";
 import FormatDuration from "../duration.js";
 import { store } from "../../store/store.js";
+import { pauseTrackCreator, unPauseTrackCreator } from "../../store/actions/creators/activeTrack.js";
 
 export default function AudioPlayer() {
 
@@ -19,7 +20,7 @@ export default function AudioPlayer() {
   // Ссылка на элемент S.VolumeProgressLine
   const volumeElemRef = useRef();
 
-  // Состояние - играет ли трек
+  // Состояние - играет ли трек.
   const [isPlaying, setIsPlaying] = useState(false);
 
   // Состояние времени воспроизведения трека
@@ -44,6 +45,7 @@ export default function AudioPlayer() {
   const handleStart = () => {
     audioRef.current.play();
     setIsPlaying(true);
+    store.dispatch(unPauseTrackCreator())
   };
 
   // При обновлении activePlayer запускает handleStart
@@ -62,6 +64,7 @@ export default function AudioPlayer() {
   const handleStop = () => {
     audioRef.current.pause();
     setIsPlaying(false);
+    store.dispatch(pauseTrackCreator())
   };
 
   // Переключатель функций от isPlaying
@@ -83,7 +86,6 @@ export default function AudioPlayer() {
     if (activePlayer) {
       return `${FormatDuration(timeOnBar)} / ${FormatDuration(durationonBar)}`
     }
-
   }
 
   return activePlayer ? (

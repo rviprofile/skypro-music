@@ -217,7 +217,7 @@ export const Pulser = styled.div`
   border-radius: 50%;
   position: relative;
   animation: ${pulse} 1500ms cubic-bezier(0.9, 0.7, 0.5, 0.9) infinite;
-
+  animation-play-state: ${(props) => (props.paused && 'paused') || 'running'};
 
   &::after {
     content: "";
