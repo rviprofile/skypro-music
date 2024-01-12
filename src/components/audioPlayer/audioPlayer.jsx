@@ -41,7 +41,7 @@ export default function AudioPlayer() {
   // Состояние общей длительности трека
   const [durationonBar, setDurationOnBar] = useState(100);
 
-  // Функция включает трек и меняет состояние
+  // Функция включает трек и меняет состояния
   const handleStart = () => {
     audioRef.current.play();
     setIsPlaying(true);
@@ -88,12 +88,18 @@ export default function AudioPlayer() {
     }
   }
 
+  // Когда трек заканчивается
+  const onEnded = () => {
+    console.log('END');
+  }
+
   return activePlayer ? (
     <S.Bar>
       <audio
         src={activePlayer.track_file}
         ref={audioRef}
         loop={isLoop}
+        onEnded={onEnded}
       ></audio>
       <S.ActualTimer>{TimersString()}</S.ActualTimer>
       <S.BarContent>
