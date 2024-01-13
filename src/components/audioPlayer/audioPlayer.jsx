@@ -2,17 +2,27 @@ import * as S from "./styles.js";
 import { useEffect, useRef, useState } from "react";
 import FormatDuration from "../duration.js";
 import { store } from "../../store/store.js";
-import { pauseTrackCreator, unPauseTrackCreator } from "../../store/actions/creators/activeTrack.js";
+import {
+  activeTrackCreator,
+  pauseTrackCreator,
+  unPauseTrackCreator,
+} from "../../store/actions/creators/activeTrack.js";
+import moveOnList from "../moveOnList.js";
 
 export default function AudioPlayer() {
+  // Раньше это был пропс, а теперь локальное состояние с активным треком
+  const [activePlayer, setActivePlayer] = useState(false);
 
-  // Раньше это был пропс, а теперь локальное состояние
-  const [activePlayer, setActivePlayer] = useState(false)
+  // Локальное состояние с активным плейлистом
+  const [activePlaylist, setActivePlaylist] = useState();
 
   // Подписка на состояние из store
   store.subscribe(() => {
-    setActivePlayer(store.getState().trackStore.trackReducer)
-  })
+    // Активный трек в activePlayer
+    setActivePlayer(store.getState().trackStore.trackReducer);
+    // Активный плейлист в activePlaylist
+    setActivePlaylist(store.getState().playlistStore.playlistReducer);
+  });
 
   // Ссылка на тег audio
   const audioRef = useRef();
@@ -45,7 +55,7 @@ export default function AudioPlayer() {
   const handleStart = () => {
     audioRef.current.play();
     setIsPlaying(true);
-    store.dispatch(unPauseTrackCreator())
+    store.dispatch(unPauseTrackCreator());
   };
 
   // При обновлении activePlayer запускает handleStart
@@ -55,7 +65,7 @@ export default function AudioPlayer() {
       handleStart();
       audioRef.current.ontimeupdate = (event) => {
         setTimeOnBar(audioRef.current.currentTime);
-        setDurationOnBar(audioRef.current.duration)
+        setDurationOnBar(audioRef.current.duration);
       };
     }
   }, [activePlayer]);
@@ -64,7 +74,7 @@ export default function AudioPlayer() {
   const handleStop = () => {
     audioRef.current.pause();
     setIsPlaying(false);
-    store.dispatch(pauseTrackCreator())
+    store.dispatch(pauseTrackCreator());
   };
 
   // Переключатель функций от isPlaying
@@ -76,22 +86,49 @@ export default function AudioPlayer() {
     isLoop ? setIsLoop(false) : setIsLoop(true);
   };
 
-  // Ошибка при нажатии на рандом и следущий трек 
+  // Ошибка при нажатии на рандом и следущий трек
   const alertError = () => {
-    alert("Эта функция ещё не реализована")
-  }
+    alert("Эта функция ещё не реализована");
+  };
 
   // Функция форматирует и возвращает строку "Время воспроизведения : Длительность трека"
   const TimersString = () => {
     if (activePlayer) {
-      return `${FormatDuration(timeOnBar)} / ${FormatDuration(durationonBar)}`
+      return `${FormatDuration(timeOnBar)} / ${FormatDuration(durationonBar)}`;
+    }
+  };
+
+  // Функция возвращает следующий элемент плейлиста или предыдущий
+  function moveOnList(action) {
+    // Создаем пустой массив
+    const arr = [];
+    // Наполняем его треками из плейлиста
+    for (const item of Object.entries(activePlaylist)) {
+      arr.push(item[1]);
+    }
+    // Находим нужный трек в этом массиве по индексу
+    const indexOfActive = (element) => element.id === activePlayer.id;
+    switch (action) {
+      case "NEXT": {
+        return arr[arr.findIndex(indexOfActive) + 1];
+      }
+      case "PREV": {
+        return arr[arr.findIndex(indexOfActive) - 1];
+      }
+      default:
+        return activePlayer;
     }
   }
 
   // Когда трек заканчивается
   const onEnded = () => {
-    console.log('END');
-  }
+    store.dispatch(activeTrackCreator(moveOnList("NEXT")));
+  };
+
+// Переход к предыдущему треку
+const prevButtonClick = () => {
+  store.dispatch(activeTrackCreator(moveOnList("PREV")))
+}
 
   return activePlayer ? (
     <S.Bar>
@@ -109,13 +146,13 @@ export default function AudioPlayer() {
           max={durationonBar}
           step={0.01}
           value={timeOnBar}
-          onChange={(handleRewind)}
+          onChange={handleRewind}
           ref={BarProgressRef}
         ></S.BarPlayerProgress>
         <S.BarPlayerBlock>
           <S.BarPlayer>
             <S.PlayerControls>
-              <S.PlayerBtnPrev onClick={alertError}>
+              <S.PlayerBtnPrev onClick={prevButtonClick}>
                 <S.PlayerBtnPrevSvg>
                   <use xlinkHref="/img/icon/sprite.svg#icon-prev"></use>
                 </S.PlayerBtnPrevSvg>
@@ -129,14 +166,18 @@ export default function AudioPlayer() {
                   )}
                 </S.PlayerBtnPlaySvg>
               </S.PlayerBtnPlay>
-              <S.PlayerBtnNext onClick={alertError}>
+              <S.PlayerBtnNext onClick={onEnded}>
                 <S.PlayerBtnNextSvg>
                   <use xlinkHref="/img/icon/sprite.svg#icon-next"></use>
                 </S.PlayerBtnNextSvg>
               </S.PlayerBtnNext>
               <S.PlayerBtnRepeat onClick={toggleLoop}>
                 <S.PlayerBtnRepeatSvg>
-                  {isLoop ? <use xlinkHref="/img/icon/sprite.svg#icon-repeatactive"></use> : <use xlinkHref="/img/icon/sprite.svg#icon-repeat"></use>}
+                  {isLoop ? (
+                    <use xlinkHref="/img/icon/sprite.svg#icon-repeatactive"></use>
+                  ) : (
+                    <use xlinkHref="/img/icon/sprite.svg#icon-repeat"></use>
+                  )}
                 </S.PlayerBtnRepeatSvg>
               </S.PlayerBtnRepeat>
               <S.PlayerBtnShuffle onClick={alertError}>
