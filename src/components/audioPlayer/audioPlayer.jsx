@@ -4,10 +4,10 @@ import FormatDuration from "../duration.js";
 import { store } from "../../store/store.js";
 import {
   activeTrackCreator,
+  changePlaylistCreator,
   pauseTrackCreator,
   unPauseTrackCreator,
 } from "../../store/actions/creators/activeTrack.js";
-import moveOnList from "../moveOnList.js";
 
 export default function AudioPlayer() {
   // Раньше это был пропс, а теперь локальное состояние с активным треком
@@ -15,6 +15,7 @@ export default function AudioPlayer() {
 
   // Локальное состояние с активным плейлистом
   const [activePlaylist, setActivePlaylist] = useState();
+  const [backupActivePlaylist, setBackupActivePlaylist] = useState();
 
   // Подписка на состояние из store
   store.subscribe(() => {
@@ -23,6 +24,28 @@ export default function AudioPlayer() {
     // Активный плейлист в activePlaylist
     setActivePlaylist(store.getState().playlistStore.playlistReducer);
   });
+
+  // Состояние, перемешан ли плейлист
+  const [isShuffle, setIsShuffle] = useState(false);
+
+  // Функция перемешивает список
+  const shufflePlaylist = () => {
+    if (!isShuffle) {
+      // Сохраняем то, что хотим перемешать в backup
+      setBackupActivePlaylist(activePlaylist)
+      // Перемешиваем активный плейлист
+      const randomList = Object.values(activePlaylist).sort(
+        () => Math.random() - 0.5
+      );
+      // Отправляем его в store
+      store.dispatch(changePlaylistCreator(randomList));
+    } else {
+      // Отправляем в store заранее сохраненный плейлист
+      store.dispatch(changePlaylistCreator(backupActivePlaylist))
+    }
+    // Меняем состояние
+    setIsShuffle(!isShuffle);
+  };
 
   // Ссылка на тег audio
   const audioRef = useRef();
@@ -36,6 +59,9 @@ export default function AudioPlayer() {
   // Состояние времени воспроизведения трека
   const [timeOnBar, setTimeOnBar] = useState(0);
 
+  // Состояние общей длительности трека
+  const [durationonBar, setDurationOnBar] = useState(100);
+
   // Управление громкостью
   const handleVolme = () => {
     audioRef.current.volume = volumeElemRef.current.value;
@@ -48,14 +74,24 @@ export default function AudioPlayer() {
     audioRef.current.currentTime = BarProgressRef.current.value;
   };
 
-  // Состояние общей длительности трека
-  const [durationonBar, setDurationOnBar] = useState(100);
+  // Управление репитом
+  const [isLoop, setIsLoop] = useState(false);
+  const toggleLoop = () => {
+    isLoop ? setIsLoop(false) : setIsLoop(true);
+  };
 
   // Функция включает трек и меняет состояния
   const handleStart = () => {
     audioRef.current.play();
     setIsPlaying(true);
     store.dispatch(unPauseTrackCreator());
+  };
+
+  // Функция выключает трек и меняет состояние
+  const handleStop = () => {
+    audioRef.current.pause();
+    setIsPlaying(false);
+    store.dispatch(pauseTrackCreator());
   };
 
   // При обновлении activePlayer запускает handleStart
@@ -70,26 +106,8 @@ export default function AudioPlayer() {
     }
   }, [activePlayer]);
 
-  // Функция выключает трек и меняет состояние
-  const handleStop = () => {
-    audioRef.current.pause();
-    setIsPlaying(false);
-    store.dispatch(pauseTrackCreator());
-  };
-
   // Переключатель функций от isPlaying
   const togglePlay = isPlaying ? handleStop : handleStart;
-
-  // Управление репитом
-  const [isLoop, setIsLoop] = useState(false);
-  const toggleLoop = () => {
-    isLoop ? setIsLoop(false) : setIsLoop(true);
-  };
-
-  // Ошибка при нажатии на рандом и следущий трек
-  const alertError = () => {
-    alert("Эта функция ещё не реализована");
-  };
 
   // Функция форматирует и возвращает строку "Время воспроизведения : Длительность трека"
   const TimersString = () => {
@@ -98,7 +116,7 @@ export default function AudioPlayer() {
     }
   };
 
-  // Функция возвращает следующий элемент плейлиста или предыдущий
+  // Функция возвращает следующий или предыдущий элемент акнтивного плейлиста относительно активного трека
   function moveOnList(action) {
     // Создаем пустой массив
     const arr = [];
@@ -110,10 +128,24 @@ export default function AudioPlayer() {
     const indexOfActive = (element) => element.id === activePlayer.id;
     switch (action) {
       case "NEXT": {
-        return arr[arr.findIndex(indexOfActive) + 1];
+        // Если следующий трек существует
+        if (arr[arr.findIndex(indexOfActive) + 1]) {
+          // Вернется следущий трек
+          return arr[arr.findIndex(indexOfActive) + 1];
+        } else {
+          // Если нет, вернется первый трек в списке
+          return arr[0];
+        }
       }
       case "PREV": {
-        return arr[arr.findIndex(indexOfActive) - 1];
+        // Если предыдущий трек существует
+        if (arr[arr.findIndex(indexOfActive) - 1]) {
+          // Вернется предыдущий трек
+          return arr[arr.findIndex(indexOfActive) - 1];
+        } else {
+          // Если нет, вернется первый трек в списке
+          return arr[0];
+        }
       }
       default:
         return activePlayer;
@@ -125,10 +157,10 @@ export default function AudioPlayer() {
     store.dispatch(activeTrackCreator(moveOnList("NEXT")));
   };
 
-// Переход к предыдущему треку
-const prevButtonClick = () => {
-  store.dispatch(activeTrackCreator(moveOnList("PREV")))
-}
+  // Переход к предыдущему треку
+  const prevButtonClick = () => {
+    store.dispatch(activeTrackCreator(moveOnList("PREV")));
+  };
 
   return activePlayer ? (
     <S.Bar>
@@ -180,9 +212,13 @@ const prevButtonClick = () => {
                   )}
                 </S.PlayerBtnRepeatSvg>
               </S.PlayerBtnRepeat>
-              <S.PlayerBtnShuffle onClick={alertError}>
+              <S.PlayerBtnShuffle onClick={shufflePlaylist}>
                 <S.PlayerBtnShuffleSvg>
-                  <use xlinkHref="/img/icon/sprite.svg#icon-shuffle"></use>
+                  {isShuffle ? (
+                    <use xlinkHref="/img/icon/sprite.svg#icon-shuffleactive"></use>
+                  ) : (
+                    <use xlinkHref="/img/icon/sprite.svg#icon-shuffle"></use>
+                  )}
                 </S.PlayerBtnShuffleSvg>
               </S.PlayerBtnShuffle>
             </S.PlayerControls>

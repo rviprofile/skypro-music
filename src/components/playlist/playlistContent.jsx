@@ -1,6 +1,6 @@
 import * as S from "./styles.js";
 import duration from "../duration.js";
-import { activeTrackCreator } from "../../store/actions/creators/activeTrack.js";
+import { activeTrackCreator, updateHistoryCreator } from "../../store/actions/creators/activeTrack.js";
 import { store } from "../../store/store.js";
 import { useState } from "react";
 import { changePlaylistCreator } from "../../store/actions/creators/activeTrack.js";
