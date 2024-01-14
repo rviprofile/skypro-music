@@ -32,7 +32,7 @@ export default function AudioPlayer() {
   const shufflePlaylist = () => {
     if (!isShuffle) {
       // Сохраняем то, что хотим перемешать в backup
-      setBackupActivePlaylist(activePlaylist)
+      setBackupActivePlaylist(activePlaylist);
       // Перемешиваем активный плейлист
       const randomList = Object.values(activePlaylist).sort(
         () => Math.random() - 0.5
@@ -41,7 +41,7 @@ export default function AudioPlayer() {
       store.dispatch(changePlaylistCreator(randomList));
     } else {
       // Отправляем в store заранее сохраненный плейлист
-      store.dispatch(changePlaylistCreator(backupActivePlaylist))
+      store.dispatch(changePlaylistCreator(backupActivePlaylist));
     }
     // Меняем состояние
     setIsShuffle(!isShuffle);
@@ -138,13 +138,19 @@ export default function AudioPlayer() {
         }
       }
       case "PREV": {
-        // Если предыдущий трек существует
-        if (arr[arr.findIndex(indexOfActive) - 1]) {
-          // Вернется предыдущий трек
-          return arr[arr.findIndex(indexOfActive) - 1];
+        // Если трек играет больше 5 секунд, перемотка в начало трека
+        if (timeOnBar > 5) {
+          setTimeOnBar(0);
+          audioRef.current.currentTime = 0;
         } else {
-          // Если нет, вернется первый трек в списке
-          return arr[0];
+          // Если предыдущий трек существует
+          if (arr[arr.findIndex(indexOfActive) - 1]) {
+            // Вернется предыдущий трек
+            return arr[arr.findIndex(indexOfActive) - 1];
+          } else {
+            // Если нет, вернется первый трек в списке
+            return arr[0];
+          }
         }
       }
       default:
