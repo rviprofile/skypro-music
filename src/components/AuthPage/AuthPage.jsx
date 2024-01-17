@@ -5,6 +5,7 @@ import signUp_fetch from "./../API/signUp-fetch.js";
 import login_fetch from "./../API/login-fetch.js";
 import setCookie from "./../setCookie.js";
 import { useUserContext } from "../context/userContext.js";
+import getToken from "../API/getToken.js";
 
 export default function AuthPage({ isLoginMode = true }) {
   const userContext = useUserContext();
@@ -47,8 +48,12 @@ export default function AuthPage({ isLoginMode = true }) {
       setCookie("id", response.id);
       setCookie("name", response.username);
       // Сохраняем данные в контекст
-      console.log(response);
       userContext.toggleUser(response);
+      // Получаем токен
+      getToken({email, password}).then((response) => {
+        setCookie("access", response.access)
+        setCookie("refresh", response.refresh);
+      });
       // Переходим на главную
       navigate("/");
     });
@@ -96,6 +101,11 @@ export default function AuthPage({ isLoginMode = true }) {
       setCookie("name", response.username);
       // Сохраняем данные в контекст
       userContext.toggleUser(response);
+      // Получаем токен
+      getToken({email, password}).then((response) => {
+        setCookie("access", response.access)
+        setCookie("refresh", response.refresh);
+      });
       // Переходим на главную
       navigate("/");
     });

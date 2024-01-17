@@ -1,4 +1,4 @@
-import { PAUSE_TRACK, START_TRACK, UNPAUSE_TRACK } from "../actions/types/activeTrack";
+import { PAUSE_TRACK, START_TRACK, UNPAUSE_TRACK, READY } from "../actions/types/activeTrack";
 
 const initialState = {
 }

@@ -14,11 +14,10 @@ export const ProtectedRoute = ({ children, redirectPath = "/login" }) => {
     );
     return matches ? decodeURIComponent(matches[1]) : undefined;
   }
-  const isAllowed = getCookie("id");
+  const isAllowed = getCookie("refresh");
 
   if (!isAllowed) {
     return <Navigate to={redirectPath} replace={true} />;
   }
-
   return children;
 };

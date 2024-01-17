@@ -4,18 +4,17 @@ import { AppRoutes } from "./routes.jsx";
 import { useState } from "react";
 import { UserContext } from "./components/context/userContext.js";
 import { getCookie } from "./components/setCookie.js";
+import AudioPlayer from "./components/audioPlayer/audioPlayer.jsx";
 
 function App() {
   const userFromCookie = {
     id: getCookie("id"),
-    username: getCookie("name")
-  }
-  // Активация аудиоплеера и трека внутри
-  const [activePlayer, setActivePlayer] = useState(null);
-  
+    username: getCookie("name"),
+  };
+
   // Данные вошедшего пользователя
   const [currentUser, setCurrentUser] = useState(userFromCookie);
-  
+
   // Функция для передачи данных
   const toggleUser = (user) => {
     setCurrentUser(user);
@@ -30,10 +29,7 @@ function App() {
           toggleUser,
         }}
       >
-        <AppRoutes
-          activePlayer={activePlayer}
-          setActivePlayer={setActivePlayer}
-        />
+        <AppRoutes />
       </UserContext.Provider>
     </>
   );

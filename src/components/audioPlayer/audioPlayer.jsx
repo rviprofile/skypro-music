@@ -10,12 +10,30 @@ import {
 } from "../../store/actions/creators/activeTrack.js";
 
 export default function AudioPlayer() {
+  // Ссылка на тег audio
+  const audioRef = useRef();
+
+  // Ссылка на элемент S.VolumeProgressLine
+  const volumeElemRef = useRef();
+
   // Раньше это был пропс, а теперь локальное состояние с активным треком
   const [activePlayer, setActivePlayer] = useState(false);
 
-  // Локальное состояние с активным плейлистом
+  // Состояние, перемешан ли плейлист
+  const [isShuffle, setIsShuffle] = useState(false);
+
+  // Состояния с активным плейлистом
   const [activePlaylist, setActivePlaylist] = useState();
   const [backupActivePlaylist, setBackupActivePlaylist] = useState();
+
+  // Состояние - играет ли трек.
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  // Состояние времени воспроизведения трека
+  const [timeOnBar, setTimeOnBar] = useState(0);
+
+  // Состояние общей длительности трека
+  const [durationonBar, setDurationOnBar] = useState(100);
 
   // Подписка на состояние из store
   store.subscribe(() => {
@@ -24,9 +42,6 @@ export default function AudioPlayer() {
     // Активный плейлист в activePlaylist
     setActivePlaylist(store.getState().playlistStore.playlistReducer);
   });
-
-  // Состояние, перемешан ли плейлист
-  const [isShuffle, setIsShuffle] = useState(false);
 
   // Функция перемешивает список
   const shufflePlaylist = () => {
@@ -46,21 +61,6 @@ export default function AudioPlayer() {
     // Меняем состояние
     setIsShuffle(!isShuffle);
   };
-
-  // Ссылка на тег audio
-  const audioRef = useRef();
-
-  // Ссылка на элемент S.VolumeProgressLine
-  const volumeElemRef = useRef();
-
-  // Состояние - играет ли трек.
-  const [isPlaying, setIsPlaying] = useState(false);
-
-  // Состояние времени воспроизведения трека
-  const [timeOnBar, setTimeOnBar] = useState(0);
-
-  // Состояние общей длительности трека
-  const [durationonBar, setDurationOnBar] = useState(100);
 
   // Управление громкостью
   const handleVolme = () => {
