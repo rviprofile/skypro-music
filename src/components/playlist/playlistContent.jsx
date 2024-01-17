@@ -33,10 +33,14 @@ export default function PlaylistContent({ arr }) {
     store.dispatch(changePlaylistCreator(arr));
   };
 
+  const handleLike = () => {
+    console.log("like / dislike");
+  }
+
   const PlayListItems = arr.map((item) => (
-    <S.PlaylistItem key={item.id} onClick={() => clickItemDispatch(item)}>
+    <S.PlaylistItem key={item.id} >
       <S.PlaylistTrack>
-        <S.TrackTitleOnList>
+        <S.TrackTitleOnList onClick={() => clickItemDispatch(item)}>
           <S.TrackTitleImage>
             {
               // Соответсвует ли id активного трека треку из списка?
@@ -65,7 +69,7 @@ export default function PlaylistContent({ arr }) {
           <S.TrackAlbumLink href="http://">{item.album}</S.TrackAlbumLink>
         </S.TrackAlbumOnList>
         <S.LikeTimeBox>
-          <S.TrackTimeSvg alt="like">
+          <S.TrackTimeSvg alt="like" onClick={handleLike}>
             {/* Код ниже совершает две проверки.
             1. Если страница /favorites, то все лайки будут закрашены.
             2. Если в списке лайкнувших ползователей есть id из Cookie, то лайк будет закрашен */}
