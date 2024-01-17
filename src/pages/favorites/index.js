@@ -1,13 +1,8 @@
 import React from "react";
-import * as S from "../../styles.js";
-import AudioPlayer from "../../components/audioPlayer/audioPlayer.jsx";
-import NavMenu from "../../components/navMenu/navMenu.jsx";
-import Sidebar from "../../components/sidebar/sidebar.jsx";
 import { useState, useEffect } from "react";
-import getAllTracks from "../../components/API/getAllTracks.js";
+import getAllFavorites from "../../components/API/getAllFavorites.js";
 import TrackList from "../../components/tracklist/trackList.jsx";
 import TrackListSkeleton from "../../components/skeletons/trackListSkeleton.jsx";
-import SidebarSkeleton from "../../components/skeletons/sidebarSkeleton.jsx";
 
 export const FavoritesPage = () => {
   // Загрузка всех треков из API
@@ -15,7 +10,7 @@ export const FavoritesPage = () => {
   const [tracks, setTracks] = useState([]);
   const [error, setError] = useState(null);
   useEffect(() => {
-    getAllTracks()
+    getAllFavorites()
       .then((data) => {
         setTracks(data);
         setLoad(false);
