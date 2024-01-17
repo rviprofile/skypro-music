@@ -86,10 +86,11 @@ export const Wrapper = styled.div`
   width: 100%;
   min-height: 100%;
   overflow-y: hidden;
+  overflow-x: hidden;
   background-color: #383838;
 `;
 export const Container = styled.div`
-  max-width: 1920px;
+  width: 100%;
   height: 100%;
   margin: 0 auto;
   position: relative;
@@ -116,3 +117,9 @@ display: flex;
 background: rgba(0, 0, 0, 0.85);
 align-items: center;
 justify-content: center;`
+
+export const Footer = styled.div`
+background-color: #181818;
+width: 100%;
+height: 100px;
+`

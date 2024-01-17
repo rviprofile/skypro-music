@@ -18,6 +18,7 @@ setInterval(() => getAccessToken(), 20000)
           <AudioPlayer />
         </S.Main>
       </S.Container>
+      <S.Footer/>
     </S.Wrapper>
   );
 }

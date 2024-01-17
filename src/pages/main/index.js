@@ -1,7 +1,5 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import Sidebar from "../../components/sidebar/sidebar.jsx";
-import SidebarSkeleton from "../../components/skeletons/sidebarSkeleton.jsx";
 import TrackList from "../../components/tracklist/trackList.jsx";
 import TrackListSkeleton from "../../components/skeletons/trackListSkeleton.jsx";
 import getAllTracks from "../../components/API/getAllTracks.js";
