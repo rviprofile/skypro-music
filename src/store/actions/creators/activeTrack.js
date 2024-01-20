@@ -1,16 +1,38 @@
-// Здесь будет import { константы } from "./types/activeTrack.js"
+import { getCookie } from "../../../components/setCookie";
+import { store } from "../../store";
 import {
   CHANGE_PLAYLIST,
-  FETCH_LIKES_FAILURE,
-  FETCH_LIKES_STARTED,
-  FETCH_LIKES_SUCCESS,
   PAUSE_TRACK,
   START_TRACK,
   UNPAUSE_TRACK,
   UPDATE_HISTORY,
 } from "../types/activeTrack";
 
-// И функции creators, которые генерируют типовые actions
+import {
+  ADD_LIKE_FAILURE,
+  ADD_LIKE_SUCCESS,
+  ADD_LIKE_STARTED,
+  REMOVE_LIKE_FAILURE,
+  REMOVE_LIKE_SUCCESS,
+  REMOVE_LIKE_STARTED,
+} from "../types/activeTrack";
+
+export const addLikeStarted = () => ({
+ type: ADD_LIKE_STARTED
+});
+
+export const addLikeSuccess = (track) => ({
+  type: ADD_LIKE_SUCCESS, 
+  payload: {
+    ...track
+  }
+})
+export const addLikeFailure = error => ({
+  type: ADD_LIKE_FAILURE,
+  payload: {
+    error
+  }
+});
 
 export const activeTrackCreator = (track) => ({
   type: START_TRACK,
@@ -35,14 +57,14 @@ export const updateHistoryCreator = (item) => ({
   payload: item,
 });
 
-export const detchLikeStarted = () => ({
-  type: FETCH_LIKES_STARTED,
-});
-export const detchLikeSuccess = (likes) => ({
-  type: FETCH_LIKES_SUCCESS,
-  payload: { likes }
-});
-export const detchLikeFailure = (error) => ({
-  type: FETCH_LIKES_FAILURE,
-  payload: { error }
-});
+// export const detchLikeStarted = () => ({
+//   type: FETCH_LIKES_STARTED,
+// });
+// export const detchLikeSuccess = (likes) => ({
+//   type: FETCH_LIKES_SUCCESS,
+//   payload: { likes },
+// });
+// export const detchLikeFailure = (error) => ({
+//   type: FETCH_LIKES_FAILURE,
+//   payload: { error },
+// });
