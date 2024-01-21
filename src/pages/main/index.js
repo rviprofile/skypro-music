@@ -24,16 +24,16 @@ export const MainPage = () => {
   }, []);
 
   store.subscribe(() => {
-    getAllTracks()
-    .then((data) => {
-      setTracks(data);
-      setLoad(false);
-    })
-    .catch((err) => {
-      alert(err);
-      setLoad(false);
-      setError(err);
-    });
+      getAllTracks()
+      .then((data) => {
+        setTracks(data);
+        setLoad(false);
+      })
+      .catch((err) => {
+        alert(err);
+        setLoad(false);
+        setError(err);
+      });
   })
 
   return (

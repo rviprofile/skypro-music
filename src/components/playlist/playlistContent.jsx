@@ -38,6 +38,10 @@ export default function PlaylistContent({ arr }) {
 
   const dispatch = useDispatch()
   const handleLike = (item) => {
+    if (window.location.pathname === "/favorites") {
+      dispatch(deleteLikeCreator(item))
+      return
+    }
     item.stared_user.map((elem) => elem.id).includes(Number(getCookie("id"))) ? dispatch(deleteLikeCreator(item)) : dispatch(addLikeCreator(item))
   }
 

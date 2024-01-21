@@ -18,7 +18,7 @@ export default function likesCounterReducer(state = initialState, action) {
             return { ...state };
           }
           case ADD_LIKE_SUCCESS: {
-            return { ...state, count: [...state.post, action.payload] };
+            return { ...state, post: [...state.post, action.payload] };
           }
           case ADD_LIKE_FAILURE: {
             return { ...state };
@@ -27,7 +27,7 @@ export default function likesCounterReducer(state = initialState, action) {
             return { ...state };
           }
           case DELETE_LIKE_SUCCESS: {
-            return { ...state, count: [...state.delete, action.payload] };
+            return { ...state, delete: [...state.delete, action.payload] };
           }
           case DELETE_LIKE_FAILURE: {
             return { ...state };

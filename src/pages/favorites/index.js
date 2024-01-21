@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import getAllFavorites from "../../components/API/getAllFavorites.js";
 import TrackList from "../../components/tracklist/trackList.jsx";
 import TrackListSkeleton from "../../components/skeletons/trackListSkeleton.jsx";
+import { store } from "../../store/store.js";
 
 export const FavoritesPage = () => {
   // Загрузка всех треков из API
@@ -22,6 +23,19 @@ export const FavoritesPage = () => {
       });
   }, []);
 
+  store.subscribe(() => {
+    getAllFavorites()
+      .then((data) => {
+        setTracks(data);
+        setLoad(false);
+      })
+      .catch((err) => {
+        alert(err);
+        setLoad(false);
+        setError(err);
+      });
+  });
+  
   return (
     <>
       {load ? (
