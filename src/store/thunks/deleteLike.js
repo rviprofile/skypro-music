@@ -1,17 +1,16 @@
 import axios from "axios";
 import {
-  addLikeSuccess,
-  addLikeFailure,
-  addLikeStarted,
+  deleteLikeSuccess,
+  deleteLikeFailure,
+  deleteLikeStarted,
 } from "./../actions/creators/activeTrack.js";
 import { getCookie } from "../../components/setCookie.js";
 
-export const addLikeCreator = (track) => async (dispatch, getState) => {
-  dispatch(addLikeStarted());
+export const deleteLikeCreator = (track) => async (dispatch, getState) => {
+  dispatch(deleteLikeStarted());
   try {
-    const { data } = await axios.post(
+    const { data } = await axios.delete(
       `https://skypro-music-api.skyeng.tech/catalog/track/${track.id}/favorite/`,
-      {},
       {
         headers: {
           Authorization: `Bearer ${getCookie("access")}`,
@@ -19,9 +18,9 @@ export const addLikeCreator = (track) => async (dispatch, getState) => {
       }
     );
     console.log(data);
-    dispatch(addLikeSuccess(track));
+    dispatch(deleteLikeSuccess(track));
   } catch (err) {
     console.log(err);
-    dispatch(addLikeFailure(err));
+    dispatch(deleteLikeFailure(err));
   }
 };

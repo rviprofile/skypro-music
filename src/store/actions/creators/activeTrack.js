@@ -12,9 +12,9 @@ import {
   ADD_LIKE_FAILURE,
   ADD_LIKE_SUCCESS,
   ADD_LIKE_STARTED,
-  REMOVE_LIKE_FAILURE,
-  REMOVE_LIKE_SUCCESS,
-  REMOVE_LIKE_STARTED,
+  DELETE_LIKE_FAILURE,
+  DELETE_LIKE_SUCCESS,
+  DELETE_LIKE_STARTED,
 } from "../types/activeTrack";
 
 export const addLikeStarted = () => ({
@@ -33,6 +33,23 @@ export const addLikeFailure = error => ({
     error
   }
 });
+
+export const deleteLikeStarted = () => ({
+  type:  DELETE_LIKE_STARTED
+ });
+ 
+ export const deleteLikeSuccess = (track) => ({
+   type:  DELETE_LIKE_SUCCESS, 
+   payload: {
+     ...track
+   }
+ })
+ export const deleteLikeFailure = error => ({
+   type:  DELETE_LIKE_FAILURE,
+   payload: {
+     error
+   }
+ });
 
 export const activeTrackCreator = (track) => ({
   type: START_TRACK,

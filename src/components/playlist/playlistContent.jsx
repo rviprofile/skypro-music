@@ -7,6 +7,7 @@ import { changePlaylistCreator } from "../../store/actions/creators/activeTrack.
 import { getCookie } from "./../setCookie.js";
 import { addLikeCreator } from "../../store/thunks/addLike.js";
 import { useDispatch } from "react-redux";
+import { deleteLikeCreator } from "../../store/thunks/deleteLike.js";
 
 export default function PlaylistContent({ arr }) {
   // Состояние с ID активного трека
@@ -36,8 +37,8 @@ export default function PlaylistContent({ arr }) {
   };
 
   const dispatch = useDispatch()
-  const handleAddLike = (item) => {
-    dispatch(addLikeCreator(item))
+  const handleLike = (item) => {
+    item.stared_user.map((elem) => elem.id).includes(Number(getCookie("id"))) ? dispatch(deleteLikeCreator(item)) : dispatch(addLikeCreator(item))
   }
 
   const PlayListItems = arr.map((item) => (
@@ -72,7 +73,7 @@ export default function PlaylistContent({ arr }) {
           <S.TrackAlbumLink href="http://">{item.album}</S.TrackAlbumLink>
         </S.TrackAlbumOnList>
         <S.LikeTimeBox>
-          <S.TrackTimeSvg alt="like" onClick={()=> handleAddLike(item)}>
+          <S.TrackTimeSvg alt="like" onClick={()=> handleLike(item)}>
             {/* Код ниже совершает две проверки.
             1. Если страница /favorites, то все лайки будут закрашены.
             2. Если в списке лайкнувших ползователей есть id из Cookie, то лайк будет закрашен */}

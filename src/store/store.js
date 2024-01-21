@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import activePlayerReducer from "./reducers/activeTrack";
 import activePlaylistReducer from "./reducers/activePlaylist";
+import likesCounterReducer from "./reducers/likesCounter";
 import { thunk } from "redux-thunk";
 
 export const store = configureStore({
@@ -8,7 +9,7 @@ export const store = configureStore({
     trackStore: activePlayerReducer,
     playlistStore: activePlaylistReducer,
     isPlaying: activePlayerReducer,
-    like: activePlaylistReducer,
+    likes: likesCounterReducer,
   },
   middleware: getDefaultMiddleware => {
     return [thunk]
