@@ -55,10 +55,10 @@ export default function AuthPage({ isLoginMode = true }) {
           setCookie("access", response.access);
           setCookie("refresh", response.refresh);
         })
-        .then(
+        .then((response) => {
           // Переходим на главную
-          navigate("/")
-        );
+          navigate("/");
+        });
     });
   };
 
@@ -110,10 +110,10 @@ export default function AuthPage({ isLoginMode = true }) {
           setCookie("access", response.access);
           setCookie("refresh", response.refresh);
         })
-        .then(
+        .then((response) => {
           // Переходим на главную
-          navigate("/")
-        );
+          navigate("/");
+        });
     });
   };
 
