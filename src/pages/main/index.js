@@ -10,6 +10,8 @@ export const MainPage = () => {
   const [load, setLoad] = useState(true);
   const [tracks, setTracks] = useState([]);
   const [error, setError] = useState(null);
+  const [likes, setLikes] = useState({})
+
   useEffect(() => {
     getAllTracks()
       .then((data) => {
@@ -23,8 +25,8 @@ export const MainPage = () => {
       });
   }, []);
 
-  store.subscribe(() => {
-      getAllTracks()
+  useEffect(() => {
+    getAllTracks()
       .then((data) => {
         setTracks(data);
         setLoad(false);
@@ -34,6 +36,11 @@ export const MainPage = () => {
         setLoad(false);
         setError(err);
       });
+  }, [likes]);
+
+  store.subscribe(() => {
+    const actualState = store.getState();
+    setLikes(actualState.likes)
   })
 
   return (

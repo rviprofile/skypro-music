@@ -34,27 +34,3 @@ export const AppRoutes = () => {
   );
 };
 
-// export const AppRoutes = () => {
-//   return (
-//     <Routes>
-//       {/* Вход в приложение */}
-//       <Route path="/login" element={<LoginPage />} />
-//       {/* Регистрация */}
-//       <Route path="/register" element={<RegisterPage />} />
-//       {/* Страница не найдена */}
-//       <Route path="*" element={<NotFound />} />
-
-//       <Route element={<ProtectedRoute />} />
-//       {/* Главная страница */}
-//       <Route path="/" element={<MainPage />} />
-//       {/* Мои треки */}
-//       <Route path="/favorites" element={<FavoritesPage />} />
-//       {/*
-//       :1 - Плейлист дня
-//       :2 - 100 Танцевальных хитов
-//       :3 - Инди заряд
-//        */}
-//       <Route path="/category/:id" element={<CategoryPage />} />
-//     </Routes>
-//   );
-// };

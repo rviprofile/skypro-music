@@ -10,6 +10,8 @@ export const FavoritesPage = () => {
   const [load, setLoad] = useState(true);
   const [tracks, setTracks] = useState([]);
   const [error, setError] = useState(null);
+  const [likes, setLikes] = useState({})
+  
   useEffect(() => {
     getAllFavorites()
       .then((data) => {
@@ -24,6 +26,11 @@ export const FavoritesPage = () => {
   }, []);
 
   store.subscribe(() => {
+    const actualState = store.getState();
+    setLikes(actualState.likes)
+  })
+
+  useEffect(() => {
     getAllFavorites()
       .then((data) => {
         setTracks(data);
@@ -34,7 +41,7 @@ export const FavoritesPage = () => {
         setLoad(false);
         setError(err);
       });
-  });
+  }, [likes]);
   
   return (
     <>

@@ -50,12 +50,15 @@ export default function AuthPage({ isLoginMode = true }) {
       // Сохраняем данные в контекст
       userContext.toggleUser(response);
       // Получаем токен
-      getToken({email, password}).then((response) => {
-        setCookie("access", response.access)
-        setCookie("refresh", response.refresh);
-      });
-      // Переходим на главную
-      navigate("/");
+      getToken({ email, password })
+        .then((response) => {
+          setCookie("access", response.access);
+          setCookie("refresh", response.refresh);
+        })
+        .then(
+          // Переходим на главную
+          navigate("/")
+        );
     });
   };
 
@@ -102,12 +105,15 @@ export default function AuthPage({ isLoginMode = true }) {
       // Сохраняем данные в контекст
       userContext.toggleUser(response);
       // Получаем токен
-      getToken({email, password}).then((response) => {
-        setCookie("access", response.access)
-        setCookie("refresh", response.refresh);
-      });
-      // Переходим на главную
-      navigate("/");
+      getToken({ email, password })
+        .then((response) => {
+          setCookie("access", response.access);
+          setCookie("refresh", response.refresh);
+        })
+        .then(
+          // Переходим на главную
+          navigate("/")
+        );
     });
   };
 
