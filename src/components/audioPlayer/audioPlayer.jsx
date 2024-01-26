@@ -8,14 +8,33 @@ import {
   pauseTrackCreator,
   unPauseTrackCreator,
 } from "../../store/actions/creators/activeTrack.js";
+import { getCookie } from "../setCookie.js";
 
 export default function AudioPlayer() {
+  // Ссылка на тег audio
+  const audioRef = useRef();
+
+  // Ссылка на элемент S.VolumeProgressLine
+  const volumeElemRef = useRef();
+
   // Раньше это был пропс, а теперь локальное состояние с активным треком
   const [activePlayer, setActivePlayer] = useState(false);
 
-  // Локальное состояние с активным плейлистом
+  // Состояние, перемешан ли плейлист
+  const [isShuffle, setIsShuffle] = useState(false);
+
+  // Состояния с активным плейлистом
   const [activePlaylist, setActivePlaylist] = useState();
   const [backupActivePlaylist, setBackupActivePlaylist] = useState();
+
+  // Состояние - играет ли трек.
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  // Состояние времени воспроизведения трека
+  const [timeOnBar, setTimeOnBar] = useState(0);
+
+  // Состояние общей длительности трека
+  const [durationonBar, setDurationOnBar] = useState(100);
 
   // Подписка на состояние из store
   store.subscribe(() => {
@@ -24,9 +43,6 @@ export default function AudioPlayer() {
     // Активный плейлист в activePlaylist
     setActivePlaylist(store.getState().playlistStore.playlistReducer);
   });
-
-  // Состояние, перемешан ли плейлист
-  const [isShuffle, setIsShuffle] = useState(false);
 
   // Функция перемешивает список
   const shufflePlaylist = () => {
@@ -46,21 +62,6 @@ export default function AudioPlayer() {
     // Меняем состояние
     setIsShuffle(!isShuffle);
   };
-
-  // Ссылка на тег audio
-  const audioRef = useRef();
-
-  // Ссылка на элемент S.VolumeProgressLine
-  const volumeElemRef = useRef();
-
-  // Состояние - играет ли трек.
-  const [isPlaying, setIsPlaying] = useState(false);
-
-  // Состояние времени воспроизведения трека
-  const [timeOnBar, setTimeOnBar] = useState(0);
-
-  // Состояние общей длительности трека
-  const [durationonBar, setDurationOnBar] = useState(100);
 
   // Управление громкостью
   const handleVolme = () => {
@@ -251,16 +252,27 @@ export default function AudioPlayer() {
               </S.TrackPlaycontain>
 
               <S.TrackPlayLikeDis>
-                <S.TrackPlayLike>
+                {/* <S.TrackPlayLike>
                   <S.TrackPlaylikeSvg alt="like">
                     <use xlinkHref="/img/icon/sprite.svg#icon-like"></use>
                   </S.TrackPlaylikeSvg>
-                </S.TrackPlayLike>
-                <S.TrackPlayDislike>
+                </S.TrackPlayLike> */}
+                {/* <S.TrackPlayDislike>
                   <S.TrackPlayDislikeSvg alt="dislike">
                     <use xlinkHref="/img/icon/sprite.svg#icon-dislike"></use>
                   </S.TrackPlayDislikeSvg>
-                </S.TrackPlayDislike>
+                </S.TrackPlayDislike> */}
+                <S.TrackPlayLike>
+                <S.TrackPlaylikeSvg alt="like">
+                {activePlayer.stared_user
+                  .map((elem) => elem.id)
+                  .includes(Number(getCookie("id"))) ? (
+                    <use xlinkHref="/img/icon/sprite.svg#icon-likeactive"></use>
+                ) : (
+                  <use xlinkHref="/img/icon/sprite.svg#icon-like"></use>
+                )}
+                </S.TrackPlaylikeSvg>
+                </S.TrackPlayLike>
               </S.TrackPlayLikeDis>
             </S.PlayerTrackPlay>
           </S.BarPlayer>

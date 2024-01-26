@@ -1,7 +1,7 @@
 import * as S from "./styles.js"
 import YearPopUp from "../filterPopUps/yearPopUp.jsx";
 
-export default function FilterYear({ isActive, onShow, onHide }) {
+export default function FilterYear({ isActive, onShow, onHide, arr, setPlaylist}) {
   return (
     <S.FilterButtonContainer>
       {isActive ? (
@@ -13,7 +13,7 @@ export default function FilterYear({ isActive, onShow, onHide }) {
           году выпуска
         </S.FilterButton>
       )}
-      {isActive ? <YearPopUp /> : ""}
+      {isActive ? <YearPopUp arr={arr} setPlaylist={setPlaylist}/> : ""}
     </S.FilterButtonContainer>
   );
 }

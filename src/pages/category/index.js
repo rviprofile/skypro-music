@@ -15,7 +15,7 @@ export const CategoryPage = () => {
           <CategoryTrackList />
           <Sidebar />
         </S.Main>
-        <AudioPlayer />
+        {/* <AudioPlayer /> */}
         <footer className="footer"></footer>
       </S.Container>
     </S.Wrapper>

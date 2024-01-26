@@ -1,8 +1,9 @@
-import getUnicItems from "../getUnicItems";
+import getUnicItems from "../getUnicItems"; // Принимает массив повторяющихся значений, возвращает массив уникальных значений
 import * as S from "./styles";
+import { changePlaylistCreator } from "../../store/actions/creators/activeTrack";
 
-export default function SingerPopUp(arr) {
-  const allSingers = [arr.arr.map((item) => item.author)];
+export default function SingerPopUp({arr, setPlaylist}) {
+  const allSingers = [arr.map((item) => item.author)];
   const Items = getUnicItems(allSingers[0]).map((item) => (
     <S.FilterPopUpItem key={getUnicItems(allSingers[0]).indexOf(item)}>{item}</S.FilterPopUpItem>
   ))

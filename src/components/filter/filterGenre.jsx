@@ -1,7 +1,7 @@
 import * as S from "./styles.js";
 import GenrePopUp from "../filterPopUps/genrePopUp.jsx";
 
-export default function FilterGenre({ isActive, onShow, onHide, arr }) {
+export default function FilterGenre({ isActive, onShow, onHide, arr, setPlaylist}) {
 
   return (
       <S.FilterButtonContainer>
@@ -14,7 +14,7 @@ export default function FilterGenre({ isActive, onShow, onHide, arr }) {
             жанру
           </S.FilterButton>
         )}
-        {isActive ? <GenrePopUp arr={arr}/> : ""}
+        {isActive ? <GenrePopUp arr={arr} setPlaylist={setPlaylist}/> : ""}
       </S.FilterButtonContainer>
   );
 }
