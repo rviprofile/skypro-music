@@ -8,6 +8,7 @@ import {
   pauseTrackCreator,
   unPauseTrackCreator,
 } from "../../store/actions/creators/activeTrack.js";
+import { getCookie } from "../setCookie.js";
 
 export default function AudioPlayer() {
   // Ссылка на тег audio
@@ -251,16 +252,27 @@ export default function AudioPlayer() {
               </S.TrackPlaycontain>
 
               <S.TrackPlayLikeDis>
-                <S.TrackPlayLike>
+                {/* <S.TrackPlayLike>
                   <S.TrackPlaylikeSvg alt="like">
                     <use xlinkHref="/img/icon/sprite.svg#icon-like"></use>
                   </S.TrackPlaylikeSvg>
-                </S.TrackPlayLike>
-                <S.TrackPlayDislike>
+                </S.TrackPlayLike> */}
+                {/* <S.TrackPlayDislike>
                   <S.TrackPlayDislikeSvg alt="dislike">
                     <use xlinkHref="/img/icon/sprite.svg#icon-dislike"></use>
                   </S.TrackPlayDislikeSvg>
-                </S.TrackPlayDislike>
+                </S.TrackPlayDislike> */}
+                <S.TrackPlayLike>
+                <S.TrackPlaylikeSvg alt="like">
+                {activePlayer.stared_user
+                  .map((elem) => elem.id)
+                  .includes(Number(getCookie("id"))) ? (
+                    <use xlinkHref="/img/icon/sprite.svg#icon-likeactive"></use>
+                ) : (
+                  <use xlinkHref="/img/icon/sprite.svg#icon-like"></use>
+                )}
+                </S.TrackPlaylikeSvg>
+                </S.TrackPlayLike>
               </S.TrackPlayLikeDis>
             </S.PlayerTrackPlay>
           </S.BarPlayer>

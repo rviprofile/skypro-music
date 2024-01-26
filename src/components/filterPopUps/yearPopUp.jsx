@@ -1,9 +1,8 @@
 import * as S from "./styles";
 import { store } from "../../store/store";
 import { useState } from "react";
-import { changePlaylistCreator } from "../../store/actions/creators/activeTrack";
 
-export default function YearPopUp() {
+export default function YearPopUp({arr, setPlaylist}) {
 
   // Состояния с активным плейлистом
   const [backupActivePlaylist, setBackupActivePlaylist] = useState();
@@ -26,7 +25,8 @@ export default function YearPopUp() {
         return 0
       }
     )
-    console.log({...sortedPlaylist});
+    console.log([sortedPlaylist][0]);
+    setPlaylist([sortedPlaylist][0])
   };
   const sortOldest = () => {
     const arr = []
@@ -46,10 +46,12 @@ export default function YearPopUp() {
         return 0
       }
     )
-    console.log({...sortedPlaylist});
+    console.log([sortedPlaylist][0]);
+    setPlaylist([sortedPlaylist][0])
   };
   const sortOriginal = () => {
     console.log(backupActivePlaylist);
+    setPlaylist(backupActivePlaylist)
   };
   return (
     <S.SmallPopUp>
