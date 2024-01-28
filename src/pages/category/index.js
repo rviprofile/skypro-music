@@ -1,23 +1,63 @@
 import React from "react";
-import * as S from "../../styles.js";
-import AudioPlayer from "../../components/audioPlayer/audioPlayer.jsx";
-import NavMenu from "../../components/navMenu/navMenu.jsx";
-import Sidebar from "../../components/sidebar/sidebar.jsx";
-import CategoryTrackList from "../../components/category/categoryTrackList.jsx";
+import { useEffect, useState } from "react";
+import TrackList from "../../components/tracklist/trackList.jsx";
+import TrackListSkeleton from "../../components/skeletons/trackListSkeleton.jsx";
+import getSelection from "../../components/API/getSelection.js";
+import { store } from "../../store/store.js";
 
 export const CategoryPage = () => {
+  const [load, setLoad] = useState(true); // Состояние загрузки для скелетонов
+  const [tracks, setTracks] = useState([]); // Состояние с треками для передачи дальше через props
+  const [error, setError] = useState(null); // Состояние с ошибкой
+  const [likes, setLikes] = useState({}); // Состояние с успешными обновлениями лайков
+
+  // Получаем id из URL адреса для запроса к API
+  const id = window.location.pathname.slice(-1);
+
+  // Загружаем плейлист по id при рендере компонента
+  useEffect(() => {
+    getSelection(id)
+      .then((data) => {
+        setTracks(data);
+        setLoad(false);
+      })
+      .catch((err) => {
+        alert(err);
+        setLoad(false);
+        setError(err);
+      });
+  }, []);
+
+  // Загружаем плейлист по id при обновлении лайков
+  useEffect(() => {
+    getSelection(id)
+      .then((data) => {
+        setTracks(data);
+        setLoad(false);
+      })
+      .catch((err) => {
+        alert(err);
+        setLoad(false);
+        setError(err);
+      });
+  }, [likes]);
+
+  useEffect(() => {
+    console.log('object');
+  }, window.location.pathname)
+
+  store.subscribe(() => {
+    const actualState = store.getState();
+    setLikes(actualState.likes);
+  });
 
   return (
-    <S.Wrapper>
-      <S.Container>
-        <S.Main>
-          <NavMenu />
-          <CategoryTrackList />
-          <Sidebar />
-        </S.Main>
-        {/* <AudioPlayer /> */}
-        <footer className="footer"></footer>
-      </S.Container>
-    </S.Wrapper>
+    <>
+      {load ? (
+        <TrackListSkeleton />
+      ) : (
+        <TrackList tracks={tracks.items} error={error} title={tracks.name} />
+      )}
+    </>
   );
 };

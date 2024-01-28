@@ -19,7 +19,7 @@ export default function TrackList({tracks, error, title}) {
       <Filter arr={playlist} setPlaylist={setPlaylist}/>
       <S.CenterblockContent>
         <PlaylistTitle />
-        <PlaylistContent arr={playlist}/>
+        <PlaylistContent arr={tracks}/>
       </S.CenterblockContent>
     </S.MainCenterblock>
   );

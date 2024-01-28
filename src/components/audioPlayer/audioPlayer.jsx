@@ -9,6 +9,9 @@ import {
   unPauseTrackCreator,
 } from "../../store/actions/creators/activeTrack.js";
 import { getCookie } from "../setCookie.js";
+import { useDispatch } from "react-redux";
+import { deleteLikeCreator } from "../../store/thunks/deleteLike.js";
+import { addLikeCreator } from "../../store/thunks/addLike.js";
 
 export default function AudioPlayer() {
   // Ссылка на тег audio
@@ -35,6 +38,9 @@ export default function AudioPlayer() {
 
   // Состояние общей длительности трека
   const [durationonBar, setDurationOnBar] = useState(100);
+
+  // Состояние лайкнут ли трек
+  const [isLiked, setIsLiked] = useState();
 
   // Подписка на состояние из store
   store.subscribe(() => {
@@ -104,13 +110,19 @@ export default function AudioPlayer() {
         setTimeOnBar(audioRef.current.currentTime);
         setDurationOnBar(audioRef.current.duration);
       };
+      // Лайкнут ли трек в isLiked
+      activePlayer.stared_user
+        .map((elem) => elem.id)
+        .includes(Number(getCookie("id")))
+        ? setIsLiked(true)
+        : setIsLiked(false);
     }
   }, [activePlayer]);
 
   // Переключатель функций от isPlaying
   const togglePlay = isPlaying ? handleStop : handleStart;
 
-  // Функция форматирует и возвращает строку "Время воспроизведения : Длительность трека"
+  // Функция форматирует и возвращает строку "Время воспроизведения / Длительность трека"
   const TimersString = () => {
     if (activePlayer) {
       return `${FormatDuration(timeOnBar)} / ${FormatDuration(durationonBar)}`;
@@ -167,6 +179,18 @@ export default function AudioPlayer() {
   // Переход к предыдущему треку
   const prevButtonClick = () => {
     store.dispatch(activeTrackCreator(moveOnList("PREV")));
+  };
+
+  const dispatch = useDispatch();
+  const like = () => {
+    if (window.location.pathname === "/favorites") {
+      dispatch(deleteLikeCreator(activePlayer));
+      return;
+    }
+    isLiked
+      ? dispatch(deleteLikeCreator(activePlayer))
+      : dispatch(addLikeCreator(activePlayer));
+    setIsLiked(!isLiked);
   };
 
   return activePlayer ? (
@@ -252,26 +276,14 @@ export default function AudioPlayer() {
               </S.TrackPlaycontain>
 
               <S.TrackPlayLikeDis>
-                {/* <S.TrackPlayLike>
-                  <S.TrackPlaylikeSvg alt="like">
-                    <use xlinkHref="/img/icon/sprite.svg#icon-like"></use>
-                  </S.TrackPlaylikeSvg>
-                </S.TrackPlayLike> */}
-                {/* <S.TrackPlayDislike>
-                  <S.TrackPlayDislikeSvg alt="dislike">
-                    <use xlinkHref="/img/icon/sprite.svg#icon-dislike"></use>
-                  </S.TrackPlayDislikeSvg>
-                </S.TrackPlayDislike> */}
                 <S.TrackPlayLike>
-                <S.TrackPlaylikeSvg alt="like">
-                {activePlayer.stared_user
-                  .map((elem) => elem.id)
-                  .includes(Number(getCookie("id"))) ? (
-                    <use xlinkHref="/img/icon/sprite.svg#icon-likeactive"></use>
-                ) : (
-                  <use xlinkHref="/img/icon/sprite.svg#icon-like"></use>
-                )}
-                </S.TrackPlaylikeSvg>
+                  <S.TrackPlaylikeSvg alt="like" onClick={like}>
+                    {isLiked ? (
+                      <use xlinkHref="/img/icon/sprite.svg#icon-likeactive"></use>
+                    ) : (
+                      <use xlinkHref="/img/icon/sprite.svg#icon-like"></use>
+                    )}
+                  </S.TrackPlaylikeSvg>
                 </S.TrackPlayLike>
               </S.TrackPlayLikeDis>
             </S.PlayerTrackPlay>

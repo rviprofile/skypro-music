@@ -57,6 +57,7 @@ export default function PlaylistContent({ arr }) {
       ? dispatch(deleteLikeCreator(item))
       : dispatch(addLikeCreator(item));
   };
+  
   const correctIcon = (item) => {
     // Код ниже совершает две проверки.
     // 1. Если страница /favorites, то все лайки будут закрашены.
