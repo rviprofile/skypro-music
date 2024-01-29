@@ -32,9 +32,10 @@ export default function Sidebar() {
           <S.SidebarItem>
             <Link to="/category/1">
               <S.SidebarLink>
+              <S.SideBarText>Классическая музыка</S.SideBarText>
                 <S.SidebarImg
                   className="sidebar__img"
-                  src="/img/playlist01.png"
+                  src="/img/Frame3.png"
                   alt="day's playlist"
                 />
               </S.SidebarLink>
@@ -43,9 +44,10 @@ export default function Sidebar() {
           <S.SidebarItem>
             <Link to="/category/2">
               <S.SidebarLink>
+              <S.SideBarText>Электронная музыка</S.SideBarText>
                 <S.SidebarImg
                   className="sidebar__img"
-                  src="/img/playlist02.png"
+                  src="/img/Frame4.png"
                   alt="day's playlist"
                 />
               </S.SidebarLink>
@@ -54,9 +56,10 @@ export default function Sidebar() {
           <S.SidebarItem>
             <Link to="/category/3">
               <S.SidebarLink>
+              <S.SideBarText>Рок музыка</S.SideBarText>
                 <S.SidebarImg
                   className="sidebar__img"
-                  src="/img/playlist03.png"
+                  src="/img/Frame5.png"
                   alt="day's playlist"
                 />
               </S.SidebarLink>

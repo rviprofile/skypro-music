@@ -48,3 +48,21 @@ export const FilterButtonActive = styled(FilterButton)`
   border-color: #ad61ff;
   color: #ad61ff;
 `;
+export const Counter = styled.div`
+  color: white;
+  background-color: rgb(173, 97, 255);
+  width: 26px;
+  height: 26px;
+  border-radius: 13px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  font-family: StratosSkyeng;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 13px;
+  right: -8px;
+  top: -8px;
+`;

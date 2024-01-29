@@ -42,10 +42,6 @@ export const CategoryPage = () => {
       });
   }, [likes]);
 
-  useEffect(() => {
-    console.log('object');
-  }, window.location.pathname)
-
   store.subscribe(() => {
     const actualState = store.getState();
     setLikes(actualState.likes);
