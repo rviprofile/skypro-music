@@ -22,7 +22,7 @@ export default function FilterGenre({
           жанру
         </S.FilterButton>
       )}
-      {isActive ? <GenrePopUp arr={arr} setPlaylist={setPlaylist} /> : ""}
+      {isActive ? <GenrePopUp arr={arr} setPlaylist={setPlaylist} setCounter={setCounter}/> : ""}
     </S.FilterButtonContainer>
   );
 }

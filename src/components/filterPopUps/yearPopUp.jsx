@@ -2,7 +2,7 @@ import * as S from "./styles";
 import { store } from "../../store/store";
 import { useState } from "react";
 
-export default function YearPopUp({arr, setPlaylist}) {
+export default function YearPopUp({arr, setPlaylist, setCounter}) {
 
   // Состояния с активным плейлистом
   const [backupActivePlaylist, setBackupActivePlaylist] = useState();

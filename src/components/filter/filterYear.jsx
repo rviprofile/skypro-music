@@ -22,7 +22,7 @@ export default function FilterYear({
           году выпуска
         </S.FilterButton>
       )}
-      {isActive ? <YearPopUp arr={arr} setPlaylist={setPlaylist} /> : ""}
+      {isActive ? <YearPopUp arr={arr} setPlaylist={setPlaylist} setCounter={setCounter}/> : ""}
     </S.FilterButtonContainer>
   );
 }

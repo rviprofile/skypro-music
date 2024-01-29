@@ -3,6 +3,8 @@ import * as S from "./styles";
 import React from "react";
 import { deleteCookie } from "../setCookie.js";
 import { useUserContext } from "../context/userContext.js";
+import { store } from "../../store/store.js";
+import { chahgeCategory, chahgeCategoryCreator } from "../../store/actions/creators/activeTrack.js";
 
 export default function Sidebar() {
 
@@ -30,7 +32,7 @@ export default function Sidebar() {
       <S.SidebarBlock>
         <S.SidebarList>
           <S.SidebarItem>
-            <Link to="/category/1">
+            <Link to="/category/1" onClick={() => {store.dispatch(chahgeCategoryCreator(1))}}>
               <S.SidebarLink>
               <S.SideBarText>Классическая музыка</S.SideBarText>
                 <S.SidebarImg
@@ -42,7 +44,7 @@ export default function Sidebar() {
             </Link>
           </S.SidebarItem>
           <S.SidebarItem>
-            <Link to="/category/2">
+            <Link to="/category/2" onClick={() => {store.dispatch(chahgeCategoryCreator(2))}}>
               <S.SidebarLink>
               <S.SideBarText>Электронная музыка</S.SideBarText>
                 <S.SidebarImg
@@ -54,7 +56,7 @@ export default function Sidebar() {
             </Link>
           </S.SidebarItem>
           <S.SidebarItem>
-            <Link to="/category/3">
+            <Link to="/category/3" onClick={() => {store.dispatch(chahgeCategoryCreator(3))}}>
               <S.SidebarLink>
               <S.SideBarText>Рок музыка</S.SideBarText>
                 <S.SidebarImg

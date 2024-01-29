@@ -21,7 +21,7 @@ export default function FilterSinger({
           исполнителю
         </S.FilterButton>
       )}
-      {isActive ? <SingerPopUp arr={arr} setPlaylist={setPlaylist} /> : ""}
+      {isActive ? <SingerPopUp arr={arr} setPlaylist={setPlaylist} setCounter={setCounter}/> : ""}
     </S.FilterButtonContainer>
   );
 }

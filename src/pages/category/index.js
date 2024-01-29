@@ -14,6 +14,8 @@ export const CategoryPage = () => {
   // Получаем id из URL адреса для запроса к API
   const id = window.location.pathname.slice(-1);
 
+  const [updateCategory, setUpdateCategory] = useState()
+
   // Загружаем плейлист по id при рендере компонента
   useEffect(() => {
     getSelection(id)
@@ -42,9 +44,23 @@ export const CategoryPage = () => {
       });
   }, [likes]);
 
+  useEffect(() => {
+    getSelection(id)
+      .then((data) => {
+        setTracks(data);
+        setLoad(false);
+      })
+      .catch((err) => {
+        alert(err);
+        setLoad(false);
+        setError(err);
+      });
+  }, [updateCategory]);
+
   store.subscribe(() => {
     const actualState = store.getState();
     setLikes(actualState.likes);
+    setUpdateCategory(actualState.activeCategory.actualCategory)
   });
 
   return (
