@@ -8,6 +8,7 @@ export default function FilterYear({
   onHide,
   arr,
   setPlaylist,
+  resetFilters
 }) {
   const [counter, setCounter] = useState(0);
   return (
@@ -22,7 +23,7 @@ export default function FilterYear({
           году выпуска
         </S.FilterButton>
       )}
-      {isActive ? <YearPopUp arr={arr} setPlaylist={setPlaylist} setCounter={setCounter}/> : ""}
+      {isActive ? <YearPopUp arr={arr} setPlaylist={setPlaylist} setCounter={setCounter} resetFilters={resetFilters}/> : ""}
     </S.FilterButtonContainer>
   );
 }

@@ -14,12 +14,12 @@ export default function TrackList({tracks, error, title}) {
   }
   return (
     <S.MainCenterblock>
-      <Search />
+      <Search arr={tracks} setPlaylist={setPlaylist}/>
       {error ? <S.ErrorH2>Не удалось загрузить плейлист, попробуйте позже</S.ErrorH2> : <S.CenterblockH2>{title}</S.CenterblockH2>}
-      <Filter arr={playlist} setPlaylist={setPlaylist}/>
+      <Filter arr={playlist} setPlaylist={setPlaylist} resetFilters={resetFilters}/>
       <S.CenterblockContent>
         <PlaylistTitle />
-        <PlaylistContent arr={tracks}/>
+        <PlaylistContent arr={playlist}/>
       </S.CenterblockContent>
     </S.MainCenterblock>
   );

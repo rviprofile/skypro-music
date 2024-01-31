@@ -5,7 +5,7 @@ import FilterGenre from "./filterGenre.jsx";
 import FilterSinger from "./filterSinger.jsx";
 import FilterYear from "./filterYear.jsx";
 
-export default function Filter({ arr, setPlaylist }) {
+export default function Filter({ arr, setPlaylist, resetFilters}) {
   // Состояние с индексом активного фильтра
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -28,6 +28,7 @@ export default function Filter({ arr, setPlaylist }) {
         arr={arr}
         isActive={activeIndex === 2}
         setPlaylist={setPlaylist}
+        resetFilters={resetFilters}
         onShow={() => setActiveIndex(2)}
         onHide={() => setActiveIndex(0)}
       />

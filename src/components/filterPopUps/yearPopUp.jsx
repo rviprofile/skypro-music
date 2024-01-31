@@ -2,15 +2,16 @@ import * as S from "./styles";
 import { store } from "../../store/store";
 import { useState } from "react";
 
-export default function YearPopUp({arr, setPlaylist, setCounter}) {
+export default function YearPopUp({arr, setPlaylist, setCounter, resetFilters}) {
 
   // Состояния с активным плейлистом
   const [backupActivePlaylist, setBackupActivePlaylist] = useState();
 
   const sortNewest = () => {
-    const arr = []
-    const actualPlaylist = store.getState().playlistStore.playlistReducer;
-    setBackupActivePlaylist(actualPlaylist)
+    // const arr = []
+    // const actualPlaylist = store.getState().playlistStore.playlistReducer;
+    const actualPlaylist = arr
+    setBackupActivePlaylist([actualPlaylist])
     for (const item of Object.entries(actualPlaylist)) {
       arr.push(item[1]);
     }
@@ -29,9 +30,10 @@ export default function YearPopUp({arr, setPlaylist, setCounter}) {
     setPlaylist([sortedPlaylist][0])
   };
   const sortOldest = () => {
-    const arr = []
-    const actualPlaylist = store.getState().playlistStore.playlistReducer;
-    setBackupActivePlaylist(actualPlaylist)
+    // const arr = []
+    // const actualPlaylist = store.getState().playlistStore.playlistReducer;
+    const actualPlaylist = arr
+    setBackupActivePlaylist([actualPlaylist])
     for (const item of Object.entries(actualPlaylist)) {
       arr.push(item[1]);
     }
@@ -50,8 +52,7 @@ export default function YearPopUp({arr, setPlaylist, setCounter}) {
     setPlaylist([sortedPlaylist][0])
   };
   const sortOriginal = () => {
-    console.log(backupActivePlaylist);
-    setPlaylist(backupActivePlaylist)
+    resetFilters()
   };
   return (
     <S.SmallPopUp>
