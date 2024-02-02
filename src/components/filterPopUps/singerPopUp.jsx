@@ -1,6 +1,5 @@
 import getUnicItems from "../getUnicItems"; // Принимает массив повторяющихся значений, возвращает массив уникальных значений
 import * as S from "./styles";
-import { useEffect } from "react";
 
 export default function SingerPopUp({
   arr,
@@ -12,13 +11,23 @@ export default function SingerPopUp({
   // Массив уникальных исполнителе из arr
   const allSingers = [arr.map((item) => item.author)];
   const Items = getUnicItems(allSingers[0]).map((item) => (
-    <S.FilterPopUpItem
+    conditionAuthor.includes(item) ? (
+      <S.FilterPopUpItemActive
+      key={getUnicItems(allSingers[0]).indexOf(item)}
+      onClick={() => conditionAuthorAction(item)}
+      // Здесь должен быть пропс для стилизации
+    >
+      {item}
+    </S.FilterPopUpItemActive>
+    ) : (
+      <S.FilterPopUpItem
       key={getUnicItems(allSingers[0]).indexOf(item)}
       onClick={() => conditionAuthorAction(item)}
       // Здесь должен быть пропс для стилизации
     >
       {item}
     </S.FilterPopUpItem>
+    )
   ));
 
   // Функция для манипуляций с conditionAuthor

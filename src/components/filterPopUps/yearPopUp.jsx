@@ -9,19 +9,28 @@ export default function YearPopUp({
   counter,
   setCounter,
 }) {
+  
   // Функция для манипуляций с conditionAuthor
   const conditionYearAction = (item) => {
-    // Если в conditionYear уже есть item
     if (conditionYear.includes(item)) {
-      // Сортировка будет по умолчанию
-      setConditionYear("По умолчанию");
-      // Обновим счетчик
-      setCounter(0);
-    } else {
-      // Иначе меняем единственное значение conditionYear на item
-      setConditionYear(item);
-      // Обновим счетчик
-      setCounter(1);
+      setConditionYear("По умолчанию")
+      setCounter(0)
+      return
+    }
+    switch (item) {
+      case "Сначала новые": {
+        setConditionYear("Сначала новые")
+        setCounter(1)
+        return
+      }
+      case "Сначала старые": {
+        setConditionYear("Сначала старые")
+        setCounter(1)
+        return
+      }
+      default: 
+        setConditionYear("По умолчанию")
+        setCounter(0)
     }
   };
 
@@ -82,14 +91,32 @@ export default function YearPopUp({
         <S.FilterPopUpItem onClick={() => conditionYearAction("По умолчанию")}>
           По умолчанию
         </S.FilterPopUpItem>
-        <S.FilterPopUpItem onClick={() => conditionYearAction("Сначала новые")}>
-          Сначала новые
-        </S.FilterPopUpItem>
-        <S.FilterPopUpItem
-          onClick={() => conditionYearAction("Сначала старые")}
-        >
-          Сначала старые
-        </S.FilterPopUpItem>
+        {conditionYear.includes("Сначала новые") ? (
+          <S.FilterPopUpItemActive
+            onClick={() => conditionYearAction("Сначала новые")}
+          >
+            Сначала новые
+          </S.FilterPopUpItemActive>
+        ) : (
+          <S.FilterPopUpItem
+            onClick={() => conditionYearAction("Сначала новые")}
+          >
+            Сначала новые
+          </S.FilterPopUpItem>
+        )}
+        {conditionYear.includes("Сначала старые") ? (
+          <S.FilterPopUpItemActive
+            onClick={() => conditionYearAction("Сначала старые")}
+          >
+            Сначала старые
+          </S.FilterPopUpItemActive>
+        ) : (
+          <S.FilterPopUpItem
+            onClick={() => conditionYearAction("Сначала старые")}
+          >
+            Сначала старые
+          </S.FilterPopUpItem>
+        )}
       </S.FilterPopUpList>
     </S.SmallPopUp>
   );

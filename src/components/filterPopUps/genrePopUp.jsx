@@ -13,12 +13,21 @@ export default function GenrePopUp({
   // Массив уникальных жанров из arr
   const allGenres = [arr.map((item) => item.genre)];
   const Items = getUnicItems(allGenres[0]).map((item) => (
-    <S.FilterPopUpItem
+    conditionGenre.includes(item) ? (
+      <S.FilterPopUpItemActive
+      key={getUnicItems(allGenres[0]).indexOf(item)}
+      onClick={() => conditionGenreAction(item)}
+    >
+      {item}
+    </S.FilterPopUpItemActive>
+    ) : (
+      <S.FilterPopUpItem
       key={getUnicItems(allGenres[0]).indexOf(item)}
       onClick={() => conditionGenreAction(item)}
     >
       {item}
     </S.FilterPopUpItem>
+    )
   ));
 
   // Функция для манипуляций с conditionGenre
