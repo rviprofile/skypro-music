@@ -51,10 +51,17 @@ export const FilterPopUpList = styled.ul`
 `;
 
 export const FilterPopUpItem = styled.li`
-color: white;
+  color: white;
   &:hover {
     color: #b672ff;
     cursor: pointer;
-    text-decoration: underline;
+  }
+`;
+
+export const FilterPopUpItemActive = styled.li`
+  color: black;
+  &:hover {
+    color: #b672ff;
+    cursor: pointer;
   }
 `;
