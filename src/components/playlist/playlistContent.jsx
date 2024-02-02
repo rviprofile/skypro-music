@@ -116,5 +116,11 @@ export default function PlaylistContent({ arr }) {
     </S.PlaylistItem>
   ));
 
-  return <S.ContentPlaylist>{PlayListItems}</S.ContentPlaylist>;
+    return <S.ContentPlaylist>{PlayListItems.length === 0 ? 
+      <S.PlaylistItem key={1}>
+        <S.EmptyPlaylist>
+          Плейлист пуст
+        </S.EmptyPlaylist>
+      </S.PlaylistItem>
+      :PlayListItems}</S.ContentPlaylist>
 }
