@@ -22,6 +22,7 @@ export default function Search({ arr, setPlaylist }) {
       setPlaylist(newArr[0])
     }
   }, [search]);
+
   return (
     <S.CenterblockSearh>
       <S.SearchSvg>

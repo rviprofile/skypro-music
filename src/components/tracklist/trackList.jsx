@@ -4,13 +4,15 @@ import PlaylistContent from "../playlist/playlistContent.jsx";
 import PlaylistTitle from "../playlist/playlistTitle.jsx";
 import Search from "../search/search.jsx";
 import { useEffect, useState } from "react";
+import { changePlaylistCreator } from "../../store/actions/creators/activeTrack.js";
+import { store } from "../../store/store.js";
 
 export default function TrackList({ tracks, error, title }) {
   // Локальное состояние с активным списком треков и функцией, которая его меняет
   const [playlist, setPlaylist] = useState(tracks);
 
   // Функция возвращает список треков по умолчанию, который пришел из props
-  const resetFilters = () => {
+  let resetFilters = () => {
     setPlaylist(tracks);
   };
 
@@ -84,11 +86,13 @@ export default function TrackList({ tracks, error, title }) {
       console.log("Сортировка : По умолчанию");
       setPlaylist(newTracks);
     }
+
+    store.dispatch(changePlaylistCreator(newTracks))
   }, [tracks, conditionAuthor, conditionGenre, conditionYear]);
 
   return (
     <S.MainCenterblock>
-      <Search arr={tracks} setPlaylist={setPlaylist} />
+      <Search arr={tracks} setPlaylist={setPlaylist}/>
       {error ? (
         <S.ErrorH2>Не удалось загрузить плейлист, попробуйте позже</S.ErrorH2>
       ) : (
