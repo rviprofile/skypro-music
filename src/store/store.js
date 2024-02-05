@@ -3,6 +3,7 @@ import activePlayerReducer from "./reducers/activeTrack";
 import activePlaylistReducer from "./reducers/activePlaylist";
 import likesCounterReducer from "./reducers/likesCounter";
 import { thunk } from "redux-thunk";
+import crutchReducer from "./reducers/crutchReducer";
 
 export const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
     playlistStore: activePlaylistReducer,
     isPlaying: activePlayerReducer,
     likes: likesCounterReducer,
+    activeCategory: crutchReducer
   },
   middleware: getDefaultMiddleware => {
     return [thunk]

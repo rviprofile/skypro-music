@@ -24,11 +24,11 @@ export const AppRoutes = () => {
           {/* Мои треки */}
           <Route path="favorites" element={<FavoritesPage />} />
           {/* 
-            :1 - Плейлист дня
-            :2 - 100 Танцевальных хитов
-            :3 - Инди заряд
+            :1 - Классическая музыка
+            :2 - Электронная музыка
+            :3 - Рок музыка
             */}
-          <Route path="category/:id" element={<CategoryPage />} />
+          <Route path="/category/:id" element={<CategoryPage />} />
         </Route>
     </Routes>
   );

@@ -80,9 +80,27 @@ export const SidebarItem = styled.div`
 export const SidebarLink = styled.div`
   width: 100%;
   height: 100%;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const SidebarImg = styled.img`
   width: 100%;
   height: auto;
 `;
+
+export const SideBarText = styled.div`
+position: absolute;
+color: #FFF;
+
+text-align: center;
+font-variant-numeric: lining-nums proportional-nums;
+font-family: "StratosSkyeng", sans-serif;
+font-size: 24px;
+font-style: normal;
+font-weight: 400;
+line-height: 32px; 
+letter-spacing: -0.12px;
+`

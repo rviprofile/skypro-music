@@ -6,12 +6,12 @@ import getAllTracks from "../../components/API/getAllTracks.js";
 import { store } from "../../store/store.js";
 
 export const MainPage = () => {
-  // Загрузка всех треков из API
-  const [load, setLoad] = useState(true);
-  const [tracks, setTracks] = useState([]);
-  const [error, setError] = useState(null);
-  const [likes, setLikes] = useState({})
+  const [load, setLoad] = useState(true); // Состояние загрузки для скелетонов
+  const [tracks, setTracks] = useState([]); // Состояние с треками для передачи дальше через props
+  const [error, setError] = useState(null); // Состояние с ошибкой
+  const [likes, setLikes] = useState({}); // Состояние с успешными обновлениями лайков
 
+  // Загружаем все треки при рендере компонента
   useEffect(() => {
     getAllTracks()
       .then((data) => {
@@ -25,6 +25,7 @@ export const MainPage = () => {
       });
   }, []);
 
+  // Загружаем все треки при обновлении лайков
   useEffect(() => {
     getAllTracks()
       .then((data) => {
@@ -38,10 +39,11 @@ export const MainPage = () => {
       });
   }, [likes]);
 
+  // Подписываемся на состояние в store и кидаем likes в локальное состояние
   store.subscribe(() => {
     const actualState = store.getState();
-    setLikes(actualState.likes)
-  })
+    setLikes(actualState.likes);
+  });
 
   return (
     <>

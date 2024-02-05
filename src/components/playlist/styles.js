@@ -231,3 +231,8 @@ export const Pulser = styled.div`
     z-index: -1;
   }
 `;
+
+export const EmptyPlaylist = styled.div`
+color: #ffffff;
+font-size: 30px;
+`
