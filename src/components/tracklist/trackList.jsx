@@ -21,6 +21,9 @@ export default function TrackList({ tracks, error, title }) {
   const [conditionGenre, setConditionGenre] = useState([]);
   const [conditionYear, setConditionYear] = useState("По умолчанию");
 
+  // Поднятое состояние из поиска
+  const [search, setSearch] = useState("");
+
   useEffect(() => {
     // Создаем новый массив
     let newTracks = tracks;
@@ -38,6 +41,16 @@ export default function TrackList({ tracks, error, title }) {
       console.log(`Фильтр по автору: ${conditionAuthor.length}`);
       newTracks = newTracks.filter((item) =>
         conditionAuthor.includes(item.author)
+      );
+    }
+
+    // Если есть строка поиска
+    if (search.length > 0) {
+      newTracks = newTracks.filter((item) =>
+        `${item.name}${item.author}${item.album}`
+          .replace(/\s/g, "")
+          .toLowerCase()
+          .includes(search.toLowerCase())
       );
     }
 
@@ -87,12 +100,17 @@ export default function TrackList({ tracks, error, title }) {
       setPlaylist(newTracks);
     }
 
-    store.dispatch(changePlaylistCreator(newTracks))
-  }, [tracks, conditionAuthor, conditionGenre, conditionYear]);
+    store.dispatch(changePlaylistCreator(newTracks));
+  }, [tracks, conditionAuthor, conditionGenre, conditionYear, search]);
 
   return (
     <S.MainCenterblock>
-      <Search arr={tracks} setPlaylist={setPlaylist}/>
+      <Search
+        arr={playlist}
+        setPlaylist={setPlaylist}
+        search={search}
+        setSearch={setSearch}
+      />
       {error ? (
         <S.ErrorH2>Не удалось загрузить плейлист, попробуйте позже</S.ErrorH2>
       ) : (
