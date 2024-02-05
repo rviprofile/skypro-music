@@ -94,6 +94,8 @@ export default function TrackList({ tracks, error, title }) {
       console.log("Сортировка : По умолчанию");
       setPlaylist(newTracks);
     }
+
+    store.dispatch(changePlaylistCreator(newTracks));
   }, [tracks, conditionAuthor, conditionGenre, conditionYear, search]);
 
   return (

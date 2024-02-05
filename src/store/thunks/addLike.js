@@ -5,6 +5,7 @@ import {
   addLikeStarted,
 } from "./../actions/creators/activeTrack.js";
 import { getCookie } from "../../components/setCookie.js";
+import getAccessToken from "../../components/API/getAccessToken.js";
 
 export const addLikeCreator = (track) => async (dispatch, getState) => {
   dispatch(addLikeStarted());
@@ -21,6 +22,11 @@ export const addLikeCreator = (track) => async (dispatch, getState) => {
     console.log(data);
     dispatch(addLikeSuccess(track));
   } catch (err) {
+    if (err.response.status === 401) {
+      getAccessToken().then((response) => {
+        return dispatch(addLikeCreator(track));
+      })
+    }
     console.log(err);
     dispatch(addLikeFailure(err));
   }

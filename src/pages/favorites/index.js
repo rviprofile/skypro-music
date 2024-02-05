@@ -17,6 +17,13 @@ export const FavoritesPage = () => {
       .then((data) => {
         setTracks(data);
         setLoad(false);
+        if (data.code === "bad_authorization_header") {
+          console.log('object');
+          return getAllFavorites().then((data) => {
+            setTracks(data);
+            setLoad(false);
+          })
+        }
       })
       .catch((err) => {
         alert(err);
@@ -47,7 +54,7 @@ export const FavoritesPage = () => {
 
   return (
     <>
-      {load ? (
+      {load || Array.isArray(tracks) === false ? (
         <TrackListSkeleton />
       ) : (
         <TrackList tracks={tracks} error={error} title="Мои треки" />

@@ -6,6 +6,7 @@ import {
 } from "./../actions/creators/activeTrack.js";
 import { getCookie } from "../../components/setCookie.js";
 import getAccessToken from "../../components/API/getAccessToken.js";
+import { useDispatch } from "react-redux";
 
 export const deleteLikeCreator = (track) => async (dispatch, getState) => {
   dispatch(deleteLikeStarted());
@@ -23,8 +24,7 @@ export const deleteLikeCreator = (track) => async (dispatch, getState) => {
   } catch (err) {
     if (err.response.status === 401) {
       getAccessToken().then((response) => {
-        console.log(response);
-        return deleteLikeCreator(track);
+        return dispatch(deleteLikeCreator(track));
       })
     }
     console.log(err);
