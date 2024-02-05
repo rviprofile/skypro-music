@@ -7,7 +7,7 @@ import getAccessToken from "./API/getAccessToken.js";
 
 export default function Layout() {
   // Обновляем access токен в Cookie каждые 200 секунд
-  setInterval(() => getAccessToken(), 20000);
+  setInterval(() => getAccessToken(), 200000);
 
   return (
     <S.Wrapper>

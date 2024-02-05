@@ -111,11 +111,15 @@ export default function AudioPlayer() {
         setDurationOnBar(audioRef.current.duration);
       };
       // Лайкнут ли трек в isLiked
-      activePlayer.stared_user
+      if (activePlayer.stared_user) {
+        activePlayer.stared_user
         .map((elem) => elem.id)
         .includes(Number(getCookie("id")))
         ? setIsLiked(true)
         : setIsLiked(false);
+      } else {
+        setIsLiked(true)
+      }
     }
   }, [activePlayer]);
 
@@ -185,6 +189,7 @@ export default function AudioPlayer() {
   const like = () => {
     if (window.location.pathname === "/favorites") {
       dispatch(deleteLikeCreator(activePlayer));
+      setIsLiked(false);
       return;
     }
     isLiked

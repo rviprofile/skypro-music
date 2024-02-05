@@ -11,11 +11,6 @@ export default function TrackList({ tracks, error, title }) {
   // Локальное состояние с активным списком треков и функцией, которая его меняет
   const [playlist, setPlaylist] = useState(tracks);
 
-  // Функция возвращает список треков по умолчанию, который пришел из props
-  let resetFilters = () => {
-    setPlaylist(tracks);
-  };
-
   // Все три фильтра обновляют состояния - массивы с условиями фильтрации
   const [conditionAuthor, setConditionAuthor] = useState([]);
   const [conditionGenre, setConditionGenre] = useState([]);

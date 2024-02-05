@@ -5,6 +5,7 @@ import {
   deleteLikeStarted,
 } from "./../actions/creators/activeTrack.js";
 import { getCookie } from "../../components/setCookie.js";
+import getAccessToken from "../../components/API/getAccessToken.js";
 
 export const deleteLikeCreator = (track) => async (dispatch, getState) => {
   dispatch(deleteLikeStarted());
@@ -20,6 +21,12 @@ export const deleteLikeCreator = (track) => async (dispatch, getState) => {
     console.log(data);
     dispatch(deleteLikeSuccess(track));
   } catch (err) {
+    if (err.response.status === 401) {
+      getAccessToken().then((response) => {
+        console.log(response);
+        return deleteLikeCreator(track);
+      })
+    }
     console.log(err);
     dispatch(deleteLikeFailure(err));
   }
