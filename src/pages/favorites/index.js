@@ -6,17 +6,24 @@ import TrackListSkeleton from "../../components/skeletons/trackListSkeleton.jsx"
 import { store } from "../../store/store.js";
 
 export const FavoritesPage = () => {
-  // Загрузка всех треков из API
-  const [load, setLoad] = useState(true);
-  const [tracks, setTracks] = useState([]);
-  const [error, setError] = useState(null);
-  const [likes, setLikes] = useState({})
-  
+  const [load, setLoad] = useState(true); // Состояние загрузки для скелетонов
+  const [tracks, setTracks] = useState([]); // Состояние с треками для передачи дальше через props
+  const [error, setError] = useState(null); // Состояние с ошибкой
+  const [likes, setLikes] = useState({}); // Состояние с успешными обновлениями лайков
+
+  // Загружаем лайкнутые треки при рендере компонента
   useEffect(() => {
     getAllFavorites()
       .then((data) => {
         setTracks(data);
         setLoad(false);
+        if (data.code === "bad_authorization_header") {
+          console.log('object');
+          return getAllFavorites().then((data) => {
+            setTracks(data);
+            setLoad(false);
+          })
+        }
       })
       .catch((err) => {
         alert(err);
@@ -25,11 +32,7 @@ export const FavoritesPage = () => {
       });
   }, []);
 
-  store.subscribe(() => {
-    const actualState = store.getState();
-    setLikes(actualState.likes)
-  })
-
+  // Загружаем лайкнутые треки при обновлении лайков
   useEffect(() => {
     getAllFavorites()
       .then((data) => {
@@ -42,10 +45,16 @@ export const FavoritesPage = () => {
         setError(err);
       });
   }, [likes]);
-  
+
+  // Подписываемся на состояние в store и кидаем likes в локальное состояние
+  store.subscribe(() => {
+    const actualState = store.getState();
+    setLikes(actualState.likes);
+  });
+
   return (
     <>
-      {load ? (
+      {load || Array.isArray(tracks) === false ? (
         <TrackListSkeleton />
       ) : (
         <TrackList tracks={tracks} error={error} title="Мои треки" />

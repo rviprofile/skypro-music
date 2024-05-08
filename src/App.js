@@ -29,7 +29,9 @@ function App() {
           toggleUser,
         }}
       >
+        <React.StrictMode>
         <AppRoutes />
+        </React.StrictMode>
       </UserContext.Provider>
     </>
   );

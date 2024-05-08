@@ -16,4 +16,5 @@ export default async function getAccessToken() {
     });
     const data = await response.json();
     setCookie("access", data.access)
+    return data
 }

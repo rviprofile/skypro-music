@@ -1,6 +1,6 @@
 import * as S from "./styles";
 
-export default function Search() {
+export default function Search({ arr, setPlaylist, search, setSearch }) {
   return (
     <S.CenterblockSearh>
       <S.SearchSvg>
@@ -11,6 +11,7 @@ export default function Search() {
         type="search"
         placeholder="Поиск"
         name="search"
+        onChange={(event) => setSearch(event.target.value)}
       />
     </S.CenterblockSearh>
   );

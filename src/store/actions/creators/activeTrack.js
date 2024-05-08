@@ -1,6 +1,7 @@
 import { getCookie } from "../../../components/setCookie";
 import { store } from "../../store";
 import {
+  CHANGE_CATEGORY,
   CHANGE_PLAYLIST,
   PAUSE_TRACK,
   START_TRACK,
@@ -74,14 +75,7 @@ export const updateHistoryCreator = (item) => ({
   payload: item,
 });
 
-// export const detchLikeStarted = () => ({
-//   type: FETCH_LIKES_STARTED,
-// });
-// export const detchLikeSuccess = (likes) => ({
-//   type: FETCH_LIKES_SUCCESS,
-//   payload: { likes },
-// });
-// export const detchLikeFailure = (error) => ({
-//   type: FETCH_LIKES_FAILURE,
-//   payload: { error },
-// });
+export const chahgeCategoryCreator = (id) => ({
+  type: CHANGE_CATEGORY, 
+  payload: id,
+})

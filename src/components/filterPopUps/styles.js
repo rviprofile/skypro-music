@@ -18,7 +18,6 @@ export const FilterPopUp = styled.div`
   line-height: 24px;
   overflow-y: auto;
   background-color: #313131;
-  color: #fff;
   font-variant-numeric: lining-nums proportional-nums;
   font-style: normal;
   font-family: StratosSkyeng;
@@ -51,9 +50,19 @@ export const FilterPopUpList = styled.ul`
 `;
 
 export const FilterPopUpItem = styled.li`
+  color: white;
   &:hover {
     color: #b672ff;
     cursor: pointer;
-    text-decoration: underline;
+  }
+`;
+
+export const FilterPopUpItemActive = styled.li`
+  color: #B672FF;
+  text-decoration: underline;
+  ;
+  &:hover {
+    color: #b672ff;
+    cursor: pointer;
   }
 `;
