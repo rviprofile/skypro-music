@@ -4,7 +4,6 @@ import { AppRoutes } from "./routes.jsx";
 import { useState } from "react";
 import { UserContext } from "./components/context/userContext.js";
 import { getCookie } from "./components/setCookie.js";
-import AudioPlayer from "./components/audioPlayer/audioPlayer.jsx";
 
 function App() {
   const userFromCookie = {

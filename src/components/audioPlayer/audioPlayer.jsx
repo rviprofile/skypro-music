@@ -113,12 +113,12 @@ export default function AudioPlayer() {
       // Лайкнут ли трек в isLiked
       if (activePlayer.stared_user) {
         activePlayer.stared_user
-        .map((elem) => elem.id)
-        .includes(Number(getCookie("id")))
-        ? setIsLiked(true)
-        : setIsLiked(false);
+          .map((elem) => elem.id)
+          .includes(Number(getCookie("id")))
+          ? setIsLiked(true)
+          : setIsLiked(false);
       } else {
-        setIsLiked(true)
+        setIsLiked(true);
       }
     }
   }, [activePlayer]);
@@ -169,6 +169,7 @@ export default function AudioPlayer() {
             return arr[0];
           }
         }
+        return;
       }
       default:
         return activePlayer;

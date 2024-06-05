@@ -84,7 +84,7 @@ export default function AuthPage({ isLoginMode = true }) {
       setIsButtonDisabled(false);
       return;
     }
-    if (password != repeatPassword) {
+    if (password !== repeatPassword) {
       setError("Пароли не совпадают");
       // Возвращаем активность кнопки
       setIsButtonDisabled(false);

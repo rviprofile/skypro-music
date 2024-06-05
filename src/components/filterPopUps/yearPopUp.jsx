@@ -1,5 +1,4 @@
 import * as S from "./styles";
-import { useState } from "react";
 
 export default function YearPopUp({
   arr,

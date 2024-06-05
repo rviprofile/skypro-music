@@ -4,8 +4,6 @@ import PlaylistContent from "../playlist/playlistContent.jsx";
 import PlaylistTitle from "../playlist/playlistTitle.jsx";
 import Search from "../search/search.jsx";
 import { useEffect, useState } from "react";
-import { changePlaylistCreator } from "../../store/actions/creators/activeTrack.js";
-import { store } from "../../store/store.js";
 
 export default function TrackList({ tracks, error, title }) {
   // Локальное состояние с активным списком треков и функцией, которая его меняет

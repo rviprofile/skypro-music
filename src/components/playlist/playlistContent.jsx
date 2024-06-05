@@ -37,6 +37,7 @@ export default function PlaylistContent({ arr }) {
     }
     // Кинем "играет ли трек" в локальное состояние
     setIsPlaying(actualState.trackStore.isPlaying);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [window.location.pathname]);
 
   // Обновление состояния в store при клике на трек
@@ -57,7 +58,7 @@ export default function PlaylistContent({ arr }) {
       ? dispatch(deleteLikeCreator(item))
       : dispatch(addLikeCreator(item));
   };
-  
+
   const correctIcon = (item) => {
     // Код ниже совершает две проверки.
     // 1. Если страница /favorites, то все лайки будут закрашены.
@@ -116,11 +117,15 @@ export default function PlaylistContent({ arr }) {
     </S.PlaylistItem>
   ));
 
-    return <S.ContentPlaylist>{PlayListItems.length === 0 ? 
-      <S.PlaylistItem key={1}>
-        <S.EmptyPlaylist>
-          Плейлист пуст
-        </S.EmptyPlaylist>
-      </S.PlaylistItem>
-      :PlayListItems}</S.ContentPlaylist>
+  return (
+    <S.ContentPlaylist>
+      {PlayListItems.length === 0 ? (
+        <S.PlaylistItem key={1}>
+          <S.EmptyPlaylist>Плейлист пуст</S.EmptyPlaylist>
+        </S.PlaylistItem>
+      ) : (
+        PlayListItems
+      )}
+    </S.ContentPlaylist>
+  );
 }

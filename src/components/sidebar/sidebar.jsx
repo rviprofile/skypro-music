@@ -4,7 +4,7 @@ import React from "react";
 import { deleteCookie } from "../setCookie.js";
 import { useUserContext } from "../context/userContext.js";
 import { store } from "../../store/store.js";
-import { chahgeCategory, chahgeCategoryCreator } from "../../store/actions/creators/activeTrack.js";
+import { chahgeCategoryCreator } from "../../store/actions/creators/activeTrack.js";
 
 export default function Sidebar() {
 

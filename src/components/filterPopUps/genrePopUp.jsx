@@ -1,6 +1,5 @@
 import getUnicItems from "../getUnicItems"; // Принимает массив повторяющихся значений, возвращает массив уникальных значений
 import * as S from "./styles";
-import { useEffect } from "react";
 
 export default function GenrePopUp({
   arr,
@@ -35,7 +34,7 @@ export default function GenrePopUp({
     // Если в conditionGenre уже есть item
     if (conditionGenre.includes(item)) {
       // Отфильруем conditionGenre, оставив всё, кроме item
-      setConditionGenre(conditionGenre.filter((a) => a != item));
+      setConditionGenre(conditionGenre.filter((a) => a !== item));
       setCounter(counter - 1);
     } else {
       // Иначе добавим item в filters
