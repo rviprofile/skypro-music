@@ -35,7 +35,7 @@ export default function SingerPopUp({
     // Если в conditionAuthor уже есть item
     if (conditionAuthor.includes(item)) {
       // Отфильруем conditionAuthor, оставив всё, кроме item
-      setConditionAuthor(conditionAuthor.filter((a) => a != item));
+      setConditionAuthor(conditionAuthor.filter((a) => a !== item));
       // Уменьшим счетчик
       setCounter(counter - 1);
     } else {

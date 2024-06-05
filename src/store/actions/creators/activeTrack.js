@@ -1,5 +1,3 @@
-import { getCookie } from "../../../components/setCookie";
-import { store } from "../../store";
 import {
   CHANGE_CATEGORY,
   CHANGE_PLAYLIST,

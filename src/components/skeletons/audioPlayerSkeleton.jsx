@@ -4,10 +4,10 @@ export default function AudioPlayerSkeleton() {
   return (
     <S.Bar>
       <S.BarContent>
-        <S.BarPlayerProgress/>
+        <S.BarPlayerProgress />
         <S.BarPlayerBlock>
           <S.BarPlayer>
-          <S.PlayerControls>
+            <S.PlayerControls>
               <S.PlayerBtnPrev>
                 <S.PlayerBtnPrevSvg>
                   <use xlinkHref="img/icon/sprite.svg#icon-prev"></use>
@@ -37,7 +37,7 @@ export default function AudioPlayerSkeleton() {
 
             <S.PlayerTrackPlay>
               <S.TrackPlaycontain>
-                <img src="/img/skeleton/122x51.svg"></img>
+                <img src="/img/skeleton/122x51.svg" alt="skeleton"></img>
               </S.TrackPlaycontain>
             </S.PlayerTrackPlay>
           </S.BarPlayer>
@@ -49,10 +49,7 @@ export default function AudioPlayerSkeleton() {
                 </S.VolumeSvg>
               </S.VolumeImage>
               <S.VolumeProgress>
-                <S.VolumeProgressLine
-                  type="range"
-                  name="range"
-                />
+                <S.VolumeProgressLine type="range" name="range" />
               </S.VolumeProgress>
             </S.VolumeContent>
           </S.BarVolumeBlock>

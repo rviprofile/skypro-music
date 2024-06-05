@@ -4,7 +4,6 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { deleteCookie } from "../setCookie.js";
 import { useUserContext } from "../context/userContext.js";
-import getAccessToken from "../API/getAccessToken.js";
 
 export default function NavMenuList() {
   const userContext = useUserContext();
